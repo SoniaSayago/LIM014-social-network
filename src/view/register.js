@@ -8,7 +8,7 @@ export default () => {
     </div>
     </div>
     `
-    const divElemt = document.createElement('div')
-    divElem.innerHTML = viewRegister;
-    return divElemt;
+    const divElement = document.createElement('div')
+    divElement.innerHTML = viewRegister;
+    return divElement;
 }

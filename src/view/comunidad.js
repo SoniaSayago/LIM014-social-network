@@ -1,8 +1,8 @@
 export default () => {
-    const viewHome = `
-    <h1> home </h1>
+    const viewComunidad = `
+    <h1> Comunidad </h1>
     `
     const divElement = document.createElement('div')
-    divElement.innerHTML = viewHome;
+    divElement.innerHTML = viewComunidad;
     return divElement;
 }

@@ -1,8 +1,8 @@
 export default () => {
-    const viewPerfil=`
+    const viewPerfil = `
     <h1> Mi Perfil </h1>
     `
-    const divElement = document.createElement('div')
+    const divElemt = document.createElement('div')
     divElem.innerHTML = viewPerfil;
-    return divElem;
+    return divElemt;
 }

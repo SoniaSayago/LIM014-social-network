@@ -1,9 +1,8 @@
 export default () => {
     const viewLogin = `
-    <h1> Inicias Sesión </h1>
-    
+    <h1> Inicias Sesión </h1>    
     `
-    const divElemt = document.createElement('div')
-    divElem.innerHTML = viewLogin;
-    return divElemt;
+    const divElement = document.createElement('div')
+    divElement.innerHTML = viewLogin;
+    return divElement;
 }

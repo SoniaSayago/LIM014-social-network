@@ -1,6 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { changeTmp } from './view-controller/index.js';
+import { changeTmp } from './view-controler/router.js';
 
 const init = () => {
     changeTmp(window.location.hash);

@@ -1,8 +1,13 @@
 export default () => {
-    const viewRegister=`
+    const viewRegister = `
     <h1> Registro </h1>
+    <div class= 'formContainer'>
+    <form id='registerForm'>
+        <input type='text' id='name'>
+    </form>
+    </div>
     `
-    const divElement = document.createElement('div')
+    const divElemt = document.createElement('div')
     divElem.innerHTML = viewRegister;
-    return divElem;
+    return divElemt;
 }

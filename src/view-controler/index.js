@@ -1,5 +1,5 @@
 import { components } from '../view/index.js';
-
+console.log('indexxx')
 export const changeTmp = (hash) => {
     // console.log(hash)
     const id = hash.split('/')[1];

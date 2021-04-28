@@ -1,17 +1,23 @@
 * {
     font-family: 'Roboto', sans-serif;
     margin: 0px;
+    color: #333333
 }
 
-.backgroundLogIn {
-    background-color: rgba(75.00000312924385, 53.00000064074993, 209.00000274181366, 1);
-    background-image: linear-gradient(0deg, #a2468e 0%, rgba(255, 255, 255, 0) 100%);
+.backgroundRegisterHead {
+    background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+    height: 60px;
 }
 
 .imagesContainer {
     align-content: space-around;
     height: 50px;
     margin: 20px
+}
+
+.smallLogo {
+    width: 200px;
+    height: 50px;
 }
 
 body {
@@ -28,6 +34,7 @@ body {
 
 p {
     font-size: 16px;
+    color: #333333
 }
 
 .whiteBackground {
@@ -38,7 +45,6 @@ p {
     flex-direction: column;
     height: 100%;
     text-align: center;
-    padding-top: 20px;
 }
 
 .bigButton {
@@ -47,20 +53,36 @@ p {
     color: #fafafa;
     border-radius: 10px;
     border: none;
-    width: 150px;
-    height: 47px;
+    width: 120px;
+    height: 37px;
 }
 
-.registerForm1 {
-    margin: 0px;
-    justify-content: 40px;
+.registerForm1Label {
+    font-size: 16px;
+    text-justify: left;
+    color: #333333;
+    font-weight: Medium;
 }
 
-#registerForm {
-    justify-content: space-around;
-    margin: 20px;
+.registerForm1Input {
+    font-size: 14;
+    color: #333333;
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+    border: 1px solid #333333;
+    border-width: 1px;
+    margin-top: 2px;
 }
 
-.initialP {
-    margin-top: 20px;
+.registerForm1Input::placeholder {
+    color: #9492A4;
+    text-indent: 10px;
+    font-family: 'Roboto';
+    size: 14px;
+}
+
+.terms {
+    size: 14px;
+    margin-bottom: 4px;
 }

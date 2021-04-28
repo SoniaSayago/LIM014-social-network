@@ -1,6 +1,10 @@
 export default () => {
     const viewRegister = `
    <div class= 'whiteBackground'>    
+   <div class= 'backgroundRegisterHead'>
+   <figure class="figureLogin">
+   <img src="./img/iziChoice.png" alt="" class='smallLogo'>
+</figure></div></br></br>
     <div class='initialP'><p>Crea tu cuenta con</p></div>
     <div class= imagesContainer><svg width="48" height="41" viewBox="0 0 48 41" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20.6145C0 30.8064 8.666 39.2814 20 41V26.1939H14V20.5H20V15.9439C20 10.8189 23.866 7.97279 29.334 7.97279C31.066 7.97279 32.934 8.2 34.666 8.42721V13.6667H31.6C28.666 13.6667 28 14.9189 28 16.5145V20.5H34.4L33.334 26.1939H28V41C39.334 39.2814 48 30.8081 48 20.6145C48 9.27625 37.2 0 24 0C10.8 0 0 9.27625 0 20.6145Z" fill="#4B35D1"/>
@@ -11,16 +15,16 @@ export default () => {
 </div>
     
     <div class= 'formContainer'>
-    <p>ó registrate fácilmente con tus datos:</p>
+    <p>ó registrate fácilmente con tus datos:</p></br></br>
         <div class ='formDiv'>
             <form id='registerForm'>
-                <label class='registerForm1'>Nombres y Apellidos</label></br>
-                <input class='registerForm1' type='text' id='name' placeholder='Nombres y Apellidos'> <br></br>
-                <label class='registerForm1' >Email</label></br>
-                <input class='registerForm1'  type='text' id='email' placeholder='Email'> <br></br>
-                <label class='registerForm1' >Contraseña</label></br>
-                <input class='registerForm1'  type='text' id='password' placeholder='Contraseña'></br></br>
-                <input class='registerForm1'  type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
+                <label class='registerForm1Label'>Nombres y Apellidos</label></br>
+                <input class='registerForm1Input' type='text' id='name' placeholder='Nombres y Apellidos'> <br></br>
+                <label class='registerForm1Label' >Email</label></br>
+                <input class='registerForm1Input'  type='text' id='email' placeholder='Email'> <br></br>
+                <label class='registerForm1Label' >Contraseña</label></br>
+                <input class='registerForm1Input'  type='text' id='password' placeholder='Contraseña'></br></br>
+                <input  class='terms' type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
                 <button class= 'bigButton' type="button" onclick="alert('BUTTON ITS WORKING!')">Enviar</button>
             </form>
         </div>

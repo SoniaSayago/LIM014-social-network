@@ -1,23 +1,21 @@
-            * {
-                font-family: 'Roboto', sans-serif;
-                margin: 0px;
-            }
-            /* LAYOUT */
-            /* Header */
-            /* .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0px;
-            padding: 0px 50px;
-        }
-        
-        .header__logo-area {
-            width: 250px;
-            height: 150px;
-        }
-        
-        .header__logo-area__logo {
-            object-fit: contain;
-            width: 100%;
-            height: 100%; */
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+}
+
+.backgroundLogIn {
+    background-color: rgba(75.00000312924385, 53.00000064074993, 209.00000274181366, 1);
+    background-image: linear-gradient(0deg, #a2468e 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.imagesContainer {
+    background-color: #a2468e;
+}
+
+p {
+    font-size: 16px;
+}
+
+.whiteBackground {
+    background-color: #fafafa;
+}

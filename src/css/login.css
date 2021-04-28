@@ -9,43 +9,49 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-.my-2{
+.my-2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-.my-1{
+
+.my-1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-.sectionLogin{
+
+.sectionLogin {
     text-align: center;
 }
 
 .logoLogin {
-width: 360px;
+    width: 360px;
 }
 
 .backgroundLogIn {
     background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
 }
 
-.logoContainer p {
-    font-size: 22px;
-    /* font-weight: 300; */
+.registerContainer p {
+    font-size: 16px;
     color: white;
-
 }
 
-.email, .password {
+.logoContainer p {
+    font-size: 22px;
+    color: white;
+}
+
+.inputEmail,
+.inputPassword {
     border-radius: 10px;
     border: 1px solid #FFFFFF;
-    background-color: transparent; 
-    height: 35px;       
+    background-color: transparent;
+    height: 35px;
 }
 
 .btn-ingresar {
-    width: 150px;
-    height: 47px;
+    width: 120px;
+    height: 37px;
     color: white;
     background: #FC5484;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -56,16 +62,18 @@ width: 360px;
     font-family: 'Roboto';
 }
 
-.registerContainer{
+.registerContainer {
     color: white;
     font-size: 16px;
 }
+
 .registerContainer a {
     color: white;
     font-weight: bold;
     text-decoration: none;
 }
-::placeholder{
+
+::placeholder {
     color: #FFFFFF;
     text-indent: 10px;
     font-family: 'Roboto';

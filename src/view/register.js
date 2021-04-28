@@ -20,7 +20,7 @@ export default () => {
                 <input class='registerForm1'  type='text' id='email' placeholder='Email'> <br></br>
                 <label class='registerForm1' >Contraseña</label></br>
                 <input class='registerForm1'  type='text' id='password' placeholder='Contraseña'></br></br>
-                <input class='registerForm1'  type='checkbox' <label> Acepta términos y condiciones.</label> </br>
+                <input class='registerForm1'  type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
                 <button class= 'bigButton' type="button" onclick="alert('BUTTON ITS WORKING!')">Enviar</button>
             </form>
         </div>

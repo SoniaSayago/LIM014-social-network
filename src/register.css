@@ -45,10 +45,10 @@ p {
     background-color: #FC5484;
     font-size: 22px;
     color: #fafafa;
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
-    padding: 5px 15px;
-    margin: 20px;
+    width: 150px;
+    height: 47px;
 }
 
 .registerForm1 {

@@ -29,6 +29,7 @@ export default () => {
     </section>   
     `
     const divElement = document.createElement('div')
+    divElement.classList.add('mainDiv')
     divElement.innerHTML = viewLogin;
     return divElement;
 }

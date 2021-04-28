@@ -9,7 +9,21 @@
 }
 
 .imagesContainer {
-    background-color: #a2468e;
+    align-content: space-around;
+    height: 50px;
+    margin: 20px
+}
+
+body {
+    height: 100vh;
+}
+
+#container {
+    height: 100%;
+}
+
+.mainDiv {
+    height: 100%;
 }
 
 p {
@@ -18,4 +32,35 @@ p {
 
 .whiteBackground {
     background-color: #fafafa;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.bigButton {
+    background-color: #FC5484;
+    font-size: 22px;
+    color: #fafafa;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 15px;
+    margin: 20px;
+}
+
+.registerForm1 {
+    margin: 0px;
+    justify-content: 40px;
+}
+
+#registerForm {
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.initialP {
+    margin-top: 20px;
 }

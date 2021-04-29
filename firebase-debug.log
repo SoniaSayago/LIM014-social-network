@@ -1,0 +1,35 @@
+[debug] [2021-04-29T14:08:01.425Z] ----------------------------------------------------------------------
+[debug] [2021-04-29T14:08:01.427Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\N20\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-04-29T14:08:01.427Z] CLI Version:   9.10.0
+[debug] [2021-04-29T14:08:01.427Z] Platform:      win32
+[debug] [2021-04-29T14:08:01.428Z] Node Version:  v15.12.0
+[debug] [2021-04-29T14:08:01.429Z] Time:          Thu Apr 29 2021 09:08:01 GMT-0500 (hora estándar de Colombia)
+[debug] [2021-04-29T14:08:01.429Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-29T14:08:01.434Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-29T14:08:01.434Z] > authorizing via signed-in user (ssayagos@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\N20\Documents\GitHub\LIM014-social-network
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-04-29T14:08:40.678Z] > refreshing access token with scopes: []
+[debug] [2021-04-29T14:08:40.679Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-29T14:08:40.891Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Thu, 29 Apr 2021 14:08:40 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-29T14:08:40.983Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/availableProjects pageSize=100
+[debug] [2021-04-29T14:08:42.243Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/availableProjects 200
+[debug] [2021-04-29T14:08:42.243Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/availableProjects [omitted]

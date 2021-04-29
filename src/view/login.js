@@ -1,6 +1,5 @@
 export default () => {
-    const viewLogin = `
-    <section class= 'backgroundLogIn sectionLogin' > 
+    const viewLogin = `<section class= 'backgroundLogIn sectionLogin' > 
       <div class='logoContainer'>
         <figure class="figureLogin">
             <img src="./img/iziChoice.png" alt="" class='logoLogin'>
@@ -26,9 +25,8 @@ export default () => {
         <p>¿No tienes cuenta? Registrate <a href="">aquí</a></p>
         <button class='btn-ingresar my-2'>Registrate</button>
       </div>   
-    </section>   
-    `
-    const divElement = document.createElement('div')
+    </section>`;
+    const divElement = document.createElement('div');
     divElement.innerHTML = viewLogin;
     return divElement;
-}
+};

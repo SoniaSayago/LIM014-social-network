@@ -1,26 +1,21 @@
 export default () => {
-<<<<<<< HEAD
-    const viewLogin = `
-    <section class= 'backgroundLogIn sectionLogin' > 
-=======
-    const viewLogin = `<section class= 'backgroundLogIn sectionLogin' > 
->>>>>>> julissa
+    const viewLogin = `<section class= 'sectionHome' >
+    <div class='introContainer hideHome'>
+      <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br>
+      <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1>
+      <img src="./img/homeIziChoice.svg" alt="" class='imageHome'>
+    </div>
+    
+    <section class= 'sectionLogin' > 
+    <div class='squareLogin'>      
       <div class='logoContainer'>
         <figure class="figureLogin">
             <img src="./img/iziChoice.png" alt="" class='logoLogin'>
         </figure>       
         <p>quien soy, quien quiero ser</p>
-      </div>
+      </div><br>
       <div class= 'formContainer my-2'>
         <form id='loginForm'>
-<<<<<<< HEAD
-          <input type='text' id='email' placeholder='Email' class='email my-1'> <br>
-          <input type='text' id='password' placeholder='Contraseña' class='password'></br> 
-          <button id='btn-ingresar' class='btn-ingresar my-2'>Ingresar</button>
-          <div>
-            <a href=""><span><img src='./icons/facebook.svg'></span></a>
-            <a href=""><span><img src='./icons/google.svg'></span></a>
-=======
           <input type='text' id='email' placeholder='Email' class='inputEmail my-1'> <br>
           <input type='text' id='password' placeholder='Contraseña' class='inputPassword'></br> 
           <button id='btn-ingresar' class='btn-ingresar my-2'>Ingresar</button>
@@ -31,24 +26,16 @@ export default () => {
           <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M21.5 0C9.62483 0 0 9.62663 0 21.5C0 33.3734 9.62483 43 21.5 43C33.3734 43 43 33.3734 43 21.5C43 9.62663 33.3734 0 21.5 0ZM21.7508 34.0739C14.8207 34.0739 9.20917 28.4481 9.20917 21.5C9.20917 14.5519 14.8207 8.92608 21.7508 8.92608C25.1371 8.92608 27.9679 10.1749 30.1394 12.203L26.6027 15.747V15.7398C25.2858 14.482 23.616 13.837 21.7508 13.837C17.6121 13.837 14.2491 17.3415 14.2491 21.4928C14.2491 25.6405 17.6121 29.1558 21.7508 29.1558C25.5062 29.1558 28.0611 27.0022 28.5878 24.046H21.7508V19.1422H33.549C33.7066 19.9842 33.7908 20.8622 33.7908 21.7831C33.7908 28.9677 28.9945 34.0739 21.7508 34.0739Z" fill="white"/>
           </svg>
->>>>>>> julissa
           </div>
         </form>
       </div>
       <div class='registerContainer'>
-        <p>¿No tienes cuenta? Registrate <a href="">aquí</a></p>
-<<<<<<< HEAD
-        <button id="btn-facebook" class='btn-ingresar my-2'>Registrate</button>
-      </div>   
-    </section>   
-    `
-    const divElement = document.createElement('div')
-=======
-        <button class='btn-ingresar my-2'>Registrate</button>
-      </div>   
-    </section>`;
+        <p>¿No tienes cuenta? <a href="#/register">Registrate</a></p>
+      </div>  
+    </div> 
+    </section></section>`;
     const divElement = document.createElement('div');
->>>>>>> julissa
+    divElement.classList.add('mainDivHome');
     divElement.innerHTML = viewLogin;
     return divElement;
 };

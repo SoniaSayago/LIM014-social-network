@@ -8,25 +8,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../src/img/favicon-32x32(1).png">
     <title>izychoice: quién eres, quién quieres ser</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<<<<<<< HEAD
-    <!-- <link rel="stylesheet" href="./main.css"> -->
-=======
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/register.css">
->>>>>>> julissa
     <link rel="stylesheet" href="./css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <header class="header">
-        <div>
-            <a href="#/">
-                <h1>izychoice</h1>
-            </a>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#/">IzyChoice</a>
+    <header class="hide">
+            <nav >
+                <ul class="header">
+                    <li> 
+                        <a href="#/">
+                            <img src="./img/iziChoice.png" alt="" class='logoLogin'>
+                        </a>
                     </li>
                     <li>
                         <a href="#/login">Iniciar Sesión</a>
@@ -45,8 +42,8 @@
         </div>
     </header>
     <section id="container"></section>
-    <footer>Creado por @SoniaSayago @MariaCristinaTC @Julissah </footer>
-    <script type="module" src="./main.js"></script>
+    <footer class="hide">Creado por @SoniaSayago @MariaCristinaTC @JulissaHuaman </footer>
+    
 
 
     <!--Firebase scripts-->
@@ -62,6 +59,9 @@
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
+
+    <script type="module" src="./main.js"></script>
+    <script src="./controller/controller-firestore.js"></script>
 
 </body>
 

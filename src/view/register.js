@@ -33,6 +33,7 @@ export default () => {
                 <input class='registerForm1Input'  type='text' id='password' placeholder='Contraseña'></br></br>
                 <input  class='terms' type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
                 <button class= 'bigButton' type="button" onclick="alert('BUTTON ITS WORKING!')">Enviar</button>
+                <p>something somemthinggg</p>
             </form>
         </div>
     </div>

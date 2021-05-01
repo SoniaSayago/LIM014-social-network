@@ -11,3 +11,5 @@ const firebaseConfig = {
 // Inicializar el aplicativo
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+const auth = firebase.auth();
+const fs = firebase.firestore();

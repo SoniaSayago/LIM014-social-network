@@ -1,3 +1,6 @@
+import { signinForEmail } from '../controller/controller-auth.js'
+
+
 export default () => {
     const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
@@ -18,7 +21,7 @@ export default () => {
         <form id='loginForm'>
           <input type='text' id='email' placeholder='Email' class='inputEmail my-1'> <br>
           <input type='text' id='password' placeholder='Contraseña' class='inputPassword'></br> 
-          <button id='btn-ingresar' class='btn-ingresar my-2'>Ingresar</button>
+          <button id='btn-ingresar' type="submit" class='btn-ingresar my-2'>Ingresar</button>
           <div>
           <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M0 21.62C0 32.3091 7.76329 41.1976 17.9167 43V27.4716H12.5417V21.5H17.9167V16.7216C17.9167 11.3466 21.38 8.36171 26.2784 8.36171C27.83 8.36171 29.5034 8.6 31.055 8.83829V14.3333H28.3083C25.68 14.3333 25.0833 15.6466 25.0833 17.32V21.5H30.8167L29.8617 27.4716H25.0833V43C35.2367 41.1976 43 32.3109 43 21.62C43 9.72875 33.325 0 21.5 0C9.675 0 0 9.72875 0 21.62Z" fill="white"/>
@@ -37,5 +40,44 @@ export default () => {
     const divElement = document.createElement('div');
     divElement.classList.add('mainDivHome');
     divElement.innerHTML = viewLogin;
+
+    const signinForm = divElement.querySelector('#loginForm');
+    signinForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = divElement.querySelector('#email').value;
+      const password = divElement.querySelector('#password').value;
+
+      signinForEmail(email,password)
+        .then(userCredential => {
+          signinForm.reset();
+          console.log('hi', email);
+        })
+        .then(() => {
+          window.location.hash = '#/comunidad';
+        });
+    })
+
+
+
+    // const signupForm = divElement.querySelector('#registerForm');
+    // signupForm.addEventListener('submit', (e) => {
+    //     e.preventDefault(); //cancela el evento de reinicio del formulario
+
+    //     const name = divElement.querySelector('#name').value;
+    //     const email = divElement.querySelector('#email').value;
+    //     const password = divElement.querySelector('#password').value;
+
+    //     signupForEmail(email, password)
+    //         .then(userCredential => {
+    //             signupForm.reset();
+    //             console.log('hi', name);
+    //         })
+    //         .then(() => {
+    //             window.location.hash = '#/comunidad'
+    //         })
+        
+    // });
     return divElement;
+
+    
 };

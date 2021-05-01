@@ -18,10 +18,9 @@ html {
     display: flex;
     /* flex-direction: column; */
     justify-content: space-between;
-    background-color: teal;
+    background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
     width: 100%;
     min-width: 320px;
-    height: 334px;
     align-items: center;
 
 }

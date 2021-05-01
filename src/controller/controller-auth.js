@@ -14,3 +14,13 @@ export const signupForEmail = (email, password) => {
 };
 
 // Signin
+export const signinForEmail = (email, password) => {
+    const auth = firebase.auth();
+    return auth.signInWithEmailAndPassword(email, password);
+};
+
+//Signout
+export const signout = () => {
+    const auth = firebase.auth();
+    return auth.signOut();
+};

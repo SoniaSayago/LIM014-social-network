@@ -17,3 +17,9 @@ const init = () => {
 
 window.addEventListener('load', init);
 
+// const auth = firebase.auth();
+// auth
+//     .createUserWuthEmailAndPassword(email, password)
+//     .then(userCredential => {
+//         console.log('sign up')
+//     })

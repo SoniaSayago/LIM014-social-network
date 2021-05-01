@@ -9,7 +9,7 @@ export default () => {
       <div class= 'formContainer my-2'>
         <form id='loginForm'>
           <input type='text' id='email' placeholder='Email' class='inputEmail my-1'> <br>
-          <input type='text' id='password' placeholder='Contraseña' class='inputPassword'></br> 
+          <input type='password' id='password' placeholder='Contraseña' class='inputPassword'></br> 
           <button id='btn-ingresar' class='btn-ingresar my-2'>Ingresar</button>
           <div>
           <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">

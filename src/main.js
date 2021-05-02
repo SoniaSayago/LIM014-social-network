@@ -9,7 +9,7 @@ import { changeTmp } from './view-controler/router.js';
 
 
 const init = () => {
-    window.location.hash = '#/';
+    window.location.hash = '#/login';
     changeTmp(window.location.hash);
     window.addEventListener('hashchange', () => changeTmp(window.location.hash));
 

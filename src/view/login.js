@@ -1,14 +1,12 @@
 import { signinForEmail } from '../controller/controller-auth.js'
 
-
 export default () => {
     const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
       <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br>
       <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1>
       <img src="./img/homeIziChoice.svg" alt="" class='imageHome'>
-    </div>
-    
+    </div>    
     <section class= 'sectionLogin' > 
     <div class='squareLogin'>      
       <div class='logoContainer'>
@@ -55,27 +53,7 @@ export default () => {
           window.location.hash = '#/comunidad';
         });
     })
-
-
-
-    // const signupForm = divElement.querySelector('#registerForm');
-    // signupForm.addEventListener('submit', (e) => {
-    //     e.preventDefault(); //cancela el evento de reinicio del formulario
-
-    //     const name = divElement.querySelector('#name').value;
-    //     const email = divElement.querySelector('#email').value;
-    //     const password = divElement.querySelector('#password').value;
-
-    //     signupForEmail(email, password)
-    //         .then(userCredential => {
-    //             signupForm.reset();
-    //             console.log('hi', name);
-    //         })
-    //         .then(() => {
-    //             window.location.hash = '#/comunidad'
-    //         })
-        
-    // });
+    
     return divElement;
 
     

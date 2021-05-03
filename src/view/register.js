@@ -1,11 +1,11 @@
-import { signupForEmail } from '../controller/controller-auth.js'
+import { signupForEmail, sendEmail } from '../controller/controller-auth.js'
 
 export default () => {
     const viewRegister = `
    <div class= 'whiteBackground'>    
    <div class= 'backgroundRegisterHead'>
    <figure class="figureLogin">
-   <img src="./img/iziChoice.png" alt="" class='smallLogo'>
+   <a href='#/login' target="_blank"><img src="./img/iziChoice.png" alt="" class='smallLogo'></a>
 </figure></div></br></br>
     <div class='initialP'><p>Crea tu cuenta con</p></div>
     <div class= imagesContainer>
@@ -38,22 +38,36 @@ export default () => {
 
     const signupForm = divElement.querySelector('#registerForm');
     signupForm.addEventListener('submit', (e) => {
-        e.preventDefault(); //cancela el evento de reinicio del formulario
+            e.preventDefault(); //cancela el evento de reinicio del formulario
+            const name = divElement.querySelector('#name').value;
+            const email = divElement.querySelector('#email').value;
+            const password = divElement.querySelector('#password').value;
 
-        const name = divElement.querySelector('#name').value;
-        const email = divElement.querySelector('#email').value;
-        const password = divElement.querySelector('#password').value;
-
-        signupForEmail(email, password)
-            .then(userCredential => {
-                signupForm.reset();
-                console.log('hi', name);
+            signupForEmail(email, password)
+                .then(() => {
+                sendEmail()
+                    .then(() => {
+                        error.classList.add('successful-message');
+                        error.textContent = 'Por favor revise su bandeja de entrada para verificar su cuenta';
+                    })
+                .catch((err) => {
+                    error.classList.add('error-message');
+                    error.textContent = err.message;
+                });
+            signupForm.reset();
             })
-            .then(() => {
-                window.location.hash = '#/comunidad'
-            })
-        
-    });
+            // .then(() => {
+            //     window.location.hash = '#/comunidad'
+            // })
+            .catch((err) => {
+                error.classList.remove('successful-message');
+                error.classList.add('error-message');
+                error.textContent = err.message;
+                setTimeout(() => {
+                    error.textContent = '';
+                }, 4000);
+            });
+        });
     return divElement;
 };
 =======

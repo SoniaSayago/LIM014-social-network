@@ -34,9 +34,8 @@
     },
     "engines": {
         "node": ">=10"
-    },
-    "firebase": "^8.3.2",
-    "dependencies": {
-        "@firebase/auth": "^0.16.5"
+    }
+}
+"firebase": "^8.3.2"        "firebase": "^8.3.2"
     }
 }

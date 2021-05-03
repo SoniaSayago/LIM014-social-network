@@ -48,13 +48,22 @@ p {
 }
 
 .bigButton {
-    background-color: #FC5484;
-    font-size: 22px;
-    color: #fafafa;
-    border-radius: 10px;
-    border: none;
-    width: 120px;
+    width: 150px;
     height: 37px;
+    color: white;
+    background: #FC5484;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: 22px;
+    font-weight: 300px;
+    font-family: 'Roboto';
+}
+
+.bigButton:hover {
+    transform: scale(1.05);
+    color: #fafafa;
+    box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
 }
 
 .registerForm1Label {

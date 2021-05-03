@@ -1,0 +1,87 @@
+.btn-recoverPass {
+    width: 270px;
+    height: 37px;
+    color: white;
+    background: #FC5484;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: 16px;
+    font-weight: 300px;
+    font-family: 'Roboto';
+    text-decoration: none;
+}
+
+.backLogin i{
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.backLogin:hover {
+    border-color: #4B35D1;
+    color: #4B35D1;
+    height: 55px;
+}
+
+.backLogin{
+    justify-content: center;
+    width: 20%;
+    height: 49px;
+    border-radius: 49px;
+    cursor: pointer;
+    outline: none;
+}
+.backLogin i{
+    font-size: 16px;
+}
+.backLogin{
+    background-color: #A2468E ;
+    border-color: #A2468E;
+    color: #fafafa;
+    border-style: solid;
+}
+
+.div-input , i.fas.fa-envelope {
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    font-size: 16px;
+  }
+
+#recoverPass-form input{
+    max-width: 100%;
+    background-color: #f0f0f0;
+    height: 55px;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    position: relative;
+    font-size: 16px;
+    width: 70%;
+    text-align: center;
+}
+
+.container-recoverPassword {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fa, .far, i.fas.fa-envelope {
+    font-family: 'Font Awesome 5 Free';
+}
+
+.fa, .fas {
+    font-weight: 900;
+}
+
+.div-input input, i.fas.fa-envelope {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-size: 1.1rem;
+    color: #333;
+    border-radius: 55px;
+}

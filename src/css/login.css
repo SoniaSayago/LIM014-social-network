@@ -47,6 +47,29 @@
     color: white;
 }
 
+.option {
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: auto;
+}
+.option img{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.option img:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
+}
+
+.btn-ingresar:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
+}
+
 .inputEmail,
 .inputPassword {
     border-radius: 10px;
@@ -56,8 +79,8 @@
     width: 190px;
 }
 
-.btn-ingresar {
-    width: 120px;
+.btn-ingresar, a.btn-ingresar {
+    width: 250px;
     height: 37px;
     color: white;
     background: #FC5484;
@@ -67,6 +90,7 @@
     font-size: 22px;
     font-weight: 300px;
     font-family: 'Roboto';
+    text-decoration: none;
 }
 
 .registerContainer {
@@ -137,8 +161,10 @@
 
 @media (min-width: 1024px) {
     .sectionHome {
-        background-image: url('../img/Home.png');  
+        background-image: url('../img/Home.png') ;  
+        background-size: cover;
         height: 100%;   
+        width: 100%;
     }
     .squareLogin {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -184,6 +210,14 @@
         position: relative;
         bottom: 70px;
         left: 100px;
-        width: 480px;
+        width: 380px;
+
     }
+}
+
+input,
+select,
+textarea {
+    color: #fafafa;
+    text-indent: 10px;
 }

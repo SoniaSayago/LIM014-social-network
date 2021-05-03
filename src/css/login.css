@@ -1,0 +1,189 @@
+.my-2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.my-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.hideHome {
+    display: none;
+}
+.mainDivHome {
+    height: 100%;
+
+}
+.sectionHome{
+    display: flex;
+    height: 100%;
+}
+.sectionLogin {
+    text-align: center;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-width: 320px;
+    background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+}
+
+.logoLogin {
+    width: 320px;
+}
+
+.registerContainer p {
+    font-size: 16px;
+    color: white;
+}
+.introContainer{
+    width: 100%;
+}
+
+.logoContainer p {
+    font-size: 22px;
+    color: white;
+}
+
+.inputEmail,
+.inputPassword {
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    height: 35px;
+    width: 190px;
+}
+
+.btn-ingresar {
+    width: 120px;
+    height: 37px;
+    color: white;
+    background: #FC5484;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: 22px;
+    font-weight: 300px;
+    font-family: 'Roboto';
+}
+
+.registerContainer {
+    color: white;
+    font-size: 16px;
+}
+
+.registerContainer a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+::placeholder {
+    color: #FFFFFF;
+    text-indent: 10px;
+    font-family: 'Roboto';
+}
+
+@media (min-width: 600px) {
+    .sectionHome{
+        background-image: url('../img/Home.png');    
+    }
+    .squareLogin{
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+        border-radius: 10px;
+        padding-top: 20px;
+        padding-bottom: 40px; 
+        margin: 20px 50px;
+    }
+    .hideHome{
+        display: block;
+    }
+    .introContainer{
+        width: 50%;
+        padding: 20px;
+    }
+    .sectionLogin{
+        flex-wrap: wrap;
+        background: #FFFFFF;
+        background-color: transparent;
+        border-radius: 10px;        
+        height: 100%;
+        width: 320px;  
+    }
+    .textHomeH3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: lighter;
+        font-size: 14px;
+
+    }
+    .textHomeH1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    .textWhiteHomeH3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: normal;
+        color: #FFFFFF;
+        font-size: 14px;
+    }
+    .imageHome {
+        width: 350px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sectionHome {
+        background-image: url('../img/Home.png');  
+        height: 100%;   
+    }
+    .squareLogin {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+        border-radius: 10px;
+        margin: 20px 150px;
+    }
+    .hideHome {
+        display: block;
+    }
+    .introContainer {
+        width: 50%;
+        padding: 40px;
+        height: 100%; 
+
+    }
+    .sectionLogin {
+        flex-wrap: wrap;
+        background: #FFFFFF;
+        background-color: transparent;
+        border-radius: 10px;        
+        height: 100%;
+        width: 50%;  
+    }
+    .textHomeH3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: lighter;
+        font-size: 18px;
+
+    }
+    .textHomeH1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: 45px;
+    }
+    .textWhiteHomeH3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: normal;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
+    .imageHome {
+        position: relative;
+        bottom: 70px;
+        left: 100px;
+        width: 480px;
+    }
+}

@@ -21,6 +21,11 @@ export const signupForEmail = (email, password) => {
     const auth = firebase.auth();
     return auth.createUserWithEmailAndPassword(email, password);
 };
+// Send email to verify created account
+export const sendEmail = () => {
+    const user = firebase.auth().currentUser;
+    return user.sendEmailVerification();
+};
 
 // Signin
 export const signinForEmail = (email, password) => {
@@ -39,7 +44,7 @@ export const signout = () => {
 export const sendRecoverPass = (emailAddress) => {
     const auth = firebase.auth();
     return auth.sendPasswordResetEmail(emailAddress);
-  };
+};
 
-  // --------------------------------------GET CURRENT USER------------------------------------
+// --------------------------------------GET CURRENT USER------------------------------------
 export const currentUser = () => firebase.auth().currentUser;

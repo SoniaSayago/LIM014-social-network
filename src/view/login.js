@@ -4,7 +4,7 @@ export default () => {
     const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
       <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br>
-      <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1>
+      <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1><br><br><br>
       <img src="./img/homeIziChoice.svg" alt="" class='imageHome'>
     </div>    
     <section class= 'sectionLogin' > 
@@ -20,7 +20,7 @@ export default () => {
         <form id='loginForm'>
           <input type='email' id='email' placeholder='Email' class='inputEmail my-1'> <br>
           <input type='password' id='password' placeholder='Contraseña' class='inputPassword'></br> 
-          <div class='registerContainer'>
+          <div class='registerContainer'><br>
            <p>Recuperar<a href="#/recover"> contraseña</a></p>
           </div>
           <button id='btn-ingresar' type="submit" class='btn-ingresar my-2'>Iniciar Sesión</button>
@@ -49,12 +49,18 @@ export default () => {
 
       signinForEmail(email,password)
         .then(userCredential => {
+          if (userCredential.user.emailVerified) {
+          window.location.hash = '#/comunidad';
+          }
+          else {
+            alert('Por favor revise su bandeja de entrada para verificar su cuenta')
+          }
           signinForm.reset();
           console.log('hi', email);
         })
-        .then(() => {
-          window.location.hash = '#/comunidad';
-        });
+        // .then(() => {
+        //   window.location.hash = '#/comunidad';
+        // });
     })
     
       /* ---------------------------regarding DOM manipulation for login with google---------------- */
@@ -65,11 +71,11 @@ export default () => {
         getDataUser(currentUser().uid)
           .then((doc) => {
             if (doc.exists) {
-              window.location.hash = '#/home';
+              window.location.hash = '#/comunidad';
             } else {
               sendDataCurrentUser(currentUser())
                 .then(() => {
-                  window.location.hash = '#/home';
+                  window.location.hash = '#/comunidad';
                 });
             }
           });
@@ -83,11 +89,11 @@ export default () => {
         getDataUser(currentUser().uid)
           .then((doc) => {
             if (doc.exists) {
-              window.location.hash = '#/home';
+              window.location.hash = '#/comunidad';
             } else {
               sendDataCurrentUser(currentUser())
                 .then(() => {
-                  window.location.hash = '#/home';
+                  window.location.hash = '#/comunidad';
                 });
             }
           });

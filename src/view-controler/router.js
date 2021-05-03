@@ -8,13 +8,10 @@ const id = hash.split('/')[1];
     case '#/':
     { return sectionMain.appendChild(components.home()); }
     case '#/login':
-    { return sectionMain.appendChild(components.login()); }
+    case '#/recover':
     case '#/comunidad':
-    { return sectionMain.appendChild(components.comunidad()); }
     case '#/register':
-    { return sectionMain.appendChild(components.register()); }
     case '#/perfil':
-    // { return sectionMain.appendChild(components.perfil()); }
         { return sectionMain.appendChild(components[id]()); }
     default:
       return sectionMain.appendChild(components.different());

@@ -4,6 +4,7 @@ import Home from './home.js';
 import Comunidad from './comunidad.js';
 import Perfil from './perfil.js';
 import Register from './register.js';
+import Recover from './recoverPassword.js'
 
 const components = {
     login: Login,
@@ -11,6 +12,7 @@ const components = {
     home: Home,
     perfil: Perfil,
     comunidad: Comunidad,
-    different: Different
+    different: Different,
+    recover: Recover,
 }
 export { components }

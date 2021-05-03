@@ -1,10 +1,35 @@
 export default () => {
     const viewDifferent = `
-            <h2>404</h2>
-            <h1>Upps, algo anda mal... 
-            No eres tú somos nosotros...</h1>
-            <p>El archivo especificado no se encontró en este sitio web. Por favor, compruebe la URL para errores y vuelva a intentarlo.</p>
-          `;
+    <div class="bg">
+        
+    <div class="stars">
+        <div class="custom-navbar">
+            <div class="brand-logo">
+                <img src="../src/img/iziChoice.png" width="150px">
+        </div>
+        <div class="central-body">
+            <img class="image-404" src="../src/img/404.svg" width="300px">
+            <a href='#/login' class="btn-go-home" target="_blank">Home </a>
+        </div>
+        <div class="objects">
+            <img class="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px">
+            <div class="earth-moon">
+                <img class="object_earth" src="http://salehriaz.com/404Page/img/earth.svg" width="100px">
+                <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
+            </div>
+            <div class="box_astronaut">
+                <img class="object_astronaut" src="http://salehriaz.com/404Page/img/astronaut.svg" width="140px">
+            </div>
+        </div>
+        <div class="glowing_stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+
+    </div>
+</div>`;
 
     const divElemt = document.createElement('div');
     divElemt.setAttribute('id', 'message');

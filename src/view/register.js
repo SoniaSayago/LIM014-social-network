@@ -26,7 +26,7 @@ export default () => {
                 <input class='registerForm1Input'  type='text' id='email' placeholder='Email' required> <br></br>
                 <label class='registerForm1Label' >Contraseña</label></br>
                 <input class='registerForm1Input'  type='password' id='password' placeholder='Contraseña' required></br></br>
-                <input  class='terms' type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
+                <input  class='terms' type='checkbox' required><label> Acepta términos y condiciones.</label> </br> </br>
                 <button class= 'bigButton' type="submit" >Enviar</button>
             </form>
         </div>

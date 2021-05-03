@@ -97,9 +97,8 @@ body {
     width: 190px;
 }
 
-.btn-ingresar,
-a.btn-ingresar {
-    width: 250px;
+.btn-ingresar {
+    width: 180px;
     height: 37px;
     color: white;
     background: #FC5484;

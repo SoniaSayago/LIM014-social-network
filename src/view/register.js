@@ -30,6 +30,10 @@ export default () => {
                 <button class= 'bigButton' type="submit" >Enviar</button>
             </form>
         </div>
+        <div class='goLoginContainer'>
+        <p>¿Ya tienes una cuenta? <a href="#/login">Inicia sesión</a></p>
+      </div>  
+    </div> 
     </div>
     </div>`;
     const divElement = document.createElement('div');

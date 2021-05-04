@@ -1,4 +1,4 @@
-# Creando una Red Social
+# Creando una Red Social: "Izychoice"
 
 
   <a title="izychoice" target="_blank" href= "./src/">
@@ -21,17 +21,17 @@
 El presente proyecto, **_Izychoice_**, es una Red social destinada a jóvenes en búsqueda  de orientación vocacional interesadas en compartir sus experiencias de reflexión sobre su vacación y sobre su proyecto de vida, y a identificar las opciones de estudio, financiamiento que más se puede adaptar a su perfil. Consideramos que las comunidades y el networking de jóvenes que buscan informarse sobre las carreras, y el mundo laboral. Así podrán contactarse con jóvenes con las mismas dudas y pasiones & buscar soluciones y orientación en conjunto. Podrán formar comunidades donde puedan compartir, tips, recomendaciones, oportunidades de becas y demás que puedan ser de utilidad para otros jóvenes que están definiendo una de las decisiones más importantes de sus vidas. Esta red social te permitirá crear una cuenta de acceso y loguearse con ella; crear, editar, borrar, comentar y  dar "me gusta" publicacciones, todo de forma dinámica.
 
 Este aplicativo web busca solucionar 3 insigth importantes:  
-    * [1. La información existe ¿Pero cómo acceden a ella?]
-    * [2. Ante la pregunta: "¿qué vas a estudiar?" surge una decisión poco reflexiva..]
-    * [3. A los jóvenes les cuesta contactar con instituciones educativas, organizaciones de orientación vocacional, organizaciones que ofrecenbecas e instituciones de financiamiento estudiantil. Les cuesta conseguir información sobre oportunidades post colegio.]
+    * 1. La información existe ¿Pero cómo acceden a ella?
+    * 2. Ante la pregunta: "¿qué vas a estudiar?" surge una decisión poco reflexiva..
+    * 3. A los jóvenes les cuesta contactar con instituciones educativas, organizaciones de orientación vocacional, organizaciones que ofrecenbecas e instituciones de financiamiento estudiantil. Les cuesta conseguir información sobre oportunidades post colegio.
    
 <p align="center">
-  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="../src/img/readme/desktop.png" allowfullscreen></iframe></p>
+  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/desktop.png" allowfullscreen></iframe></p>
 
 ## 2. 👩‍💻Definición del producto
 
 <p >
-  <img align="right" height="500px" src="../src/img/readme/mobile.png" alt="izychoice-celular">
+  <img align="right" height="500px" src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mobile.png" alt="izychoice-celular">
 </p>
 
 IzyChoice nace inspirada en las redes sociales actuales, tales como Instagram, Facebook, Twitch, Linkedin, etc. Estas redes

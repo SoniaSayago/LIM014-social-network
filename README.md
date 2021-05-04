@@ -2,7 +2,7 @@
 
 
   <a title="izychoice" target="_blank" href= "./src/">
-    <img  src="../src/img/readme/mockup.png" alt="IzyChoice">
+    <img  src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mockup.png" alt="IzyChoice">
   </a>
 
 # izychoice <img  src="../src/img/favicon-32x32.png" alt="izychoice">

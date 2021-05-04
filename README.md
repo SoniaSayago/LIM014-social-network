@@ -5,7 +5,7 @@
     <img  src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mockup.png" alt="IzyChoice">
   </a>
 
-# izychoice <img  src="../src/img/favicon-32x32.png" alt="izychoice">
+# izychoice <img  src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/android-chrome-192x192.png" alt="izychoice">
 ### Made by [Sonia Sayago](https://github.com/SoniaSayago), [Julissa H.](https://github.com/Julissah) & [Maria Cris T.](https://github.com/MariaCristinaTC)
 >Social Network project
 
@@ -26,7 +26,8 @@ Este aplicativo web busca solucionar 3 insigth importantes:
     * 3. A los jóvenes les cuesta contactar con instituciones educativas, organizaciones de orientación vocacional, organizaciones que ofrecenbecas e instituciones de financiamiento estudiantil. Les cuesta conseguir información sobre oportunidades post colegio.
    
 <p align="center">
-  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/desktop.png" allowfullscreen></iframe></p>
+  <image width="800" height="450" src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/desktop.png" alt="izychoice-desktop">
+  </p>
 
 ## 2. 👩‍💻Definición del producto
 
@@ -73,11 +74,12 @@ A continuación presentamos un layout (diseño) de la vista mobile y desktop de 
 
 * Vista mobile
 
-    ![mobile](https://user-images.githubusercontent.com/32286663/56174616-ec9f6100-5fb8-11e9-9edb-d5ef7c251d9c.png)
+    ![mobile]("https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mobile.png">
+  </p>)
 
 * Vista Desktop
 
-    ![desktop](https://user-images.githubusercontent.com/32286663/56174626-fcb74080-5fb8-11e9-8854-26e8d9c4e25f.png)
+    ![desktop]("https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/desktop.png")
     
 ## 5. 📈Test de usabilidad
 Gracias al Feedback recibido por parte de nuestros usuarios, compañeras y coaches, pudimos iterar varias veces antes de llegar a nuestra versión final. Tomándose en cuenta principalmente:

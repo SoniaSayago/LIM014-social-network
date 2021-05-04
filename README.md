@@ -5,7 +5,7 @@
     <img  src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mockup.png" alt="IzyChoice">
   </a>
 
-# izychoice <img  width="50" height="50"src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/android-chrome-192x192.png" alt="izychoice">
+# izychoice 
 ### Made by [Sonia Sayago](https://github.com/SoniaSayago), [Julissa H.](https://github.com/Julissah) & [Maria Cris T.](https://github.com/MariaCristinaTC)
 >Social Network project
 

@@ -4,7 +4,7 @@ export default () => {
     const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
       <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br>
-      <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1><br><br><br>
+      <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1><br><br><br><br><br>
       <img src="./img/homeIziChoice.svg" alt="" class='imageHome'>
     </div>    
     <section class= 'sectionLogin' > 

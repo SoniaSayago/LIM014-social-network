@@ -1,4 +1,4 @@
-import { signInWithEmail, signInWithGoogle, signInWithFacebook } from '../controller/controller-auth.js';
+import { signInWithEmail, signInWithGoogle, signInWithFacebook, currentUser } from '../controller/controller-auth.js';
 import { sendDataCurrentUser, getDataUser } from '../controller/controller-firestore.js'
 
 
@@ -60,11 +60,9 @@ export default () => {
             e.preventDefault();
             const email = divElement.querySelector('#email').value;
             const password = divElement.querySelector('#password').value;
-            const error = divElement.querySelector('#error');
+            const error = divElement.querySelector('#error-message');
             if (email === ' ' || password === '') {
-                error.innerHTML = `<p> Formulario vacío, rellenar los campos
-                      <span class="material-icons">priority_high
-                      </span></p>`;
+                error.textContent = 'Formulario vacío, rellenar los campos';
             } else {
                 signInWithEmail(email, password)
                     .then((data) => {
@@ -81,9 +79,7 @@ export default () => {
                                     }
                                 });
                         } else {
-                            error.textContent = `<p>Cuenta no verificada, por favor revise su email
-                      <span class="material-icons">priority_high
-                      </span></p>`;
+                            error.textContent = 'Cuenta no verificada, por favor revise su email';
                         }
                     })
                     .catch((err) => {

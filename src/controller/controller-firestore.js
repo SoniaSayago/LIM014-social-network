@@ -1,32 +1,31 @@
-
 // ------------------------SEND USER INFORMATION TO CLUD FIRESTORE --------------------------
 const sendDataCurrentUser = (user) => {
     const db = firebase.firestore();
     let Photo;
     let Name;
     if (user.photoURL != null && user.displayName != null) {
-      Photo = user.photoURL;
-      Name = user.displayName;
+        Photo = user.photoURL;
+        Name = user.displayName;
     } else {
-      Photo = 'img/default-avatar.png';
-      Name = 'User';
+        Photo = '../src/img/default-avatar.png';
+        Name = 'User';
     }
     return db.collection('Users').doc(user.uid).set({
-      username: Name,
-      email: user.email,
-      photo: Photo,
-      photoCover: 'img/default-cover.jpg',
-      phone: 'Phone',
-      birthday: 'yyyy-MM-dd',
-      country: 'Country',
-      description: 'Description',
+        username: Name,
+        email: user.email,
+        photo: Photo,
+        photoCover: '../src/img/default-cover.jpg',
+        phone: 'Phone',
+        birthday: 'yyyy-MM-dd',
+        country: 'Country',
+        description: 'Description',
     });
 };
 
-  // ------------------------GET USER INFORMATION TO CLUD FIRESTORE --------------------------
+// ------------------------GET USER INFORMATION TO CLUD FIRESTORE --------------------------
 const getDataUser = (userId) => {
     const db = firebase.firestore();
-    return db.collection('SN_Users').doc(userId).get();
+    return db.collection('Users').doc(userId).get();
 };
 
 // ---------------------------------------------AQUI COMANDOS DE FIREBASE CLOUD----------------------------------------// Firebase configuration inicial
@@ -45,4 +44,4 @@ firebase.analytics();
 const auth = firebase.auth();
 const fs = firebase.firestore();
 
-export { getDataUser , sendDataCurrentUser };
+export { getDataUser, sendDataCurrentUser };

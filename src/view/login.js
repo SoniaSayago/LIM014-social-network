@@ -1,6 +1,7 @@
 import { signInWithEmail, signInWithGoogle, signInWithFacebook } from '../controller/controller-auth.js';
 import { sendDataCurrentUser, getDataUser } from '../controller/controller-firestore.js'
 
+
 export default () => {
   const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
@@ -46,6 +47,7 @@ export default () => {
       </div>  
     </div> 
     </section></section>`;
+
 
 
   const divElement = document.createElement('div');
@@ -115,10 +117,50 @@ export default () => {
             };
           })
       }).catch();
+=======
+    const signinForm = divElement.querySelector('#loginForm');
+    signinForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const email = divElement.querySelector('#email').value;
+        const password = divElement.querySelector('#password').value;
 
+        signinForEmail(email, password)
+            .then(userCredential => {
+                if (userCredential.user.emailVerified) {
+                    window.location.hash = '#/comunidad';
+                } else {
+                    alert('Por favor revise su bandeja de entrada para verificar su cuenta')
+                }
+                signinForm.reset();
+                console.log('hi', email);
+            })
+            // .then(() => {
+            //   window.location.hash = '#/comunidad';
+            // });
+    })
+
+    /* ---------------------------regarding DOM manipulation for login with google---------------- */
+    const btnGoogle = divElement.querySelector('#btn-google');
+    btnGoogle.addEventListener('click', () => {
+        signInForGoogle()
+            .then(() => {
+                getDataUser(currentUser().uid)
+                    .then((doc) => {
+                        if (doc.exists) {
+                            window.location.hash = '#/comunidad';
+                        } else {
+                            sendDataCurrentUser(currentUser())
+                                .then(() => {
+                                    window.location.hash = '#/comunidad';
+                                });
+                        }
+                    });
+            });
+    });
 
     const btnFacebook = divElement.querySelector('#btn-facebook');
     btnFacebook.addEventListener('click', () => {
+
       signInWithFacebook()
         .then(() => {
           getDataUser(currentUser().uid)
@@ -140,3 +182,21 @@ export default () => {
   })
   return divElement;
 }
+
+        signInForFacebook()
+            .then(() => {
+                getDataUser(currentUser().uid)
+                    .then((doc) => {
+                        if (doc.exists) {
+                            window.location.hash = '#/comunidad';
+                        } else {
+                            sendDataCurrentUser(currentUser())
+                                .then(() => {
+                                    window.location.hash = '#/comunidad';
+                                });
+                        }
+                    });
+            });
+    });
+    return divElement;
+};

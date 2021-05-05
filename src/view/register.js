@@ -29,8 +29,17 @@ export default () => {
                 <button class= 'bigButton' type="submit" >Enviar</button> <br><br>
                 <p id = "error-message"></p><br><br>
                 <button class="backLogin bigButton"><i class="fas fa-arrow-left"></i></button>
+=======
+                <input class='registerForm1Input'  type='password' id='password' placeholder='Contraseña' required></br></br>
+                <input  class='terms' type='checkbox' required><label> Acepta términos y condiciones.</label> </br> </br>
+                <button class= 'bigButton' type="submit" >Enviar</button>
+
             </form>
         </div>
+        <div class='goLoginContainer'>
+        <p>¿Ya tienes una cuenta? <a href="#/login">Inicia sesión</a></p>
+      </div>  
+    </div> 
     </div>
     </div>`;
     const divElement = document.createElement('div');
@@ -46,9 +55,14 @@ export default () => {
         const name = divElement.querySelector('#name').value;
         const email = divElement.querySelector('#email').value;
         const password = divElement.querySelector('#password').value;
+
         const error = divElement.querySelector('#error-message');
 
         createUser(email, password)
+
+
+        signupForEmail(email, password)
+
             .then(() => {
                 sendEmail()
                     .then(() => {

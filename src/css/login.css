@@ -1,3 +1,4 @@
+
 .my-2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -135,91 +136,138 @@
         padding-top: 20px;
         padding-bottom: 40px; 
         margin: 20px 50px;
+
+    .my-2 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
     }
-    .hideHome{
-        display: block;
+    
+    .my-1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
-    .introContainer{
-        width: 50%;
-        padding: 20px;
+    
+    .hideHome {
+        display: none;
     }
-    .sectionLogin{
-        flex-wrap: wrap;
-        background: #FFFFFF;
-        background-color: transparent;
-        border-radius: 10px;        
+    
+    .introContainer {
         height: 100%;
-        width: 320px;  
     }
-    .textHomeH3 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: lighter;
-        font-size: 14px;
-
+    
+    body {
+        height: 100vh;
     }
-    .textHomeH1 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: bold;
-        font-size: 30px;
+    
+    #container {
+        height: 100%;
     }
-    .textWhiteHomeH3 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: normal;
-        color: #FFFFFF;
-        font-size: 14px;
+    
+    .mainDivHome {
+        height: 100%;
     }
-    .imageHome {
-        width: 350px;
-    }
-}
-
-@media (min-width: 1024px) {
+    
     .sectionHome {
-        background-image: url('../img/Home.png') ;  
-        background-size: cover;
-        height: 100%;   
+        display: flex;
+        height: 100%;
+    }
+    
+    .sectionLogin {
+        text-align: center;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        min-width: 320px;
+        background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+    }
+    
+    .logoLogin {
+        width: 320px;
+    }
+    
+    .registerContainer p {
+        font-size: 16px;
+        color: white;
+    }
+    
+    .introContainer {
         width: 100%;
     }
-    .squareLogin {
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+    
+    .logoContainer p {
+        font-size: 22px;
+        color: white;
+    }
+    
+    .option {
+        display: inline-flex;
+        justify-content: space-evenly;
+        width: auto;
+    }
+    
+    .option img {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    .option img:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-ingresar:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .inputEmail,
+    .inputPassword {
         border-radius: 10px;
-        margin: 20px 150px;
-    }
-    .hideHome {
-        display: block;
-    }
-    .introContainer {
-        width: 50%;
-        padding: 40px;
-        height: 100%; 
-
-    }
-    .sectionLogin {
-        flex-wrap: wrap;
-        background: #FFFFFF;
+        border: 1px solid #FFFFFF;
         background-color: transparent;
-        border-radius: 10px;        
-        height: 100%;
-        width: 50%;  
+        height: 35px;
+        width: 190px;
     }
-    .textHomeH3 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: lighter;
-        font-size: 18px;
-
+    
+    .btn-ingresar {
+        width: 180px;
+        height: 37px;
+        color: white;
+        background: #FC5484;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        border-width: 0px;
+        font-size: 22px;
+        font-weight: 300px;
+        font-family: 'Roboto';
+        text-decoration: none;
     }
-    .textHomeH1 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: bold;
-        font-size: 45px;
-    }
-    .textWhiteHomeH3 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: normal;
-        color: #FFFFFF;
+    
+    .registerContainer {
+        color: white;
         font-size: 16px;
     }
+    
+    .registerContainer a {
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+     ::placeholder {
+        color: #FFFFFF;
+        text-indent: 10px;
+        font-family: 'Roboto';
+    }
+
     .imageHome {
         position: relative;
         bottom: 70px;
@@ -246,3 +294,135 @@ textarea {
     color: #fafafa;
     text-indent: 10px;
 }
+=======
+    
+    @media (min-width: 600px) {
+        .sectionHome {
+            background-image: url('../img/Home.png');
+        }
+        .squareLogin {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+            border-radius: 10px;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            margin: 20px 50px;
+        }
+        .hideHome {
+            display: block;
+        }
+        .introContainer {
+            width: 50%;
+            padding: 20px;
+        }
+        .sectionLogin {
+            flex-wrap: wrap;
+            background: #FFFFFF;
+            background-color: transparent;
+            border-radius: 10px;
+            height: 100%;
+            width: 320px;
+        }
+        .textHomeH3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: lighter;
+            font-size: 14px;
+        }
+        .textHomeH1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        .textWhiteHomeH3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: normal;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+        .imageHome {
+            width: 350px;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .sectionHome {
+            background-image: url('../img/Home.png');
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+        }
+        .squareLogin {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+            border-radius: 10px;
+            margin: 20px 150px;
+        }
+        .hideHome {
+            display: block;
+        }
+        .introContainer {
+            width: 50%;
+            padding: 40px;
+            height: 100%;
+        }
+        .sectionLogin {
+            flex-wrap: wrap;
+            background: #FFFFFF;
+            background-color: transparent;
+            border-radius: 10px;
+            height: 100%;
+            width: 50%;
+        }
+        .textHomeH3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: lighter;
+            font-size: 18px;
+        }
+        .textHomeH1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 45px;
+        }
+        .textWhiteHomeH3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: normal;
+            color: #FFFFFF;
+            font-size: 16px;
+        }
+        .imageHome {
+            position: relative;
+            bottom: 70px;
+            left: 100px;
+            width: 380px;
+        }
+    }
+    
+    input,
+    select,
+    textarea {
+        color: #fafafa;
+        text-indent: 10px;
+    }
+    
+    @media (min-width: 1100px) {
+        .imageHome {
+            position: relative;
+            margin-top: 120px;
+            bottom: 70px;
+            left: 100px;
+            width: 400px;
+        }
+        .textHomeH3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: lighter;
+            font-size: 24px;
+            margin: 50px;
+        }
+        .textHomeH1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 50px;
+            margin: 0px 50px;
+        }
+    }
+

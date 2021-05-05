@@ -2,10 +2,22 @@ import { signout } from '../controller/controller-auth.js'
 
 export default () => {
     const viewComunidad = `
-    <h1> Comunidad </h1>
-    <div class= "postsContainer">
-    <ul><li> </li>
-    </ul>
+    <h1> Comunidadkk </h1>
+    <div class= "bigContainer">
+    <div class="leftContainer"><svg width="121" height="124" viewBox="0 0 121 124" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect width="121" height="124" fill="url(#pattern0)"/>
+    <defs>
+    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+    <use xlink:href="#image0" transform="translate(-0.0123967) scale(0.00142332)"/>
+    </pattern>
+    
+    </defs>
+    </svg>
+    
+    <div> <p> Gustos e intereses</p></div>
+    </div>
+    <div class="middleContainer"></div>
+    <div class="rightContainer"></div>
     </div>
     `
     const divElement = document.createElement('div')

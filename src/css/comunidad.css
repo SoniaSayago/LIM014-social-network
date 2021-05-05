@@ -1,0 +1,29 @@
+.bigContainer {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.leftContainer {
+    width: 30%;
+    color: aquamarine;
+    height: 100%
+}
+
+.middleContainer {
+    width: 50%;
+    color: #d10c0c;
+    height: 100%
+}
+
+.leftContainer {
+    width: 20%;
+    color: rgb(227, 255, 127);
+    height: 100%
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}

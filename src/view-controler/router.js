@@ -12,7 +12,7 @@ const id = hash.split('/')[1];
     case '#/comunidad':
     case '#/register':
     case '#/perfil':
-        { return sectionMain.appendChild(components[id]()); }
+      { return sectionMain.appendChild(components[id]()); }
     default:
       return sectionMain.appendChild(components.different());
   }

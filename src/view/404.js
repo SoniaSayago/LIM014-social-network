@@ -5,10 +5,10 @@ export default () => {
     <div class="stars">
         <div class="custom-navbar">
             <div class="brand-logo">
-                <img src="../src/img/iziChoice.png" width="150px">
+                <img src="../src/img/iziChoice.png" width="300px">
         </div>
         <div class="central-body">
-            <img class="image-404" src="../src/img/404.svg" width="300px">
+            <img class="image-404" src="../src/img/404.svg">
             <a href='#/login' class="btn-go-home" target="_blank">Home </a>
         </div>
         <div class="objects">

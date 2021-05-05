@@ -95,3 +95,19 @@ p {
     size: 14px;
     margin-bottom: 4px;
 }
+
+/*****************************classlist for messenger alert*************************/
+.error-message{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.successful-message{
+    color: #4B35D1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}

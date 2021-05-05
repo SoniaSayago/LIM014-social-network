@@ -5,14 +5,10 @@ import { changeTmp } from './view-controler/router.js';
 // require("firebase/firestore");
 
 
-
-
-
 const init = () => {
     window.location.hash = '#/login';
     changeTmp(window.location.hash);
     window.addEventListener('hashchange', () => changeTmp(window.location.hash));
-
 };
 
 window.addEventListener('load', init);

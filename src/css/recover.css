@@ -1,47 +1,42 @@
-.btn-recoverPass {
+button.btn-recoverPass {
     width: 270px;
     height: 37px;
     color: white;
     background: #FC5484;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(185, 131, 131, 0.25);
     border-radius: 10px;
     border-width: 0px;
     font-size: 16px;
     font-weight: 300px;
     font-family: 'Roboto';
     text-decoration: none;
+    cursor: pointer;
 }
 
-.backLogin i{
-    text-decoration: none;
-    font-size: 16px;
+.btn-backLogin:hover, .btn-recoverPass {
+    transform: scale(1.05);
+    box-shadow: 0px 25px 25px rgba(0,0,0,0.1);
 }
 
-.backLogin:hover {
-    border-color: #4B35D1;
-    color: #4B35D1;
-    height: 55px;
-}
-
-.backLogin{
+.btn-backLogin{
     justify-content: center;
-    width: 20%;
-    height: 49px;
-    border-radius: 49px;
     cursor: pointer;
     outline: none;
-}
-.backLogin i{
+    width: 300px;
+    height: 37px;
+    color: white;
+    background: #FC5484;
+    box-shadow: 0px 4px 4px rgba(185, 131, 131, 0.25);
+    border-radius: 10px;
+    border-width: 0px;
     font-size: 16px;
-}
-.backLogin{
-    background-color: #A2468E ;
-    border-color: #A2468E;
-    color: #fafafa;
-    border-style: solid;
+    font-family: 'Roboto';
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.div-input , i.fas.fa-envelope {
+
+.div-input {
     text-align: center;
     line-height: 55px;
     color: #acacac;
@@ -50,38 +45,37 @@
 
 #recoverPass-form input{
     max-width: 100%;
-    background-color: #f0f0f0;
+    background-color: #ecdada;
     height: 55px;
-    border-radius: 55px;
-    display: grid;
+    border-radius: 35px;
+    display: inline-flex;
     grid-template-columns: 15% 85%;
     position: relative;
     font-size: 16px;
-    width: 70%;
+    width: 60%;
     text-align: center;
 }
 
 .container-recoverPassword {
-    display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.fa, .far, i.fas.fa-envelope {
+.fa, .far, i.fas {
     font-family: 'Font Awesome 5 Free';
 }
 
-.fa, .fas {
-    font-weight: 900;
+.fa, .fas   {
+    font-weight: 950;
 }
 
-.div-input input, i.fas.fa-envelope {
+.div-input input, i.fas {
     background: none;
     outline: none;
     border: none;
     line-height: 1;
-    font-size: 1.1rem;
-    color: #333;
-    border-radius: 55px;
+    color:#acacac;
+    border-radius: 20px;
 }

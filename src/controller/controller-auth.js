@@ -1,46 +1,46 @@
 // ---------------------------------------------AQUI COMANDOS DE FIREBASE AUTORIZATION----------------------------------------
 
-// sign in con Google
-export const signInForGoogle = () => {
+// ----------------- LOG IN  -----------------------
+// Iniciar sesión con credenciales creadas con Email
+export const signInWithEmail = (email, password) => {
     const auth = firebase.auth();
+    return auth.signInWithEmailAndPassword(email, password);
+};
+
+// Inicia sesión con Google
+export const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return auth.signInWithPopup(provider);
-};
-
-// sign in con Facebook
-export const signInForFacebook = () => {
-    const auth = firebase.auth();
+    return firebase.auth().signInWithPopup(provider);
+  };
+  
+  // Inicia sesión con Facebook
+  export const signInWithFacebook = () => {
     const provider = new firebase.auth.FacebookAuthProvider();
-    return auth.signInWithPopup(provider);
-};
+    return firebase.auth().signInWithPopup(provider);
+  };
 
-
-
-// Signup with Email
-export const signupForEmail = (email, password) => {
+// ----------------- REGISTRARSE -------------
+// Crear usuario
+export const createUser = (email, password) => {
     const auth = firebase.auth();
     return auth.createUserWithEmailAndPassword(email, password);
 };
-// Send email to verify created account
+// Enviar email de verificaciòn para la cuenta creada.
 export const sendEmail = () => {
     const user = firebase.auth().currentUser;
     return user.sendEmailVerification();
 };
 
-// Signin
-export const signinForEmail = (email, password) => {
-    const auth = firebase.auth();
-    return auth.signInWithEmailAndPassword(email, password);
-};
 
-//Signout
+// --------------------- SIGN OUT -----------------------
+// Desconectar - cerrar sesión
 export const signout = () => {
     const auth = firebase.auth();
     return auth.signOut();
 };
 
-// RECOVER PASSWORD
-// Send link for recover password
+// -------------------------- RECOVER PASSWORD --------------
+// Enviar link al email registrado para recuperar contraseña
 export const sendRecoverPass = (emailAddress) => {
     const auth = firebase.auth();
     return auth.sendPasswordResetEmail(emailAddress);

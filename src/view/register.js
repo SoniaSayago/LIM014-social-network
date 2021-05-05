@@ -1,4 +1,4 @@
-import { signupForEmail, sendEmail } from '../controller/controller-auth.js'
+import { createUser, sendEmail, signInWithGoogle, signInWithFacebook } from '../controller/controller-auth.js'
 
 export default () => {
     const viewRegister = `
@@ -13,7 +13,6 @@ export default () => {
     <img src="./icons/facebook-azul.svg" class="facebook" id="btn-facebook">  &nbsp; &nbsp;
     <img src="./icons/google-azul.svg" class="gmail" id="btn-google">       
     </div> <br>
-
 </div>
     
     <div class= 'formContainer'>
@@ -21,13 +20,20 @@ export default () => {
         <div class ='formDiv'>
             <form id='registerForm'>
                 <label class='registerForm1Label'>Nombres y Apellidos</label></br>
-                <input class='registerForm1Input' type='text' id='name' placeholder='Nombres y Apellidos' required> <br></br>
+                <input class='registerForm1Input' type='text' id='name' pattern="[a-zA-Z]{6,20}" placeholder='Nombres y Apellidos' required> <br></br>
                 <label class='registerForm1Label' >Email</label></br>
                 <input class='registerForm1Input'  type='text' id='email' placeholder='Email' required> <br></br>
                 <label class='registerForm1Label' >Contraseña</label></br>
+                <input class='registerForm1Input'  type='password' id='password' placeholder='Contraseña' pattern="[a-zA-Z0-9]{6,20}" required></br></br>
+                <input  class='terms' type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
+                <button class= 'bigButton' type="submit" >Enviar</button> <br><br>
+                <p id = "error-message"></p><br><br>
+                <button class="backLogin bigButton"><i class="fas fa-arrow-left"></i></button>
+=======
                 <input class='registerForm1Input'  type='password' id='password' placeholder='Contraseña' required></br></br>
                 <input  class='terms' type='checkbox' required><label> Acepta términos y condiciones.</label> </br> </br>
                 <button class= 'bigButton' type="submit" >Enviar</button>
+
             </form>
         </div>
         <div class='goLoginContainer'>
@@ -40,6 +46,9 @@ export default () => {
     divElement.classList.add('mainDiv');
     divElement.innerHTML = viewRegister;
 
+    const btnBackLogin = divElement.querySelector('.backLogin');
+    btnBackLogin.addEventListener('click', () => { window.location.hash = '#/login'; });
+
     const signupForm = divElement.querySelector('#registerForm');
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault(); //cancela el evento de reinicio del formulario
@@ -47,7 +56,13 @@ export default () => {
         const email = divElement.querySelector('#email').value;
         const password = divElement.querySelector('#password').value;
 
+        const error = divElement.querySelector('#error-message');
+
+        createUser(email, password)
+
+
         signupForEmail(email, password)
+
             .then(() => {
                 sendEmail()
                     .then(() => {
@@ -60,9 +75,6 @@ export default () => {
                     });
                 signupForm.reset();
             })
-            // .then(() => {
-            //     window.location.hash = '#/comunidad'
-            // })
             .catch((err) => {
                 error.classList.remove('successful-message');
                 error.classList.add('error-message');

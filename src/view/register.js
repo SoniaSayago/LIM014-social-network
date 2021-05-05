@@ -20,7 +20,7 @@ export default () => {
         <div class ='formDiv'>
             <form id='registerForm'>
                 <label class='registerForm1Label'>Nombres y Apellidos</label></br>
-                <input class='registerForm1Input' type='text' id='name' pattern="[a-zA-Z]{6,20}" placeholder='Nombres y Apellidos' required> <br></br>
+                <input class='registerForm1Input' type='text' id='name' placeholder='Nombres y Apellidos' required> <br></br>
                 <label class='registerForm1Label' >Email</label></br>
                 <input class='registerForm1Input'  type='text' id='email' placeholder='Email' required> <br></br>
                 <label class='registerForm1Label' >Contraseña</label></br>
@@ -28,11 +28,7 @@ export default () => {
                 <input  class='terms' type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
                 <button class= 'bigButton' type="submit" >Enviar</button> <br><br>
                 <p id = "error-message"></p><br><br>
-                <button class="backLogin bigButton"><i class="fas fa-arrow-left"></i></button>
-=======
-                <input class='registerForm1Input'  type='password' id='password' placeholder='Contraseña' required></br></br>
-                <input  class='terms' type='checkbox' required><label> Acepta términos y condiciones.</label> </br> </br>
-                <button class= 'bigButton' type="submit" >Enviar</button>
+ 
 
             </form>
         </div>
@@ -46,8 +42,8 @@ export default () => {
     divElement.classList.add('mainDiv');
     divElement.innerHTML = viewRegister;
 
-    const btnBackLogin = divElement.querySelector('.backLogin');
-    btnBackLogin.addEventListener('click', () => { window.location.hash = '#/login'; });
+    // const btnBackLogin = divElement.querySelector('.backLogin');
+    // btnBackLogin.addEventListener('click', () => { window.location.hash = '#/login'; });
 
     const signupForm = divElement.querySelector('#registerForm');
     signupForm.addEventListener('submit', (e) => {
@@ -59,10 +55,6 @@ export default () => {
         const error = divElement.querySelector('#error-message');
 
         createUser(email, password)
-
-
-        signupForEmail(email, password)
-
             .then(() => {
                 sendEmail()
                     .then(() => {

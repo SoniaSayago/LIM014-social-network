@@ -11,7 +11,7 @@ const sendDataCurrentUser = (user) => {
       Photo = 'img/default-avatar.png';
       Name = 'User';
     }
-    return db.collection('SN_Users').doc(user.uid).set({
+    return db.collection('Users').doc(user.uid).set({
       username: Name,
       email: user.email,
       photo: Photo,

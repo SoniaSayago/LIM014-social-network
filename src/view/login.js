@@ -37,7 +37,7 @@ export default () => {
           <p class="registerContainer">o ingresa con...</p><br>
           <div class="option">
           <img src="./icons/facebook.svg" class="facebook" id="btn-facebook"> &nbsp; &nbsp;
-          <img src="./icons/google.svg" class="gmail" id="btn-google">       
+          <img src="./icons/google.svg" class="gmail" id="btn-google" >
           </div> <br>
         </form>
       </div><br>
@@ -53,6 +53,7 @@ export default () => {
   divElement.innerHTML = viewLogin;
 
   const signInForm = divElement.querySelector('#loginForm');
+
   signInForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = divElement.querySelector('#email').value;
@@ -90,13 +91,36 @@ export default () => {
           }, 5000);
         });
     };
-    /* ---------------------------regarding DOM manipulation for login with google---------------- */
-    const btnGoogle = divElement.querySelector('#btn-google');
-    btnGoogle.addEventListener('click', () => {
-      signInWithGoogle()
-        .then((response) => {
-          console.log('response: ', response);
-          
+
+  })
+  /* ---------------------------regarding DOM manipulation for login with google---------------- */
+  const btnGoogle = divElement.querySelector('#btn-google');
+  btnGoogle.addEventListener('click', () => {
+    signInWithGoogle()
+      .then((response) => {
+        console.log('response: ', response);
+
+        getDataUser(currentUser().uid)
+          .then((doc) => {
+            if (doc.exists) {
+              window.location.hash = '#/comunidad';
+            } else {
+              sendDataCurrentUser(currentUser())
+                .then(() => {
+                  if (doc.exists) {
+                    window.location.hash = '#/comunidad';
+                  };
+                }
+                )
+            };
+          })
+      }).catch();
+
+
+    const btnFacebook = divElement.querySelector('#btn-facebook');
+    btnFacebook.addEventListener('click', () => {
+      signInWithFacebook()
+        .then(() => {
           getDataUser(currentUser().uid)
             .then((doc) => {
               if (doc.exists) {
@@ -110,31 +134,9 @@ export default () => {
                   }
                   )
               };
-            })
-        }).catch();
-
-
-      const btnFacebook = divElement.querySelector('#btn-facebook');
-      btnFacebook.addEventListener('click', () => {
-        signInWithFacebook()
-          .then(() => {
-            getDataUser(currentUser().uid)
-              .then((doc) => {
-                if (doc.exists) {
-                  window.location.hash = '#/comunidad';
-                } else {
-                  sendDataCurrentUser(currentUser())
-                    .then(() => {
-                      if (doc.exists) {
-                        window.location.hash = '#/comunidad';
-                      };
-                    }
-                    )
-                };
-              });
-          });
-        })
-      })
+            });
+        });
     })
-    return divElement;
+  })
+  return divElement;
 }

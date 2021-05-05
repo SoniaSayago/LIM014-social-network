@@ -3,7 +3,7 @@ import { sendDataCurrentUser, getDataUser } from '../controller/controller-fires
 
 
 export default () => {
-  const viewLogin = `<section class= 'sectionHome' >
+    const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
       <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br><br><br>+
       <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1><br><br><br><br><br>
@@ -50,100 +50,58 @@ export default () => {
 
 
 
-  const divElement = document.createElement('div');
-  divElement.classList.add('mainDivHome');
-  divElement.innerHTML = viewLogin;
+    const divElement = document.createElement('div');
+    divElement.classList.add('mainDivHome');
+    divElement.innerHTML = viewLogin;
 
-  const signInForm = divElement.querySelector('#loginForm');
+    const signInForm = divElement.querySelector('#loginForm');
 
-  signInForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = divElement.querySelector('#email').value;
-    const password = divElement.querySelector('#password').value;
-    const error = divElement.querySelector('#error');
-    if (email === ' ' || password === '') {
-      error.innerHTML = `<p> Formulario vacío, rellenar los campos
+    signInForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = divElement.querySelector('#email').value;
+            const password = divElement.querySelector('#password').value;
+            const error = divElement.querySelector('#error');
+            if (email === ' ' || password === '') {
+                error.innerHTML = `<p> Formulario vacío, rellenar los campos
                       <span class="material-icons">priority_high
                       </span></p>`;
-    } else {
-      signInWithEmail(email, password)
-        .then((data) => {
-          if (data.user.emailVerified == true) {
-            getDataUser(currentUser().uid)
-              .then((doc) => {
-                if (doc.exists) {
-                  window.location.hash = '#/comunidad';
-                } else {
-                  sendDataCurrentUser(currentUser())
-                    .then(() => {
-                      window.location.hash = '#/comunidad';
-                    });
-                }
-              });
-          } else {
-            error.textContent = `<p>Cuenta no verificada, por favor revise su email
-                      <span class="material-icons">priority_high
-                      </span></p>`;
-          }
-        })
-        .catch((err) => {
-          error.textContent = err.message;
-          setTimeout(() => {
-            error.textContent = '';
-          }, 5000);
-        });
-    };
-
-  })
-  /* ---------------------------regarding DOM manipulation for login with google---------------- */
-  const btnGoogle = divElement.querySelector('#btn-google');
-  btnGoogle.addEventListener('click', () => {
-    signInWithGoogle()
-      .then((response) => {
-        console.log('response: ', response);
-
-        getDataUser(currentUser().uid)
-          .then((doc) => {
-            if (doc.exists) {
-              window.location.hash = '#/comunidad';
             } else {
-              sendDataCurrentUser(currentUser())
-                .then(() => {
-                  if (doc.exists) {
-                    window.location.hash = '#/comunidad';
-                  };
-                }
-                )
+                signInWithEmail(email, password)
+                    .then((data) => {
+                        if (data.user.emailVerified == true) {
+                            getDataUser(currentUser().uid)
+                                .then((doc) => {
+                                    if (doc.exists) {
+                                        window.location.hash = '#/comunidad';
+                                    } else {
+                                        sendDataCurrentUser(currentUser())
+                                            .then(() => {
+                                                window.location.hash = '#/comunidad';
+                                            });
+                                    }
+                                });
+                        } else {
+                            error.textContent = `<p>Cuenta no verificada, por favor revise su email
+                      <span class="material-icons">priority_high
+                      </span></p>`;
+                        }
+                    })
+                    .catch((err) => {
+                        error.textContent = err.message;
+                        setTimeout(() => {
+                            error.textContent = '';
+                        }, 5000);
+                    });
             };
-          })
-      }).catch();
-=======
-    const signinForm = divElement.querySelector('#loginForm');
-    signinForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const email = divElement.querySelector('#email').value;
-        const password = divElement.querySelector('#password').value;
 
-        signinForEmail(email, password)
-            .then(userCredential => {
-                if (userCredential.user.emailVerified) {
-                    window.location.hash = '#/comunidad';
-                } else {
-                    alert('Por favor revise su bandeja de entrada para verificar su cuenta')
-                }
-                signinForm.reset();
-                console.log('hi', email);
-            })
-            // .then(() => {
-            //   window.location.hash = '#/comunidad';
-            // });
-    })
-
-    /* ---------------------------regarding DOM manipulation for login with google---------------- */
+        })
+        /* ---------------------------regarding DOM manipulation for login with google---------------- */
     const btnGoogle = divElement.querySelector('#btn-google');
     btnGoogle.addEventListener('click', () => {
-        signInForGoogle()
-            .then(() => {
+        signInWithGoogle()
+            .then((response) => {
+                console.log('response: ', response);
+
                 getDataUser(currentUser().uid)
                     .then((doc) => {
                         if (doc.exists) {
@@ -151,52 +109,55 @@ export default () => {
                         } else {
                             sendDataCurrentUser(currentUser())
                                 .then(() => {
-                                    window.location.hash = '#/comunidad';
-                                });
-                        }
-                    });
-            });
-    });
+                                    if (doc.exists) {
+                                        window.location.hash = '#/comunidad';
+                                    };
+                                })
+                        };
+                    })
+            }).catch();
+        const signinForm = divElement.querySelector('#loginForm');
+        signinForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const email = divElement.querySelector('#email').value;
+            const password = divElement.querySelector('#password').value;
 
-    const btnFacebook = divElement.querySelector('#btn-facebook');
-    btnFacebook.addEventListener('click', () => {
+            signinForEmail(email, password)
+                .then(userCredential => {
+                    if (userCredential.user.emailVerified) {
+                        window.location.hash = '#/comunidad';
+                    } else {
+                        alert('Por favor revise su bandeja de entrada para verificar su cuenta')
+                    }
+                    signinForm.reset();
+                    console.log('hi', email);
+                })
+                // .then(() => {
+                //   window.location.hash = '#/comunidad';
+                // });
+        })
 
-      signInWithFacebook()
-        .then(() => {
-          getDataUser(currentUser().uid)
-            .then((doc) => {
-              if (doc.exists) {
-                window.location.hash = '#/comunidad';
-              } else {
-                sendDataCurrentUser(currentUser())
-                  .then(() => {
-                    if (doc.exists) {
-                      window.location.hash = '#/comunidad';
-                    };
-                  }
-                  )
-              };
-            });
-        });
+
+        const btnFacebook = divElement.querySelector('#btn-facebook');
+        btnFacebook.addEventListener('click', () => {
+
+            signInWithFacebook()
+                .then(() => {
+                    getDataUser(currentUser().uid)
+                        .then((doc) => {
+                            if (doc.exists) {
+                                window.location.hash = '#/comunidad';
+                            } else {
+                                sendDataCurrentUser(currentUser())
+                                    .then(() => {
+                                        if (doc.exists) {
+                                            window.location.hash = '#/comunidad';
+                                        };
+                                    })
+                            };
+                        });
+                });
+        })
     })
-  })
-  return divElement;
-}
-
-        signInForFacebook()
-            .then(() => {
-                getDataUser(currentUser().uid)
-                    .then((doc) => {
-                        if (doc.exists) {
-                            window.location.hash = '#/comunidad';
-                        } else {
-                            sendDataCurrentUser(currentUser())
-                                .then(() => {
-                                    window.location.hash = '#/comunidad';
-                                });
-                        }
-                    });
-            });
-    });
     return divElement;
-};
+}

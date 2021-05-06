@@ -2,7 +2,7 @@ import { signout } from '../controller/controller-auth.js'
 
 export default () => {
     const viewComunidad = `
-    <h1> Comunidadkk </h1>
+    <h1> Comunidad </h1>
     <div class= "bigContainer">
     <div class="leftContainer"><svg width="121" height="124" viewBox="0 0 121 124" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <rect width="121" height="124" fill="url(#pattern0)"/>
@@ -55,17 +55,17 @@ export default () => {
             postList.innerHTML = '<p class="text-center">Login to see Posts</p>';
 
     }
-    auth.onAuthStateChanged(user => {
-        if (user) {
-            fs.collection('posts')
-                .get()
-                .then((snapshot) => {
-                    setupPosts(snapshot.docs)
-                })
-        } else {
-            setupPosts([])
-        }
-    })
+    // auth.onAuthStateChanged(user => {
+    //     if (user) {
+    //         fs.collection('posts')
+    //             .get()
+    //             .then((snapshot) => {
+    //                 setupPosts(snapshot.docs)
+    //             })
+    //     } else {
+    //         setupPosts([])
+    //     }
+    // })
 
     return divElement;
 

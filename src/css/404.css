@@ -40,7 +40,6 @@
 }
 
 .spin-earth-on-hover{
-    
     transition: ease 200s !important;
     transform: rotate(-3600deg) !important;
 }
@@ -49,7 +48,7 @@ html, body{
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
     -webkit-user-select: none; /* Safari 3.1+ */
     -moz-user-select: none; /* Firefox 2+ */
@@ -59,7 +58,8 @@ html, body{
 
 .bg{
    background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
-     
+   height: 100%;
+   width: 100%;
 }
 
 .custom-navbar{
@@ -79,7 +79,7 @@ html, body{
     margin: 15px auto;
     width: 100px;
     padding: 10px 15px;
-    border: 1px solid #FC5484;
+    border: 2px solid #FC5484;
     border-radius: 100px;
     font-weight: 400;
     display: block;
@@ -87,7 +87,8 @@ html, body{
     text-align: center;
     text-decoration: none;
     letter-spacing : 2px;
-    font-size: 11px;
+    font-style: bold;
+    font-size: 16px;
     
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
@@ -104,8 +105,7 @@ html, body{
 }
 
 .central-body{
-/*    width: 100%;*/
-    padding: 17% 5% 10% 5%;
+    padding: 8% 5% 8% 5%;
     text-align: center;
 }
 
@@ -115,10 +115,10 @@ html, body{
 }
 
 .object_rocket{
-    z-index: 95;
+    z-index: 90;
     position: absolute;
     transform: translateX(-50px);
-    top: 75%;
+    top: 55%;
     pointer-events: none;
     animation: rocket-movement 200s linear infinite both running;
 }
@@ -128,7 +128,7 @@ html, body{
     top: 20%;
     left: 15%;
     z-index: 90;
-/*    animation: spin-earth 100s infinite linear both;*/
+    animation: spin-earth 100s infinite linear both;
 }
 
 .object_moon{
@@ -154,6 +154,7 @@ html, body{
     position: relative;
     z-index: 100;
     pointer-events: none;
+    width: 400px;
 }
 
 .stars{
@@ -209,14 +210,42 @@ html, body{
     }
     
     .brand-logo img{
-        width: 120px;
+        width: 150px;
     }
     
     .box_astronaut{
-        top: 70%;
+        top: 35%;
     }
     
     .central-body{
-        padding-top: 25%;
+        padding-top: 20%;
     }
+    
+    .image-404{
+        position: relative;
+        z-index: 100;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .object_earth{
+        position: absolute;
+        top: 10%;
+        left: 15%;
+    }
+    
+    .object_moon{
+        position: absolute;
+        top: 8%;
+        left: 38%;
+    }
+    .object_astronaut{
+        position: relative;
+    }
+    .object_rocket{
+        position: absolute;
+        transform: translateX(-50px);
+        top: 60%;
+        left: 10%;}
 }

@@ -17,7 +17,7 @@ export default () => {
     </div><br>
     <button type="submit" class="btn-recoverPass">Recuperar contraseña</button><br><br>
     <p id = "error-message"></p><br>
-    <a href='#/login' class="btn-recoverPass">regresar a Login</a>
+    <a href='#/login' class="btn-backLogin">regresar a Login</a>
     </form>
     `
     const divElement = document.createElement('div')

@@ -63,7 +63,7 @@ p {
 .bigButton:hover {
     transform: scale(1.05);
     color: #fafafa;
-    box-shadow: 0px 20px 20px rgba(0,0,0,0.1);
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
 }
 
 .registerForm1Label {
@@ -95,3 +95,35 @@ p {
     size: 14px;
     margin-bottom: 4px;
 }
+
+/*****************************classlist for messenger alert*************************/
+.error-message{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.successful-message{
+    color: #4B35D1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.goLogin {
+    padding: 20px;
+    color: #9492A4;
+    text-indent: 10px;
+    font-family: 'Roboto';
+    size: 14px;
+}
+
+.goLogin a {
+    color: #333333;
+    font-weight: bold;
+    text-decoration: none;
+    size: 16px;
+}
+

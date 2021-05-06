@@ -26,8 +26,9 @@ export default () => {
                 <label class='registerForm1Label' >Contraseña</label></br>
                 <input class='registerForm1Input'  type='password' id='password' placeholder='Contraseña' pattern="[a-zA-Z0-9]{6,20}" required></br></br>
                 <input  class='terms' type='checkbox' <label> Acepta términos y condiciones.</label> </br> </br>
-                <button class= 'bigButton' type="submit" >Enviar</button> <br><br>
                 <p id = "error-message"></p><br><br>
+                <button class= 'bigButton' type="submit" >Enviar</button> <br><br>
+                
  
 
             </form>
@@ -63,17 +64,24 @@ export default () => {
                     })
                     .catch((err) => {
                         error.classList.add('error-message');
+
                         error.textContent = err.message;
+                        
                     });
                 signupForm.reset();
             })
             .catch((err) => {
                 error.classList.remove('successful-message');
                 error.classList.add('error-message');
-                error.textContent = err.message;
+                switch(err.message){
+                    case 'The email address is already in use by another account.':
+                        error.textContent = 'La dirección de correo electrónico ya está siendo utilizada por otra cuenta.';
+                }
+                // error.textContent = err.message;
                 setTimeout(() => {
                     error.textContent = '';
                 }, 4000);
+                console.log(err.message)
             });
     });
     return divElement;

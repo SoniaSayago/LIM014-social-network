@@ -1,9 +1,16 @@
-import { signInWithEmail, signInWithGoogle, signInWithFacebook, currentUser } from '../controller/controller-auth.js';
-import { sendDataCurrentUser, getDataUser } from '../controller/controller-firestore.js'
-
+import {
+  signInWithEmail,
+  signInWithGoogle,
+  signInWithFacebook,
+  user,
+} from "../controller/controller-auth.js";
+import {
+  sendDataCurrentUser,
+  getDataUser,
+} from "../controller/controller-firestore.js";
 
 export default () => {
-    const viewLogin = `<section class= 'sectionHome' >
+  const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
       <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br><br><br>+
       <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1><br><br><br><br><br>
@@ -43,117 +50,96 @@ export default () => {
         </form>
       </div><br>
       <div class='registerContainer'>
-        <p>¿Eres nuevo? <a href="#/register">Registrate aquí </a></p>
+        <p>¿Eres nuevo? <a href="#/register">Registrate aqui</a></p>
       </div>  
     </div> 
     </section></section>`;
 
+  const divElement = document.createElement("div");
+  divElement.classList.add("mainDivHome");
+  divElement.innerHTML = viewLogin;
 
+  const signInForm = divElement.querySelector("#loginForm");
 
-    const divElement = document.createElement('div');
-    divElement.classList.add('mainDivHome');
-    divElement.innerHTML = viewLogin;
-
-    const signInForm = divElement.querySelector('#loginForm');
-
-    signInForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = divElement.querySelector('#email').value;
-            const password = divElement.querySelector('#password').value;
-            const error = divElement.querySelector('#error-message');
-            if (email === ' ' || password === '') {
-                error.textContent = 'Formulario vacío, rellenar los campos';
-            } else {
-                signInWithEmail(email, password)
-                    .then((data) => {
-                        if (data.user.emailVerified == true) {
-                            getDataUser(currentUser().uid)
-                                .then((doc) => {
-                                    if (doc.exists) {
-                                        window.location.hash = '#/comunidad';
-                                    } else {
-                                        sendDataCurrentUser(currentUser())
-                                            .then(() => {
-                                                window.location.hash = '#/comunidad';
-                                            });
-                                    }
-                                });
-                        } else {
-                            error.textContent = 'Cuenta no verificada, por favor revise su email';
-                        }
-                    })
-                    .catch((err) => {
-                        error.textContent = err.message;
-                        setTimeout(() => {
-                            error.textContent = '';
-                        }, 5000);
-                    });
-            };
-
+  signInForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = divElement.querySelector("#email").value;
+    const password = divElement.querySelector("#password").value;
+    const error = divElement.querySelector("#error-message");
+    if (email === " " || password === "") {
+      error.textContent = "Formulario vacío, rellenar los campos";
+    } else {
+      signInWithEmail(email, password)
+        .then((data) => {
+          if (data.user.emailVerified == true) {
+            window.location.hash = "#/comunidad";
+          } else {
+            error.textContent =
+              "Cuenta no verificada, por favor revise su email";
+          }
         })
-        /* ---------------------------regarding DOM manipulation for login with google---------------- */
-    const btnGoogle = divElement.querySelector('#btn-google');
-    btnGoogle.addEventListener('click', () => {
-        signInWithGoogle()
-            .then((response) => {
-                console.log('response: ', response);
+        .catch((err) => {
+          switch (err.message) {
+            case "There is no user record corresponding to this identifier. The user may have been deleted.":
+              error.textContent =
+                "El correo que ingresaste no pertenece a ninguna cuenta";
+              break;
+            case "The password is invalid or the user does not have a password.":
+              error.textContent = "La contraseña no es correcta. Compruébala.";
+          }
+        });
+    }
+  });
+  /* ---------------------------regarding DOM manipulation for login with google---------------- */
+  const btnGoogle = divElement.querySelector("#btn-google");
+  btnGoogle.addEventListener("click", () => {
+    signInWithGoogle()
+      .then((response) => {
+        console.log(response.user.displayName);
+        window.location.hash = "#/comunidad";
+      })
+      .catch();
+    const signinForm = divElement.querySelector("#loginForm");
+    signinForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = divElement.querySelector("#email").value;
+      const password = divElement.querySelector("#password").value;
 
-                getDataUser(currentUser().uid)
-                    .then((doc) => {
-                        if (doc.exists) {
-                            window.location.hash = '#/comunidad';
-                        } else {
-                            sendDataCurrentUser(currentUser())
-                                .then(() => {
-                                    if (doc.exists) {
-                                        window.location.hash = '#/comunidad';
-                                    };
-                                })
-                        };
-                    })
-            }).catch();
-        const signinForm = divElement.querySelector('#loginForm');
-        signinForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const email = divElement.querySelector('#email').value;
-            const password = divElement.querySelector('#password').value;
-
-            signinForEmail(email, password)
-                .then(userCredential => {
-                    if (userCredential.user.emailVerified) {
-                        window.location.hash = '#/comunidad';
-                    } else {
-                        alert('Por favor revise su bandeja de entrada para verificar su cuenta')
-                    }
-                    signinForm.reset();
-                    console.log('hi', email);
-                })
-                // .then(() => {
-                //   window.location.hash = '#/comunidad';
-                // });
-        })
-
-
-        const btnFacebook = divElement.querySelector('#btn-facebook');
-        btnFacebook.addEventListener('click', () => {
-
-            signInWithFacebook()
-                .then(() => {
-                    getDataUser(currentUser().uid)
-                        .then((doc) => {
-                            if (doc.exists) {
-                                window.location.hash = '#/comunidad';
-                            } else {
-                                sendDataCurrentUser(currentUser())
-                                    .then(() => {
-                                        if (doc.exists) {
-                                            window.location.hash = '#/comunidad';
-                                        };
-                                    })
-                            };
-                        });
-                });
-        })
-    })
-    return divElement;
-}
+      signinForEmail(email, password).then((userCredential) => {
+        if (userCredential.user.emailVerified) {
+          window.location.hash = "#/comunidad";
+        } else {
+          alert(
+            "Por favor revise su bandeja de entrada para verificar su cuenta"
+          );
+        }
+        signinForm.reset();
+        console.log("hi", email);
+      });
+      // .then(() => {
+      //   window.location.hash = '#/comunidad';
+      // });
+    });
+  });
+  const btnFacebook = divElement.querySelector("#btn-facebook");
+  btnFacebook.addEventListener("click", () => {
+    signInWithFacebook().then((response) => {
+      console.log(response);
+      console.log(response.user.displayName);
+      getDataUser(user().uid).then((doc) => {
+        if (doc.exists) {
+          window.location.hash = "#/comunidad";
+        } else {
+          sendDataCurrentUser(user()).then(() => {
+            if (doc.exists) {
+              window.location.hash = "#/comunidad";
+            }
+          });
+        }
+      });
+      console.log("fb");
+      window.location.hash = "#/comunidad";
+    });
+  });
+  return divElement;
+};

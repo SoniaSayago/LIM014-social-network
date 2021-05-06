@@ -10,7 +10,7 @@ const sendDataCurrentUser = (user) => {
         Photo = '../src/img/default-avatar.png';
         Name = 'User';
     }
-    return db.collection('Users').doc(user.uid).set({
+    return db.collection('users').doc(user.uid).set({
         username: Name,
         email: user.email,
         photo: Photo,
@@ -25,7 +25,7 @@ const sendDataCurrentUser = (user) => {
 // ------------------------GET USER INFORMATION TO CLUD FIRESTORE --------------------------
 const getDataUser = (userId) => {
     const db = firebase.firestore();
-    return db.collection('Users').doc(userId).get();
+    return db.collection('users').doc(userId).get();
 };
 
 // ---------------------------------------------AQUI COMANDOS DE FIREBASE CLOUD----------------------------------------// Firebase configuration inicial

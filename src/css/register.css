@@ -98,11 +98,11 @@ p {
 
 /*****************************classlist for messenger alert*************************/
 .error-message{
-    color: red;
+    color: #F8AFA6;
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: center;
-    font-weight: bold;
+    font-weight: lighter;
 }
 .successful-message{
     color: #4B35D1;

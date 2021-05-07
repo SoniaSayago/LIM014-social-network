@@ -389,7 +389,7 @@ textarea {
     text-indent: 10px;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
     .imageHome {
         position: relative;
         margin-top: 120px;

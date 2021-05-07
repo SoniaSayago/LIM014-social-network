@@ -3,16 +3,15 @@ import { signout, user } from '../controller/controller-auth.js'
 export default () => {
     let userObject = user()
     const viewComunidad = `
-    <h1> Comunidad </h1>
     <div class= 'bigContainer'>
         <div class='bigContainer_userInfo'> 
-            <img src="${userObject.photoURL}">
+            <img class=userPhoto src="${userObject.photoURL}"> &nbsp; &nbsp;&nbsp; &nbsp;
             <div><p class='boldName'> ${userObject.displayName} </p> </div> <br><br>
         </div>
         <div class='bigContainer_postsInfo' >
 
             <section class="post">
-                <textarea id='postText' class='bigContainer_postsInfo_textArea'id="user_post" placeholder="Que quieres publicar hoy?" name="comment" cols="50" rows="4"></textarea>
+                <textarea id='postText' class='bigContainer_postsInfo_textArea'id="user_post" placeholder="Que quieres publicar hoy?" name="comment" cols="40" rows="4"></textarea>
                 <div class="btn-group">
                     <button id='postButton'class="smallButton" type="button"><img src="./icons/send.svg" class="send"> &nbsp;Publicar</button>
                 </div>

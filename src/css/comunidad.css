@@ -10,6 +10,10 @@
     justify-content: center;
 }
 
+.mainDivPerfil {
+    height: 100%;
+}
+
 .bigContainer {
     display: flex;
     justify-content: center;

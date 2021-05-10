@@ -12,8 +12,8 @@ import {
 export default () => {
     const viewLogin = `<section class= 'sectionHome' >
     <div class='introContainer hideHome'>
-      <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br><br><br>+
-      <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1><br><br><br><br><br>
+      <h3 class='textHomeH3'>Si aún no encuentras la respuesta, es porque solo haz buscado en lugares comunes...</h3><br>
+      <h1 class='textHomeH1'>¡CONECTA CON TU FUTURO!</h1><br><br>
       <img src="./img/homeIziChoice.svg" alt="" class='imageHome'>
     </div>    
     <section class= 'sectionLogin' > 
@@ -93,29 +93,37 @@ export default () => {
     /* ---------------------------regarding DOM manipulation for login with google---------------- */
     const btnGoogle = divElement.querySelector("#btn-google");
     btnGoogle.addEventListener("click", () => {
-        signInWithGoogle()
-            .then((response) => {
-                console.log(response.user.displayName);
-                window.location.hash = "#/comunidad";
-            })
-            .catch();
-        const signinForm = divElement.querySelector("#loginForm");
-        signinForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const email = divElement.querySelector("#email").value;
-            const password = divElement.querySelector("#password").value;
-
-            signinForEmail(email, password).then((userCredential) => {
-                if (userCredential.user.emailVerified) {
+        signInWithGoogle().then((response) => {
+            // console.log(response);
+            // console.log(response.user.displayName);
+            getDataUser(response.user.uid).then((doc) => {
+                if (doc.exists) {
                     window.location.hash = "#/comunidad";
                 } else {
-                    alert(
-                        "Por favor revise su bandeja de entrada para verificar su cuenta"
-                    );
+                    sendDataCurrentUser(response.user).then(() => {
+                        // if (doc.exists) {
+                        window.location.hash = "#/comunidad";
+                        // }
+                    });
                 }
-                signinForm.reset();
-                console.log("hi", email);
             });
+            // const signinForm = divElement.querySelector("#loginForm");
+            // signinForm.addEventListener("submit", (e) => {
+            //     e.preventDefault();
+            //     const email = divElement.querySelector("#email").value;
+            //     const password = divElement.querySelector("#password").value;
+
+            // signinForEmail(email, password).then((userCredential) => {
+            //     if (userCredential.user.emailVerified) {
+            //         window.location.hash = "#/comunidad";
+            //     } else {
+            //         alert(
+            //             "Por favor revise su bandeja de entrada para verificar su cuenta"
+            //         );
+            //     }
+            //     signinForm.reset();
+            //     console.log("hi", email);
+            // });
             // .then(() => {
             //   window.location.hash = '#/comunidad';
             // });

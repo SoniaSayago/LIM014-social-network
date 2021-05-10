@@ -65,6 +65,7 @@ textarea {
 
 .introContainer {
     width: 100%;
+    overflow: -moz-hidden-unscrollable;
 }
 
 .logoContainer p {
@@ -346,7 +347,7 @@ textarea {
     }
     .introContainer {
         width: 50%;
-        padding: 40px;
+        padding: 20px;
         height: 100%;
     }
     .sectionLogin {

@@ -25,6 +25,7 @@ export default () => {
     divElement.innerHTML = viewComunidad;
     document.getElementById('header').classList.remove('hide');
 
+
     const logout = document.querySelector('#logout')
     logout.addEventListener('click', e => {
         e.preventDefault();

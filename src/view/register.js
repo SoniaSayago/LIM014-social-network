@@ -44,10 +44,10 @@ export default () => {
     const signupForm = divElement.querySelector('#registerForm');
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault(); //cancela el evento de reinicio del formulario
-        const name = divElement.getElementsById('name').value; //.value porque son inputs
-        const email = divElement.getElementsById('email').value;
-        const password = divElement.getElementsById('password').value;
-        const error = divElement.getElementsById('error-message');
+        const name = divElement.querySelector('#name').value; //.value porque son inputs
+        const email = divElement.querySelector('#email').value;
+        const password = divElement.querySelector('#password').value;
+        const error = divElement.querySelector('#error-message');
         // FUNCIÓN QUE PERMITE AUTENTIFICAR USUARIO NUEVO CON EMAIL 
         createUser(email, password) // es una función q creamos en base a Firebase 
             .then(() => {

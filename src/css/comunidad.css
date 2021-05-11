@@ -1,93 +1,616 @@
-* {
-    font-family: 'Roboto', sans-serif;
-    margin: 0px;
-    color: #333333
-}
+/* propierty */
 
-.container {
+.container-home {
+    background-color: #eeeeee;
+    /* width: 100%;
+    padding: 2rem;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: "profile home aside"; */
+    position: relative;
     display: flex;
-    height: 100%;
+    flex-wrap: nowrap;
     justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin: 5px 10px;
 }
 
-.bigContainer {
+.container-home p {
+    margin: 0.5rem 0.5rem;
+}
+
+aside>div,
+main>div,
+.allpost {
+    background-color: white;
+    color: #222222;
+    margin: 0 0 1rem 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.356);
+    padding: 1.3rem;
+    border-radius: 4px;
+}
+
+div.aboutUs {
+    background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+}
+
+p.logo-aside img {
+    height: 80px;
+    width: 150px;
+}
+
+
+/*----- Left Column ---------*/
+
+.profile-section {
+    /* grid-area: profile; */
+    width: 25%;
+    margin: 5px 10px;
+}
+
+.profile-section i {
+    margin-right: 1rem;
+    color: #444;
+}
+
+.profile-section h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #222222;
+}
+
+.profile,
+.aboutUs {
+    /* position: sticky; */
+    top: 90px;
+}
+
+.profile a {
+    text-decoration: none;
+    font-weight: 600;
     display: flex;
     justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-.bigContainer_userInfo {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-.boldName {
-    font-weight: bold;
-    margin-top: 35px;
-    font-size: 16px;
-    color: #333333;
-}
-
-
-/* .post {
     align-items: center;
-    align-self: center;
-} */
-
-.bigContainer_postsInfo_textArea {
-    color: hsl(0, 0%, 20%);
-    font-size: 14px;
-    background-color: #D4DCEC;
-    border: none;
-    border-radius: 10px;
-}
-
-.bigContainer_postsInfo_textArea::placeholder {
-    color: #333333;
-    padding-top: 10px;
-}
-
-input,
-select,
-textarea {
-    text-indent: 10px;
-}
-
-.bigContainer_postsInfo {
-    align-items: center;
-    align-self: center;
-    margin-top: 20px;
-}
-
-.btn-group {
-    justify-content: flex-end;
-    align-content: flex-end;
-}
-
-.smallButton {
-    width: 110px;
-    height: 33px;
     color: white;
-    background: #FC5484;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    border-radius: 10px;
-    border-width: 0px;
-    font-size: 16px;
-    font-weight: 300px;
-    font-family: 'Roboto';
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0.5rem auto;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid rgba(202, 63, 202, 0.3);
+    margin-bottom: 1rem;
+}
+
+.interest span {
+    color: #fff;
+    background-color: #FC5484;
+    font-size: 12px;
+    padding: 0px 8px;
+}
+
+#viewall {
+    color: #A2468E;
+}
+
+
+/*--------- Middle Column ----------*/
+
+.home-section {
+    /* grid-area: home; */
+    width: 50%;
+    margin: 5px 10px;
+}
+
+.user,
+.user-post {
+    display: flex;
+}
+
+.avatar-post,
+.avatar-comment {
+    width: 40px;
+    height: 40px;
+    border-radius: 49px;
+    object-fit: cover;
     margin: 5px;
-    padding-top: 3px;
 }
 
-.smallButton:hover {
-    transform: scale(1.05);
+.content-newpost textarea,
+.edit-text-post textarea,
+.edit-comment-text-btns textarea {
+    height: 70px;
+    text-align: justify;
+    width: 100%;
+    margin-top: 1rem;
+    resize: none;
+    padding: 0.5rem;
+    outline: none;
+    /* background-color: rgba(44, 171, 146, 0.1); */
+    background-color: rgba(212, 220, 236, 0.7);
+    border-color: rgba(44, 171, 146, 0.15);
+    border-radius: 0.8rem;
+}
+
+.post-img {
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+#remove-img {
+    color: #444;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#remove-img:hover {
+    color: red;
+}
+
+.upload-img {
+    display: none;
+}
+
+.buttons-bar {
+    position: relative;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.buttons-bar .fa-file-image {
+    font-size: 1.35rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+select {
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #444;
+}
+
+.btn-post i,
+.btn-comment i {
+    margin-right: 0.3rem;
+}
+
+.btn-post,
+.btn-comment {
+    height: fit-content;
+    width: fit-content;
+    padding: 0.3rem 0.6rem;
+    color: #fff;
+    background-color: #FC5484;
+    border-style: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    outline: none;
+    float: right;
+    transition: all ease 0.5s;
+}
+
+.btn-post:hover,
+.btn-comment:hover,
+.btn-comment-active {
+    background-color: #FC5484;
+    color: #FC5484;
+}
+
+.mainpost {
+    position: relative;
+}
+
+.time-post {
+    opacity: 0.6;
+    font-size: 0.7rem;
+    width: min-content;
+    text-align: center;
+    margin: 0 1rem 0 auto !important;
+}
+
+.menu-post,
+.menu-comment {
+    position: absolute;
+    right: 0;
+}
+
+.btn-menu-post,
+.btn-menu-comment {
+    color: #FC5484;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-menu-post:hover,
+.btn-menu-post:focus,
+.btn-menu-comment:hover,
+.btn-menu-comment:focus {
+    background-color: #FC5484;
+    color: #FC5484;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.3rem;
+    width: 1.2rem;
+}
+
+.menu-post-content,
+.menu-comment-content {
+    display: none;
+    position: absolute;
+    background-color: #E6FFFF;
+    min-width: 130px;
+    overflow: auto;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.356);
+    right: 0;
+    z-index: 1;
+    font-size: 14px;
+}
+
+.aboutUs li {
+    list-style: none;
+    display: inline-block;
+    padding: 3px;
+}
+
+.menu-post-content li,
+.menu-comment-content li {
+    color: #FC5484;
+    padding: 5px 10px;
+    display: block;
+    cursor: pointer;
+}
+
+.menu-post li:hover,
+.menu-comment li:hover {
+    background-color: #FC5484;
+}
+
+.show {
+    display: block;
+}
+
+.text-post {
+    text-align: justify;
+    font-size: 15px;
+}
+
+.edit-text-btns,
+.edit-comment-btns {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-text-post button,
+.edit-comment-btns button {
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5rem;
+    color: #fff;
+    background-color: #FC5484;
+    border-style: none;
+    border-radius: 0.3rem;
+    margin-right: 2rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.div-comment {
+    max-width: 100%;
+    background-color: rgba(44, 171, 146, 0.15);
+    border-radius: 5px;
+    border: 1px solid rgba(44, 171, 146, 0.15);
+    display: grid;
+    grid-template-columns: 90% 10%;
+    position: relative;
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.div-comment textarea {
+    background: none;
+    resize: none;
+    outline: none;
+    border: none;
+    height: 2rem;
+    color: #333;
+    padding: 0.28rem 1rem;
+}
+
+.div-comment textarea::placeholder {
+    color: rgba(209, 27, 154, 0.8);
+}
+
+.content-newpost textarea:focus,
+.edit-text-post textarea:focus,
+.edit-comment-text-btns textarea:focus {
+    border-color: #C4C4C4;
+    background: white;
+}
+
+.content-newpost textarea::placeholder {
+    color: rgba(209, 27, 154, 0.8);
+}
+
+.content-newpost textarea:focus::placeholder {
+    color: #C4C4C4;
+}
+
+.count-like {
+    position: relative;
+    color: #2CAB92;
+    font-size: 0.9rem;
+    display: inline-flex;
+}
+
+.count-comment {
+    color: #2CAB92;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.count-comment-right {
+    float: right;
+    color: #2CAB92;
+    font-size: 0.9rem;
+}
+
+.like-comment-container i {
+    margin-right: 0.3rem;
+}
+
+.div-comment button {
+    color: #2CAB92;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: auto;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.photo-comment-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+.name-comment {
+    font-size: 0.9rem;
+    color: #2CAB92;
+}
+
+.comment-text {
+    font-size: 0.9rem;
+}
+
+.time-comment {
+    opacity: 0.6;
+    font-size: 0.7rem;
+    padding-left: 0.5rem;
+}
+
+.comment-container {
+    width: 100%;
+    background-color: rgba(44, 171, 146, 0.15);
+    border-radius: 0.5em;
+    padding: 0 0.8rem 0.5rem 0.8rem;
+    margin-left: 0.8rem;
+    box-sizing: border-box;
+}
+
+.github i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #444;
+    transition: all ease 0.5s;
+}
+
+.div-comment i:hover {
+    color: #2b7a75;
+}
+
+.events button {
+    color: #000;
+    background-color: #dfe5e8;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+.btn-like-plane {
+    position: relative;
+    height: 2rem;
+    width: 90px;
+    border-style: none;
+    border-radius: 0.3rem;
+    margin: 0 0.5rem 0 0;
+    cursor: pointer;
+    outline: none;
+    transition: all ease 0.5s;
+    background-color: #dfe5e8;
     color: #fafafa;
-    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
 }
 
-.userPhoto {
-    border-radius: 50px;
+.btn-like-plane:hover,
+.active-reaction {
+    color: #FC5484;
+    background-color: rgba(44, 171, 146, 0.2);
+}
+
+.inactive-reaction {
+    color: #666;
+}
+
+.edit-text-post button:hover,
+.edit-comment-btns button:hover {
+    background-color: rgba(44, 171, 146, 0.5);
+    color: #2b7a75;
+}
+
+
+/*------- Right Column ---------*/
+
+.right-section {
+    /* grid-area: aside; */
+    width: 25%;
+    text-align: center;
+    margin: 5px 10px;
+}
+
+.events button:hover {
+    background-color: rgb(160, 160, 160);
+    color: white;
+}
+
+.img-aside {
+    width: 100%;
+}
+
+.aboutUs li a {
+    font-size: 13px;
+    color: #fafafa;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #fafafa;
+}
+
+.github {
+    font-size: 12px;
+    color: #fafafa;
+    margin: 0 auto;
+    justify-items: center;
+    position: relative;
+}
+
+.github i:hover {
+    color: #FC5484;
+}
+
+.github td {
+    padding: 3px;
+    color: #fafafa;
+}
+
+.viewContact {
+    height: 400px;
+}
+
+
+/* --------Tool tip text span---------------- */
+
+.fa-file-image .tooltiptext,
+.fa-github .tooltiptext,
+.fa-edit .tooltiptext,
+.btn-like .tooltiptext,
+.count-like .tooltiptext {
+    font-size: 12px;
+    visibility: hidden;
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 130%;
+    margin-left: -60px;
+}
+
+.count-like .tooltiptext {
+    left: 50%;
+}
+
+.name .tooltiptext {
+    font-size: 12px;
+    visibility: hidden;
+    background-color: #fff;
+    border: 2px solid #2CAB92;
+    color: #444;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 20%;
+    margin-left: -60px;
+}
+
+.tooltipimg {
+    width: 150px;
+    height: 150px;
+    margin: 0.5rem auto;
+    display: block;
+    object-fit: cover;
+}
+
+.fa-camera .tooltiptext {
+    font-size: 12px;
+    visibility: hidden;
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    margin-left: -37px;
+}
+
+.fa-file-image .tooltiptext::after,
+.fa-github .tooltiptext::after,
+.fa-edit .tooltiptext::after,
+.name .tooltiptext::after,
+.btn-like .tooltiptext::after,
+.count-like .tooltiptext::after,
+.fa-camera .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #444 transparent transparent transparent;
+}
+
+.fa-file-image:hover .tooltiptext,
+.fa-github:hover .tooltiptext,
+.fa-edit:hover .tooltiptext,
+.name:hover .tooltiptext,
+.btn-like:hover .tooltiptext,
+.count-like:hover .tooltiptext,
+.fa-camera:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltiptext .like {
+    color: #FC5484;
+}
+
+.tooltiptext .plane {
+    color: rgba(204, 86, 131, 0.7);
 }

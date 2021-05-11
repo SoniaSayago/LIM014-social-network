@@ -49,8 +49,8 @@ export default () => {
     e.preventDefault(); // cancela el evento de reinicio del formulario
     // const name = divElement.querySelector('#name').value; // .value porque son inputs
     const email = divElement.querySelector('#email').value;
-    const password = divElement.querySlector('#password').value;
-    const error = divElement.querySlector('#error-message');
+    const password = divElement.querySelector('#password').value;
+    const error = divElement.querySelector('#error-message');
     // FUNCIÓN QUE PERMITE AUTENTIFICAR USUARIO NUEVO CON EMAIL
     createUser(email, password) // es una función q creamos en base a Firebase
       .then(() => {

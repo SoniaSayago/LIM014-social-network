@@ -21,6 +21,12 @@
     height: 100%;
 }
 
+input,
+select,
+textarea {
+    text-indent: 10px;
+}
+
 .sectionLogin {
     text-align: center;
     height: 100%;
@@ -59,6 +65,7 @@
 
 .introContainer {
     width: 100%;
+    overflow: -moz-hidden-unscrollable;
 }
 
 .logoContainer p {
@@ -274,13 +281,6 @@
     }
 }
 
-input,
-select,
-textarea {
-    color: #fafafa;
-    text-indent: 10px;
-}
-
 @media (min-width: 600px) {
     .sectionHome {
         background-image: url('../img/Home.png');
@@ -347,7 +347,7 @@ textarea {
     }
     .introContainer {
         width: 50%;
-        padding: 40px;
+        padding: 20px;
         height: 100%;
     }
     .sectionLogin {
@@ -380,13 +380,6 @@ textarea {
         left: 100px;
         width: 380px;
     }
-}
-
-input,
-select,
-textarea {
-    color: #fafafa;
-    text-indent: 10px;
 }
 
 @media (min-width: 1200px) {

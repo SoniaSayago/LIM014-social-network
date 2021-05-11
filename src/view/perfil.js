@@ -1,3 +1,4 @@
+
 import { signout, user } from '../controller/controller-auth.js';
 
 export default () => {
@@ -90,5 +91,4 @@ export default () => {
 //             window.location.hash = '#/login';
 //             document.getElementById('header').classList.add('hide');
 //         })
-
 // })

@@ -25,18 +25,54 @@ html {
 }
 
 .header a {
-    display: flex;
+    display: flex; 
+    text-decoration-line: underline;
     text-decoration: none;
-    width: 100%;
+    width: 100%; 
     justify-content: center;
     align-items: center;
-    color: #FFFFFF;
+    color: #FFFFFF; 
     padding: 5px;
     font-size: 20px;
     font-style: normal;
-}
+  }
 
-.iconify {
-    color: #ffff;
-    font-size: 24px;
-}
+  li {
+    list-style:none;
+  }
+
+  .nav_list a {
+    text-decoration: none;
+    font-size: 50px;
+    color: #fff;
+  }
+  
+  .nav_list_item {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .nav_list li {
+    padding: 15px 0;
+    text-transform: uppercase;
+    transform: translateY(200px);
+    opacity: 0;
+    animation: 2s slideUp ease forwards .5s;
+    position: relative;
+  }
+  
+  .nav_list_item li a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    transform: translateX(-50%);
+    height: 3px;
+    background: #FFF;
+    transition: 0.35s;
+  }
+  
+  .nav_list li:hover:before {
+        width: 100%;
+  }

@@ -1,9 +1,9 @@
 import { signout, user } from '../controller/controller-auth.js';
 
 export default () => {
-    // COD QUE PERMITE LAS VISTAS: VISTA DE REGISTRO
-    const userObject = user();
-    const viewPerfil = `
+  // COD QUE PERMITE LAS VISTAS: VISTA DE REGISTRO
+  const userObject = user();
+  const viewPerfil = `
     <section class="profile-content">
     <div class="profile-information">
       <div class="cover-page">
@@ -74,9 +74,9 @@ export default () => {
       </form>
     </section>
   </div>`;
-    const divElement = document.createElement('div');
-    divElement.innerHTML = viewPerfil;
-    document.getElementById('header').classList.remove('hide');
+  const divElement = document.createElement('div');
+  divElement.innerHTML = viewPerfil;
+  document.getElementById('header').classList.remove('hide');
 };
 
 // PRUEBA COMENTADA

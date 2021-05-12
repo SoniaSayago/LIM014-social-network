@@ -1,13 +1,14 @@
-import { signout, user } from "../controller/controller-auth.js";
+import { signout, user } from '../controller/controller-auth.js';
 import { addPost, getPosts } from '../controller/controller-firestore.js';
+import { itemPost } from './post.js';
 
 export default () => {
     const userObject = user();
     const defaultValue = {
-        phone: "Phone",
-        birthday: "yyyy-MM-dd",
-        country: "Country",
-        description: "Description",
+        phone: 'Phone',
+        birthday: 'yyyy-MM-dd',
+        country: 'Country',
+        description: 'Description',
     };
     const viewComunidad = `
     <!-- Left column -->
@@ -17,15 +18,9 @@ export default () => {
         <img class='avatar' src='${userObject.photoURL}'/>
         <h2 id='name'> ${userObject.displayName}</h2>
         <hr>
-        <p id='phone'><i class='fas fa-mobile-alt'></i> ${
-          userObject.phone || defaultValue.phone
-        }</p>
-        <p id='city'><i class='fas fa-map-marker-alt'></i> ${
-          userObject.country || defaultValue.country
-        }</p>
-        <p id='birthday'><i class='fas fa-birthday-cake'></i> ${
-          userObject.birthday || defaultValue.country
-        }</p>
+        <p id='phone'><i class='fas fa-mobile-alt'></i> ${userObject.phone || defaultValue.phone}</p>
+        <p id='city'><i class='fas fa-map-marker-alt'></i> ${userObject.country || defaultValue.country}</p>
+        <p id='birthday'><i class='fas fa-birthday-cake'></i> ${userObject.birthday || defaultValue.country}</p>
         <a href='#/perfil' id='viewall'>Ver todo</a>
       </div>
       <!-- Interests -->
@@ -105,27 +100,27 @@ export default () => {
         </table>
       </div>
     </aside> 
-    <section class="modal-progress hide">
-    <div class="progress">
-      <progress value="0" max="100" id="uploader">0%</progress>
-      <p id="messageProgress">0%</p>
+    <section class='modal-progress hide'>
+    <div class='progress'>
+      <progress value='0' max='100' id='uploader'>0%</progress>
+      <p id='messageProgress'>0%</p>
     </div>
   </section>
     `;
-    const divElement = document.createElement("div");
+    const divElement = document.createElement('div');
     divElement.innerHTML = viewComunidad;
-    document.getElementById("header").classList.remove("hide");
+    document.getElementById('header').classList.remove('hide');
 
-    const logout = document.querySelector("#logout");
-    logout.addEventListener("click", (e) => {
+    const logout = document.querySelector('#logout');
+    logout.addEventListener('click', (e) => {
         e.preventDefault();
         signout()
             .then(() => {
                 // console.log('sign out');
             })
             .then(() => {
-                window.location.hash = "#/login";
-                document.getElementById("header").classList.add("hide");
+                window.location.hash = '#/login';
+                document.getElementById('header').classList.add('hide');
             });
     });
 
@@ -135,26 +130,29 @@ export default () => {
         const textPost = divElement.querySelector('.text-newpost');
         const privacy = divElement.querySelector('#privacy-option').value;
         const modalProgress = divElement.querySelector('.modal-progress');
-        console.log(userObject.uid);
-        console.log(privacy);
         addPost(userObject.uid, privacy, textPost.value, '')
             .then(() => {
-
                 modalProgress.classList.remove('showModal');
                 formPost.reset();
-
             });
-    });
-    const containerPost = divElement.querySelector('#container-post');
-    getPosts((formPost) => {
-        containerPost.innerHTML = formPost[1].publication;
-        formPost.forEach((obj) => {
-            console.log(obj);
-            // if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userObject.uid === userObject.uid)) {
-            // containerPost.appendChild((objPost));
-            // }
+
+        const containerPost = divElement.querySelector('#container-post');
+        getPosts((formPost) => {
+            // console.log(formPost)
+            console.log(itemPost(formPost))
+            containerPost.innerHTML = '';
+            formPost.forEach((objPost) => {
+                // itemPost(objPost)
+                if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userObject.uid === userObject.uid)) {
+                    containerPost.appendChild(itemPost(objPost));
+                    //         containerPost.innerHTML = itemPost(objPost);
+                }
+            });
+            //     // console.log(formPost)
+            // });
         });
-        console.log(formPost)
+
+
     });
     return divElement;
 }

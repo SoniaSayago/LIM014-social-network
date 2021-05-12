@@ -1,5 +1,5 @@
 export default () => {
-    const viewRecover = `
+  const viewRecover = `
     
     <div class= 'whiteBackground '>    
    <div class= 'backgroundRegisterHead'>
@@ -19,8 +19,8 @@ export default () => {
     <p id = "error-message"></p><br>
     <a href='#/login' class="btn-backLogin">regresar a Login</a>
     </form>
-    `
-    const divElement = document.createElement('div')
-    divElement.innerHTML = viewRecover;
-    return divElement;
-}
+    `;
+  const divElement = document.createElement('div');
+  divElement.innerHTML = viewRecover;
+  return divElement;
+};

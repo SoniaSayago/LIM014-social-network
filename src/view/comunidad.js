@@ -3,6 +3,7 @@ import { addPost, getPosts } from '../controller/controller-firestore.js';
 import { itemPost } from './post.js';
 
 export default () => {
+    const userId = user().uid;
     const userObject = user();
     const defaultValue = {
         phone: 'Phone',
@@ -139,11 +140,11 @@ export default () => {
         const containerPost = divElement.querySelector('#container-post');
         getPosts((formPost) => {
             // console.log(formPost)
-            console.log(itemPost(formPost))
+            // console.log(itemPost(formPost))
             containerPost.innerHTML = '';
             formPost.forEach((objPost) => {
                 // itemPost(objPost)
-                if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userObject.uid === userObject.uid)) {
+                if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userId === userId)) {
                     containerPost.appendChild(itemPost(objPost));
                     //         containerPost.innerHTML = itemPost(objPost);
                 }

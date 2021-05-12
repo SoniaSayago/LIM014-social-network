@@ -42,7 +42,41 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-// ----- add post --------------------------------
-// const addPost = (UserId, Privacy, Publication, URLimg) => {}
-
-export { getDataUser, sendDataCurrentUser };
+// ------------------------UPDATE USER INFORMATION TO CLUD FIRESTORE -----------------------
+const updateCurrentUser = (userId, Username, Phone, Birthday, Country, Description) => {
+    const db = firebase.firestore();
+    return db.collection('Users').doc(userId).update({
+        username: Username,
+        phone: Phone,
+        birthday: Birthday,
+        country: Country,
+        description: Description,
+    });
+};
+// ----------------------------------- CREATE BD POST --------------------------------------
+const addPost = (UserId, Privacy, Publication, URLimg) => {
+    const db = firebase.firestore();
+    return db.collection('Post').add({
+        userId: UserId,
+        date: new Date().toLocaleString('es-ES'),
+        privacy: Privacy,
+        publication: Publication,
+        urlimg: URLimg,
+        likes: [],
+        planes: [],
+    });
+};
+// ------------------------------------- GET ALL BD POST -----------------------------------
+const getPosts = (callback) => {
+    const db = firebase.firestore();
+    db.collection('Post').orderBy('date', 'desc')
+        // console.log(querySnapshot);
+        .onSnapshot((querySnapshot) => {
+            const post = [];
+            querySnapshot.forEach((doc) => {
+                post.push({ id: doc.id, ...doc.data() });
+            });
+            callback(post);
+        });
+};
+export { getDataUser, sendDataCurrentUser, getPosts, addPost, updateCurrentUser };

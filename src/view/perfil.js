@@ -1,44 +1,19 @@
+import { signout, user } from '../controller/controller-auth.js';
 
-<<<<<<< HEAD
-export default (dataCurrentUser) => {
+export default () => {
+    // COD QUE PERMITE LAS VISTAS: VISTA DE REGISTRO
     const userObject = user();
     const viewPerfil = `
     <section class="profile-content">
     <div class="profile-information">
       <div class="cover-page">
-=======
-import { signout, user } from '../controller/controller-auth.js';
-
-export default () => {
-  // COD QUE PERMITE LAS VISTAS: VISTA DE REGISTRO
-  const userObject = user();
-  const viewPerfil = `
-    <section class="profile-content">
-    <div class="profile-information">
-      <div class="cover-page">
         <img class="cover-photo" src="${userObject.photoCover}">
->>>>>>> 9684ca8af86abe37d70f4e5a45e8c13d2f820755
       </div>
       <label id="select-cover" for="select-cover-photo">
         <input type="file" id="select-cover-photo" class="hide" accept="image/jpeg, image/png, image/gif">
         <span class="edit-cover"><i class="fas fa-camera edit-photo-btn"><span class="tooltiptext">Selecciona cover photo</span></i></span>
       </label>
       <div class="profile-photo">
-<<<<<<< HEAD
-        <img class="photo" src="${userObject.photoURL}">
-      </div>   
-  </div>
-  </section>`
-
-    // COD QUE PERMITE LAS VISTAS: VISTA DE REGISTRO
-    const divElement = document.createElement('div');
-    const userId = user().uid;
-    divElement.classList.add('profile-container');
-    divElement.innerHTML = viewPerfil;
-    document.getElementById('header').classList.remove('hide');
-}
-
-=======
         <img class="photo" src="${userObject.photo}">
       </div>
       <label id="select-profile" for="select-photo-profile">
@@ -99,11 +74,10 @@ export default () => {
       </form>
     </section>
   </div>`;
-  const divElement = document.createElement('div');
-  divElement.innerHTML = viewPerfil;
-  document.getElementById('header').classList.remove('hide');
+    const divElement = document.createElement('div');
+    divElement.innerHTML = viewPerfil;
+    document.getElementById('header').classList.remove('hide');
 };
->>>>>>> 9684ca8af86abe37d70f4e5a45e8c13d2f820755
 
 // PRUEBA COMENTADA
 // const logout = document.querySelector('#logout')

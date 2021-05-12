@@ -1,4 +1,5 @@
 import { signout, user } from "../controller/controller-auth.js";
+import { addPost, getPosts } from '../controller/controller-firestore.js';
 
 export default () => {
     const userObject = user();
@@ -104,6 +105,12 @@ export default () => {
         </table>
       </div>
     </aside> 
+    <section class="modal-progress hide">
+    <div class="progress">
+      <progress value="0" max="100" id="uploader">0%</progress>
+      <p id="messageProgress">0%</p>
+    </div>
+  </section>
     `;
     const divElement = document.createElement("div");
     divElement.innerHTML = viewComunidad;
@@ -122,5 +129,32 @@ export default () => {
             });
     });
 
+    const formPost = divElement.querySelector('#form-post');
+    formPost.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const textPost = divElement.querySelector('.text-newpost');
+        const privacy = divElement.querySelector('#privacy-option').value;
+        const modalProgress = divElement.querySelector('.modal-progress');
+        console.log(userObject.uid);
+        console.log(privacy);
+        addPost(userObject.uid, privacy, textPost.value, '')
+            .then(() => {
+
+                modalProgress.classList.remove('showModal');
+                formPost.reset();
+
+            });
+    });
+    const containerPost = divElement.querySelector('#container-post');
+    getPosts((formPost) => {
+        containerPost.innerHTML = formPost[1].publication;
+        formPost.forEach((obj) => {
+            console.log(obj);
+            // if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userObject.uid === userObject.uid)) {
+            // containerPost.appendChild((objPost));
+            // }
+        });
+        console.log(formPost)
+    });
     return divElement;
-};
+}

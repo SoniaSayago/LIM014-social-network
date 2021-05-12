@@ -1,7 +1,6 @@
 import { user } from '../controller/controller-auth.js';
 
 export const itemPost = (objPost) => {
-    console.log('postttttt');
     const userObject = user.uid;
     const userId = user();
     const postElement = document.createElement('div');
@@ -11,8 +10,8 @@ export const itemPost = (objPost) => {
       <div class="${(userObject !== objPost.userId) ? 'hide' : 'show menu'}">
       <i class="fas fa-ellipsis-v" "btn-menu-post"><i>
       <ul id= "menu-post-content" class="menu-post-content">
-        <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar><li>
-        <li id="delete-post" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
+        <li id="edit-post-${objPost.id}" class="edit-post"><i class="fas fa-edit select"></i>Editar><li>
+        <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
       </ul>
     </div>
     <img class='avatar-post' src='${userId.photoURL}'/>
@@ -27,9 +26,22 @@ export const itemPost = (objPost) => {
               <button type="button" class="btn-cancel-edit">Cancel</button>
             </div>
           </div>
+          <time class="time-post">${objPost.date}</time>
     </div>
+    <img id="post-img" class="post-img" src='${objPost.urlimg}'/>
+    <div class="like-comment-container">
+       <p class="count-like" 
+        <span class = "tooltiptext"><i class="far fa-heart"></i> ${objPost.likes.length} </span>
+      </p>
+      <p id = "count-comment" class="count-comment"></p>     
+      <hr>
+      <button type="button" id="btn-like" class="btn-like-plane ${(objPost.likes.indexOf(userId) === -1) ? 'inactive-reaction' : 'active-reaction'}"><i class="far fa-heart"></i>Like </button>
+      <button type="button" id="btn-comment" class="btn-comment"><i class="fa fa-comment"></i>Comment </button>
+    </div>
+
   </div>
   `;
     document.getElementById('header').classList.remove('hide');
     return postElement;
+    s
 }

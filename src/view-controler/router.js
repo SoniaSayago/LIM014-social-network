@@ -1,11 +1,9 @@
 import { components } from '../view/index.js';
-console.log('components: ', components.login());
+// console.log('components: ', components.login());
 
 export const changeTmp = (hash) => {
-  console.log('hash: ', hash);
+  // console.log('hash: ', hash);
   const id = hash.split('/')[1];
-  console.log('id: ', id);
-  
   const sectionMain = document.getElementById('container');
   sectionMain.innerHTML = '';
 
@@ -18,7 +16,7 @@ export const changeTmp = (hash) => {
     case '#/comunidad':
     case '#/register':
     case '#/perfil':
-      { return sectionMain.appendChild(components[id]()); }
+    { return sectionMain.appendChild(components[id]()); }
     default:
       return sectionMain.appendChild(components.different());
   }

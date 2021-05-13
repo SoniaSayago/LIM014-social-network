@@ -20,3 +20,13 @@
         cursor: pointer;
         margin-right: 1rem;
     }
+
+    .fa {
+        color:#fafafa;
+    }
+
+    .far:hover {
+        color: #FC5484;
+    }
+
+    

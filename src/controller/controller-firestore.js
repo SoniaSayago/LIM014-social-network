@@ -27,11 +27,10 @@ const sendDataCurrentUser = (user) => {
 // ------------------------GET USER INFORMATION TO CLUD FIRESTORE --------------------------
 const getDataUser = (userId) => {
   const db = firebase.firestore();
-  const resp = db.collection('users').doc(userId).get();
   // .then(res => {
   //   console.log(res);
   // });
-  return resp;
+  return db.collection('users').doc(userId).get();
 };
 
 // -------------------------------AQUI COMANDOS DE FIREBASE CLOUD-------------------// Firebase configuration inicial
@@ -62,6 +61,7 @@ const updateCurrentUser = (userId, Username, Phone, Birthday, Country, Descripti
 // ----------------------------------- CREATE BD POST --------------------------------------
 const addPost = (UserId, Privacy, Publication, URLimg) => {
   const db = firebase.firestore();
+  console.log('possstt')
   return db.collection('Post').add({
     userId: UserId,
     date: new Date().toLocaleString('es-ES'),
@@ -73,6 +73,7 @@ const addPost = (UserId, Privacy, Publication, URLimg) => {
   });
 };
 // ------------------------------------- GET ALL BD POST -----------------------------------
+
 const getPosts = (callback) => {
   const db = firebase.firestore();
   db.collection('Post').orderBy('date', 'desc')

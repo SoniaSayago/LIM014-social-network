@@ -132,6 +132,7 @@ export default () => {
     const textPost = divElement.querySelector('.text-newpost');
     const privacy = divElement.querySelector('#privacy-option').value;
     const modalProgress = divElement.querySelector('.modal-progress');
+    console.log('holaa')
     // ************************ Send Post BD **********************************
     addPost(userObject.uid, privacy, textPost.value, userObject.photoURL)
       .then(() => {
@@ -141,9 +142,9 @@ export default () => {
   });
   // ************************** View Post **********************************
   const containerAllPost = divElement.querySelector('#container-allPost');
-  getPosts((formPost) => {
+  getPosts((post) => {
     containerAllPost.innerHTML = '';
-    formPost.forEach((objPost) => {
+    post.forEach((objPost) => {
       if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userId === userId)) {
         containerAllPost.appendChild(itemPost(objPost));
       }

@@ -1,4 +1,5 @@
 import { user } from '../controller/controller-auth.js';
+import { getDataUser } from '../controller/controller-firestore.js';
 
 export const itemPost = (objPost) => {
   const userObject = user.uid;
@@ -14,8 +15,8 @@ export const itemPost = (objPost) => {
     <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
     </ul>
   </div>
-  <img class='avatar-post' src='${userId.photoURL}'/>
-  <p class='name'>${userId.displayName}</p>
+  <img class='avatar-post' src=''/>
+  <p class='userName'></p>
   </div>
   <div class="content-post">
       <p class="text-post">${objPost.publication}</p>
@@ -42,5 +43,15 @@ export const itemPost = (objPost) => {
   </div>
   `;
   document.getElementById('header').classList.remove('hide');
+
+  getDataUser(objPost.userId)
+    .then((doc) => {
+      const avatarPost = postElement.querySelector('#avatar-post');
+      const namePost = postElement.querySelector('#userName');
+      console.log(avatarPost.src);
+      avatarPost.src = doc.data().photo;
+      namePost.textContent = doc.data().username;
+    });
+
   return postElement;
 };

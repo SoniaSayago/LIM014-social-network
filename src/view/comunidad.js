@@ -65,7 +65,6 @@ export default () => {
       </form>
     </div>
     </div>
-    <section id='container-post'></section>
     <section id='container-allPost'></section>
   </main>
 
@@ -134,7 +133,7 @@ export default () => {
     const privacy = divElement.querySelector('#privacy-option').value;
     const modalProgress = divElement.querySelector('.modal-progress');
     // ************************ Send Post BD **********************************
-    addPost(userObject.uid, privacy, textPost.value, '')
+    addPost(userObject.uid, privacy, textPost.value, userObject.photoURL)
       .then(() => {
         modalProgress.classList.remove('showModal');
         formPost.reset();

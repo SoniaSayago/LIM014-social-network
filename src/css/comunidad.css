@@ -204,8 +204,10 @@ select {
 .btn-post:hover,
 .btn-comment:hover,
 .btn-comment-active {
-    background-color: #FC5484;
-    color: #FC5484;
+    /* background-color: #FC5484; */
+    /* background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1; */
+    /* color: #FC5484; */
+    background: linear-gradient(180deg, #FC5484 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
 }
 
 .mainpost {
@@ -613,4 +615,8 @@ select {
 
 .tooltiptext .plane {
     color: rgba(204, 86, 131, 0.7);
+}
+
+.far {
+    color:#fafafa;
 }

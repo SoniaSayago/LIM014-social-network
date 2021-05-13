@@ -1,3 +1,5 @@
+// import { user } from "./controller-auth";
+
 // ------------------------SEND USER INFORMATION TO CLUD FIRESTORE --------------------------
 const sendDataCurrentUser = (user) => {
   const db = firebase.firestore();
@@ -25,10 +27,14 @@ const sendDataCurrentUser = (user) => {
 // ------------------------GET USER INFORMATION TO CLUD FIRESTORE --------------------------
 const getDataUser = (userId) => {
   const db = firebase.firestore();
-  return db.collection('users').doc(userId).get();
+  const resp = db.collection('users').doc(userId).get();
+  // .then(res => {
+  //   console.log(res);
+  // });
+  return resp;
 };
 
-// ------------------------------------AQUI COMANDOS DE FIREBASE CLOUD----------------------------------------// Firebase configuration inicial
+// -------------------------------AQUI COMANDOS DE FIREBASE CLOUD-------------------// Firebase configuration inicial
 const firebaseConfig = {
   apiKey: 'AIzaSyAZMA3X4IF0Nr4ihwheiEDVhaKPDYzjbrU',
   authDomain: 'socialnetwork-c9540.firebaseapp.com',
@@ -78,8 +84,7 @@ const getPosts = (callback) => {
       callback(post);
     });
 };
-export
-{
+export {
   getDataUser,
   sendDataCurrentUser,
   getPosts,

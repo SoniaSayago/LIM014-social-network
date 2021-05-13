@@ -46,9 +46,8 @@ export const itemPost = (objPost) => {
 
   getDataUser(objPost.userId)
     .then((doc) => {
-      const avatarPost = postElement.querySelector('#avatar-post');
-      const namePost = postElement.querySelector('#userName');
-      console.log(avatarPost.src);
+      const avatarPost = postElement.querySelector('.avatar-post');
+      const namePost = postElement.querySelector('.userName');
       avatarPost.src = doc.data().photo;
       namePost.textContent = doc.data().username;
     });

@@ -23,7 +23,7 @@
 
 aside>div,
 main>div,
-.allpost {
+.mainpost {
     background-color: white;
     color: #222222;
     margin: 0 0 1rem 0;
@@ -236,7 +236,9 @@ select {
     cursor: pointer;
 }
 
-.btn-menu-post:hover,
+
+/* .btn-menu-post:hover, */
+
 .btn-menu-post:focus,
 .btn-menu-comment:hover,
 .btn-menu-comment:focus {
@@ -618,5 +620,5 @@ select {
 }
 
 .far {
-    color:#fafafa;
+    color: #fafafa;
 }

@@ -1,0 +1,29 @@
+    /* .user,
+    .user-post {
+        display: flex;
+    }
+    
+    .content-newpost textarea:focus,
+    .edit-text-post textarea:focus,
+    .edit-comment-text-btns textarea:focus {
+        border-color: #C4C4C4;
+        background: white;
+    }
+    
+    .buttons-bar {
+        position: relative;
+        padding: 1rem 0.5rem 0.5rem 0.5rem;
+    }
+    
+    .buttons-bar .fa-file-image {
+        font-size: 1.35rem;
+        cursor: pointer;
+        margin-right: 1rem;
+    } */
+    /* .fa {
+        color: #fafafa;
+    } */
+    /* .far:hover {
+        color: #FC5484;
+    } */
+    /* .fas fa-ellipsis-v btn-menu-post {} */

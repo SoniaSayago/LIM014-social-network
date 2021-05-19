@@ -144,6 +144,7 @@ export default () => {
     getPosts((post) => {
         containerAllPost.innerHTML = '';
         post.forEach((objPost) => {
+            console.log(objPost);
             if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userId === userId)) {
                 containerAllPost.appendChild(itemPost(objPost));
             }

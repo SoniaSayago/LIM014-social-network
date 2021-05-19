@@ -1,7 +1,13 @@
 /* eslint-disable indent */
 import { user } from '../controller/controller-auth.js';
-import { deletePost, updatePost, updatePrivacy, addComment,
-  getDataUser, updateLikes } from '../controller/controller-firestore.js';
+import {
+    deletePost,
+    updatePost,
+    updatePrivacy,
+    addComment,
+    getDataUser,
+    updateLikes
+} from '../controller/controller-firestore.js';
 
 export const itemPost = (objPost) => {
     const userObject = user().uid;
@@ -132,6 +138,7 @@ export const itemPost = (objPost) => {
     // actualizar likes
     const likes = postElement.querySelector('#btn-like');
     likes.addEventListener('click', () => {
+
           const result = objPost.likes.indexOf(userObject);
           if (result === -1){
             const testLike = objPost.likes.push(userObject);
@@ -149,25 +156,26 @@ export const itemPost = (objPost) => {
           // eliminar elemento
           //splice para dislike
 
+
     });
 
     /* ------------Mostrar y ocultar comentario ------------------*/
     postElement.querySelector('#btn-comment').addEventListener('click', () => {
-      postElement.querySelector('#btn-comment').classList.toggle('btn-comment-active');
-      postElement.querySelector('#container-comment').classList.toggle('hide');
+        postElement.querySelector('#btn-comment').classList.toggle('btn-comment-active');
+        postElement.querySelector('#container-comment').classList.toggle('hide');
     });
 
-  /* ---------------------- ADD POST (CLOUD FIRESTORE Post)------------------*/
+    /* ---------------------- ADD POST (CLOUD FIRESTORE Post)------------------*/
     const formComment = postElement.querySelector('.formComment');
     formComment.addEventListener('submit', (e) => {
-      const comment = postElement.querySelector('.comment').value;
-      e.preventDefault();
-      addComment(user().uid, objPost.id, comment)
-        .then(() => {
-          formComment.reset();
-        });
+        const comment = postElement.querySelector('.comment').value;
+        e.preventDefault();
+        addComment(user().uid, objPost.id, comment)
+            .then(() => {
+                formComment.reset();
+            });
     });
-  /* ----------------------  (CONTENEDOR DE COMENTARIOS)------------------*/
+    /* ----------------------  (CONTENEDOR DE COMENTARIOS)------------------*/
     // const containerAllComment = postElement.querySelector('#container-AllComment');
     // const counterComment = postElement.querySelector('#count-comment');
     // getComment(objPost.id, (comment) => {

@@ -2,23 +2,23 @@
 
 .container-home {
     background-color: #eeeeee;
-    /* width: 100%;
-    padding: 2rem;
+    width: 100%;
+    /* padding: 2rem;
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: "profile home aside"; */
+    grid-template-areas: "profile home aside"; */ 
     position: relative;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
-    width: 100%;
     margin: 5px 10px;
 }
 
 .container-home p {
     margin: 0.5rem 0.5rem;
+    font-weight: bold;
 }
 
 aside>div,
@@ -56,7 +56,7 @@ p.logo-aside img {
 }
 
 .profile-section h2 {
-    font-size: 1.2rem;
+    font-size: 16px;
     text-align: center;
     color: #222222;
 }
@@ -233,7 +233,7 @@ select {
     color: #FC5484;
     font-size: 1rem;
     border: none;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 

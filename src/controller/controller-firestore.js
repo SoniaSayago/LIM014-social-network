@@ -73,7 +73,7 @@ const addPost = (UserId, Privacy, Publication, URLimg) => {
     const db = firebase.firestore();
     return db.collection('Post').add({
         userId: UserId,
-        date: new Date().toLocaleString('es-ES'),
+        date: new Date().toLocaleString('en-ES'),
         privacy: Privacy,
         publication: Publication,
         urlimg: URLimg,
@@ -85,8 +85,7 @@ const addPost = (UserId, Privacy, Publication, URLimg) => {
 
 const getPosts = (callback) => {
     const db = firebase.firestore();
-    db.collection('Post')
-        .orderBy('date', 'desc')
+    db.collection('Post').orderBy('date', 'desc')
         .onSnapshot((querySnapshot) => {
             const post = [];
             querySnapshot.forEach((doc) => {
@@ -96,7 +95,31 @@ const getPosts = (callback) => {
         });
 };
 
-//  editar Post ---
+// ------ BASE DE DATOS CLOUD DE COMENTARIO---------
+
+export const addComment = (UserId, idPost, Comment) => {
+    const db = firebase.firestore();
+    return db.collection('Post').doc(idPost).collection('comment').add({
+        userId: UserId,
+        date: new Date().toLocaleString('es-ES'),
+        comment: Comment,
+    });
+};
+
+// -------------------------- GET ALL BD COMMENT ------------------
+const getComment = (idPost, callback) => {
+    const db = firebase.firestore();
+    db.collection(`Post/${idPost}/comment`).orderBy('date', 'desc')
+        .onSnapshot((querySnapshot) => {
+            const comment = [];
+            querySnapshot.forEach((doc) => {
+                comment.push({ id: doc.id, ...doc.data() });
+            });
+            callback(comment);
+        });
+};
+
+// ------------- -- actualizar Post ---------
 const updatePost = (idPost, updatePublication) => {
     const db = firebase.firestore();
     return db.collection('Post').doc(idPost).update({
@@ -104,25 +127,53 @@ const updatePost = (idPost, updatePublication) => {
     });
 };
 
-// eliminar Post
+// ---------------actualizar  privacidad----------------------
+const updatePrivacy = (id, privacy) => {
+    const db = firebase.firestore();
+    return db.collection('Post').doc(id).update({ privacy });
+};
+// ---------------- actualizar likes -------------------------
+const updateLikes = (id, likes) => {
+    const db = firebase.firestore();
+    return db.collection('Post').doc(id).update({ likes });
+};
+
+// --------------- actualizar foto de perfil -------------------------
+const updatePhotoProfile = (userId, photo) => {
+    const db = firebase.firestore();
+    return db.collection('users').doc(userId).update({ photo });
+};
+
+// ------------------- actualizar foto de portada -----------------
+const updatePhotoCover = (userId, photoCover) => {
+    const db = firebase.firestore();
+    return db.collection('users').doc(userId).update({ photoCover });
+};
+
+// ----------------- UPDATE COMMENT ----------------------
+const updateComment = (idPost, idComment, comment) => {
+    const db = firebase.firestore();
+    return db.collection(`Post/${idPost}/comment`).doc(idComment).update({ comment });
+};
+
+// --------------------- ELIMINAR POST -----------------
 const deletePost = (idPost) => {
     const db = firebase.firestore();
     return db.collection('Post').doc(idPost).delete();
 };
-// update privacidad
-const updatePrivacy = (idPost, privacy) => {
+
+// --------------------- ELIMINAR COMMENT ----------------
+const deleteComment = (idPost, idComment) => {
     const db = firebase.firestore();
-    return db.collection('Post').doc(idPost).update({ privacy });
+    return db.collection(`Post/${idPost}/comment`).doc(idComment).delete();
 };
-// // actualizar likes
-// const updateLikes = (idPost, likes) => {
-//     // console.log(id);
-//     const db = firebase.firestore();
-//     return db.collection('Post').doc(idPost).update({ likes });
-//     console.log(userId);
-// };
 
 export {
+    deleteComment,
+    updatePhotoProfile,
+    updateComment,
+    getComment,
+    updatePhotoCover,
     deletePost,
     updatePost,
     getDataUser,
@@ -131,5 +182,5 @@ export {
     addPost,
     updateCurrentUser,
     updatePrivacy,
-    // updateLikes,
+    updateLikes,
 };

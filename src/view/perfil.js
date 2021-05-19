@@ -19,9 +19,7 @@ export default () => {
     <section class="profile-content">
     <div class="profile-information">
       <div class="cover-page">
-        <img class="cover-photo" src="${
-  userObject.photoCover || defaultValue.photoCover
-}">
+        <img class="cover-photo" src="${userObject.photoCover || defaultValue.photoCover}">
       </div>
       <label id="select-cover" for="select-cover-photo">
         <input type="file" id="select-cover-photo" class="hide" accept="image/jpeg, image/png, image/gif">
@@ -89,8 +87,8 @@ export default () => {
       </form>
     </section>
   </div>`;
-    const divElement = document.createElement('div');
-    divElement.innerHTML = viewPerfil;
+    // const divElement = document.createElement('div');
+    // divElement.innerHTML = viewPerfil;
     document.getElementById('header').classList.remove('hide');
 
     return viewPerfil;

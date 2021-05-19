@@ -1,3 +1,4 @@
+
 # Creando una Red Social: "Izychoice"
 
 
@@ -83,8 +84,3 @@ A continuación presentamos un layout (diseño) de la vista mobile y desktop de 
     
 ## 5. 📈Test de usabilidad
 Gracias al Feedback recibido por parte de nuestros usuarios, compañeras y coaches, pudimos iterar varias veces antes de llegar a nuestra versión final. Tomándose en cuenta principalmente:
-
-* En la sección de **Perfil*, se diseñaron la fotos de perfil y portada del usuario similares a Facebook, para que los usuarios se sientan familiarizados con nuestra red social.
-* Se implementó un botón *Scroll up* tanto en la sección de **Comunidad** como **Perfil** para que el usuario pueda desplazarse rápidamente hacia la parte superior de la página luego de revisar las diversas publicaciones.
-* Se colocaron iconos de cada sección en la barra de navegación de las pestañas de **Comunidad** y **Perfil** para que el usuario pueda distinguir rápidamente cada sección y que sea intuitiva.
-* Se cambia la barra de navegación para la parte superior, ya que era mucho mejor en términos de las vistas responsive & además porque se parece mucho más a Facebook.

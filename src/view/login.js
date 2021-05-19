@@ -8,6 +8,7 @@ import {
   getDataUser,
 } from '../controller/controller-firestore.js';
 
+// FUNCIÓN QUE AYUDA AL USUARIO RECURRENTE LOGEARSE CON SU CORREO REGISTRADO
 const submitForm = (signInForm, divElement) => {
   signInForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -98,8 +99,6 @@ export default () => {
   const btnGoogle = divElement.querySelector('#btn-google');
   btnGoogle.addEventListener('click', () => {
     signInWithGoogle().then((response) => {
-      // console.log(response);
-      // console.log(response.user.displayName);
       getDataUser(response.user.uid).then((doc) => {
         if (doc.exists) {
           window.location.hash = '#/comunidad';
@@ -116,21 +115,16 @@ export default () => {
   const btnFacebook = divElement.querySelector('#btn-facebook');
   btnFacebook.addEventListener('click', () => {
     signInWithFacebook().then((response) => {
-      // console.log(response);
-      // console.log(response.user.displayName);
       getDataUser(response.user.uid).then((doc) => {
         if (doc.exists) {
           window.location.hash = '#/comunidad';
         } else {
           sendDataCurrentUser(response.user).then(() => {
-            // if (doc.exists) {
             window.location.hash = '#/comunidad';
             // }
           });
         }
       });
-      // console.log('fb');
-      // window.location.hash = '#/comunidad';
     });
   });
   return divElement;

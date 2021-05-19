@@ -27,3 +27,13 @@
         color: #FC5484;
     } */
     /* .fas fa-ellipsis-v btn-menu-post {} */
+
+    /* .container-like-comment .like-comment-container {
+        justify-content: space-between;
+    } */
+    .dataUserPost{
+        justify-content: center;
+        flex: wrap;
+        width:100%
+    }
+ 

@@ -55,7 +55,7 @@ export default () => {
       <div class='buttons-bar'>
         <label for='upload-img'>
         <input type='file' accept='image/jpeg, image/png, image/gif' id='upload-img' class='upload-img'>
-        <i class='far fa-file-image'><span class='tooltiptext'>Upload an image</span></i>
+        <i class='far fa-file-image'><span class='tooltiptext'>Carga una imagen</span></i>
         </label>
         <select class='fa' id='privacy-option'>
         <option class='fa' value='public' title = 'Public'>&#xf57d; </option>

@@ -47,8 +47,7 @@ export default () => {
   const signupForm = divElement.querySelector('#registerForm');
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault(); // cancela el evento de reinicio del formulario
-    // const name = divElement.querySelector('#name').value; // .value porque son inputs
-    const email = divElement.querySelector('#email').value;
+    const email = divElement.querySelector('#email').value; // .value porque son inputs
     const password = divElement.querySelector('#password').value;
     const error = divElement.querySelector('#error-message');
     // FUNCIÓN QUE PERMITE AUTENTIFICAR USUARIO NUEVO CON EMAIL
@@ -78,7 +77,6 @@ export default () => {
         setTimeout(() => {
           error.textContent = ' ';
         }, 4000);
-        // console.log(err.message)
       });
   });
   return divElement;

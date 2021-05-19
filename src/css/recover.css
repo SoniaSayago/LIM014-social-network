@@ -71,6 +71,7 @@ button.btn-recoverPass {
 
 .fa, .fas   {
     font-weight: 950;
+    width: 50px;
 }
 
 .div-input input, i.fas {

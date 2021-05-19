@@ -377,18 +377,18 @@ textarea {
     }
     .imageHome {
         position: relative;
-        bottom: 70px;
+        bottom: 10px;
         left: 100px;
         width: 380px;
     }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1920px) {
     .imageHome {
         position: relative;
         margin-top: 100px;
         margin-left: 100px;
-        width: 400px;
+        width: 600px;
     }
     .textHomeH3 {
         font-family: 'Montserrat', sans-serif;
@@ -407,5 +407,8 @@ textarea {
         margin-left: 80px;
         width: 600px;
         /* margin: 0px 50px; */
+    }
+    .squareLogin {
+        width: 380px;
     }
 }

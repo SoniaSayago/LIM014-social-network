@@ -10,3 +10,12 @@ const init = () => {
 
 // función que muestra la vista al momento de recargar
 window.addEventListener('load', init);
+
+// export const checkSesionActive = changeTmp => firebase.auth().onAuthStateChanged((user) => {
+//     let route = '';
+//     if (window.location.hash === '#/Login') route = '#/Login';
+//     if (user) {
+//       route = window.location.hash;
+//     }
+//     return ChangeView(route);
+// }

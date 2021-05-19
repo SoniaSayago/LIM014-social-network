@@ -65,6 +65,8 @@ button.btn-recoverPass {
 
 .fa, .far, i.fas {
     font-family: 'Font Awesome 5 Free';
+    color: #acacac;
+    font-size: 16px;
 }
 
 .fa, .fas   {

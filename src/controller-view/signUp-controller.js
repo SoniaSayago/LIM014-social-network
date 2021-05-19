@@ -1,4 +1,4 @@
-// ---------------------------------------------AQUI COD DE COMANDOS DE INICIO DE SEIÓN, SING UP // CREAR USUARIOS ---------------------------------------
+// -----------------AQUI COD DE COMANDOS DE INICIO DE SESIÓN, SING UP // CREAR USUARIOS----------------------
 
 import { createUser, sendEmail } from '../controller/controller-auth.js';
 

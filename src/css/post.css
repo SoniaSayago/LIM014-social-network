@@ -20,9 +20,9 @@
         cursor: pointer;
         margin-right: 1rem;
     } */
-    /* .fa {
-        color: #fafafa;
-    } */
+    .fa {
+        width: 50px;
+    }
     /* .far:hover {
         color: #FC5484;
     } */

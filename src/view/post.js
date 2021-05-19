@@ -27,21 +27,26 @@ export const itemPost = (objPost) => {
             <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
           </ul>
         </div>
-        <img class='avatar-post' src=''/>
-        <p class='username'>
+        <div class= "dataUserPost">
+        <div class=" dataImgUsername">
+          <img class='avatar-post' src=''/>
           <span class = "username"></span>
+        </div>
+        <p class='username hide'>
+          
           <span class = "tooltiptext">
             <img class="tooltipimg" src=""/>
             <strong class="nametooltip"></strong> <br>
             <i class="fas fa-birthday-cake"></i> &nbsp <span id="birthdayTooltip"></span><br>
             <i class="fas fa-map-marker-alt"></i> &nbsp <span id="countryTooltip"></span>
           </span>
-        </p>
+        </p> </br>
         <select id="privacy-option" class='${(userObject === objPost.userId) ? 'show fa' : 'hide'}'>
           <option class='fa' value='public' ${(objPost.privacy === 'public') ? 'selected' : ''} title = 'Public'>&#xf57d; </option>
           <option class='fa' value='private' ${(objPost.privacy === 'private') ? 'selected' : ''} title = 'Private'>&#xf023; </option>
         </select>
         <time class="time-post">${objPost.date}</time>
+        </div>
       </div>
 
     <div class="content-post">
@@ -60,9 +65,13 @@ export const itemPost = (objPost) => {
       </p>
       <p id = "count-comment" class="${(reactionLength === 0) ? 'count-comment' : 'count-comment-right'}"></p>  
       <hr>
-      <button type="button" id="btn-like" class="btn-like-plane }"><i class="far fa-heart"></i>Me gusta</button>
-      <button type="button" id="btn-comment" class="btn-comment"><i class="fa fa-comment"></i>Comentar</button>
+
     </div>
+    <div class="container-like-comment">
+    <button type="button" id="btn-like" class="btn-like-plane }"><i class="far fa-heart"></i>Me gusta</button>
+    <button type="button" id="btn-comment" class="btn-comment"><i class="fa fa-comment"></i>Comentar</button>
+    </div>
+
     <section id ="container-comment" class="hide">
       <form class="div-comment formComment">
         <textarea class="comment" placeholder="¿Qué quieres comentar hoy?" required></textarea>
@@ -113,6 +122,9 @@ export const itemPost = (objPost) => {
     });
     // cancelar editar post
     btnCancelEdit.addEventListener('click', () => {
+      btnSaveEdit.addEventListener('click', () => {
+        updatePost(objPost.id, editPublication.value);
+    });
         postElement.querySelector('.edit-text-post').classList.remove('hide');
         postElement.querySelector('.text-post').classList.add('hide');
         editPublication.value = objPost.publication;

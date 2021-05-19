@@ -20,10 +20,20 @@
         cursor: pointer;
         margin-right: 1rem;
     } */
-    /* .fa {
-        color: #fafafa;
-    } */
+    .fa {
+        width: 50px;
+    }
     /* .far:hover {
         color: #FC5484;
     } */
     /* .fas fa-ellipsis-v btn-menu-post {} */
+
+    /* .container-like-comment .like-comment-container {
+        justify-content: space-between;
+    } */
+    .dataUserPost{
+        justify-content: center;
+        flex: wrap;
+        width:100%
+    }
+ 

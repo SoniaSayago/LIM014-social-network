@@ -114,12 +114,13 @@ const updatePrivacy = (idPost, privacy) => {
     const db = firebase.firestore();
     return db.collection('Post').doc(idPost).update({ privacy });
 };
-// actualizar likes
-const updateLikes = (idPost, likes) => {
-    console.log(idPost);
-    const db = firebase.firestore();
-    return db.collection('Post').doc(idPost).update({ likes });
-};
+// // actualizar likes
+// const updateLikes = (idPost, likes) => {
+//     // console.log(id);
+//     const db = firebase.firestore();
+//     return db.collection('Post').doc(idPost).update({ likes });
+//     console.log(userId);
+// };
 
 export {
     deletePost,
@@ -130,5 +131,5 @@ export {
     addPost,
     updateCurrentUser,
     updatePrivacy,
-    updateLikes,
+    // updateLikes,
 };

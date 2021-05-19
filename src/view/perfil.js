@@ -39,12 +39,16 @@ export default () => {
         <h2 class="user-name">${userObject.displayName}</h2>
         <h3>Acerca de mi</h3>
         <div class="container-grid">
-          <div><i class="fas fa-graduation-cap"></i></i><span>${userObject.carrera || defaultValue.carrera}</span></div>
-          <div><i class="fas fa-envelope"></i><span>${userObject.email || defaultValue.email}</span></div>
-          <div><i class="fas fa-birthday-cake"></i><span>${userObject.birthday || defaultValue.birthday}</span></div>
-          <div><i class="fas fa-mobile-alt"></i><span>${userObject.phone || defaultValue.phone}</span></div>
-          <div><i class="fas fa-map-marker-alt"></i><span>${userObject.country || defaultValue.country}</span></div>
-          <div class="item6"><i class="far fa-id-badge"></i><span>${defaultValue.description}</span></div>
+        
+          <div class="container-grid-item"><i class="fas fa-graduation-cap"></i></i><span>${userObject.carrera || defaultValue.carrera}</span></div>
+          <div class="container-grid-item"><i class="fas fa-envelope"></i><span>${userObject.email || defaultValue.email}</span></div>
+          <div class="container-grid-item"><i class="fas fa-birthday-cake"></i><span>${userObject.birthday || defaultValue.birthday}</span></div>
+         
+          
+          <div class="container-grid-item"><i class="fas fa-mobile-alt"></i><span>${userObject.phone || defaultValue.phone}</span></div>
+          <div class="container-grid-item"><i class="fas fa-map-marker-alt"></i><span>${userObject.country || defaultValue.country}</span></div>
+          <div class="container-grid-item"><i class="far fa-id-badge"></i><span>${defaultValue.description}</span></div>
+         
         </div>
       </div>
     </div>

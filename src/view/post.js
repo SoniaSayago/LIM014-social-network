@@ -5,7 +5,7 @@ import {
     deletePost,
     updatePost,
     updatePrivacy,
-    updateLikes,
+
 } from '../controller/controller-firestore.js';
 
 export const itemPost = (objPost) => {
@@ -17,10 +17,10 @@ export const itemPost = (objPost) => {
   <div class= 'mainpost'>
     <div class='user-post'>
         <div class="${userObject !== objPost.userId ? 'hide' : 'show menu-post'}">
-        <i class="fas fa-ellipsis-v btn-menu-post"><i>
+        <i class="fas fa-ellipsis-v btn-menu-post">
         <ul id="menu-post-content" class="menu-post-content">
-          <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar><li>
-          <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
+          <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar></li>
+          <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar></li>
         </ul>
         </div>
       <img class='avatar-post' src=''/>

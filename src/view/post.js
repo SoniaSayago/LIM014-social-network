@@ -4,8 +4,11 @@ import { deletePost, updatePost, updatePrivacy, addComment,
   getDataUser, updateLikes } from '../controller/controller-firestore.js';
 
 export const itemPost = (objPost) => {
-    const userObject = user.uid;
-    const reactionCounter = objPost.likes.length;
+    const userObject = user().uid;
+    console.log(userObject)
+    let reactionCounter = objPost.likes;
+    let reactionLength = objPost.likes.length;
+
     const postElement = document.createElement('div');
     postElement.classList.add('allpost');
     postElement.innerHTML = `
@@ -46,12 +49,12 @@ export const itemPost = (objPost) => {
     </div>
     <img id="post-img" class="post-img" src='${objPost.urlimg}'/>
     <div class="like-comment-container">
-      <p class="${(reactionCounter === 0) ? 'hide' : 'count-like'}" > ${reactionCounter} reactions
-        <span class = "tooltiptext"><i class="far fa-heart"></i> ${objPost.likes.length} </span>
+      <p class="resultLike ${(reactionLength === [] || reactionLength === 0) ? 'hide' : 'count-like'}" > ${reactionLength} reactions
+        <span class = "tooltiptext"><i class="far fa-heart"></i> ${reactionLength}  </span>
       </p>
-      <p id = "count-comment" class="${(reactionCounter === 0) ? 'count-comment' : 'count-comment-right'}"></p>  
+      <p id = "count-comment" class="${(reactionLength === 0) ? 'count-comment' : 'count-comment-right'}"></p>  
       <hr>
-      <button type="button" id="btn-like" class="btn-like-plane ${(objPost.likes.indexOf(userObject) === -1) ? 'inactive-reaction' : 'active-reaction'}"><i class="far fa-heart"></i>Me gusta</button>
+      <button type="button" id="btn-like" class="btn-like-plane }"><i class="far fa-heart"></i>Me gusta</button>
       <button type="button" id="btn-comment" class="btn-comment"><i class="fa fa-comment"></i>Comentar</button>
     </div>
     <section id ="container-comment" class="hide">
@@ -129,17 +132,23 @@ export const itemPost = (objPost) => {
     // actualizar likes
     const likes = postElement.querySelector('#btn-like');
     likes.addEventListener('click', () => {
-        const result = objPost.likes.indexOf(userObject);
-        if (result === -1) {
-            objPost.likes.push(userObject);
-            console.log(objPost.id);
-            console.log(objPost.likes);
-            // updateLikes(objPost.id, objPost.likes);
-            updateLikes(objPost.id, 5);
-        } else {
-          objPost.likes.splice(result, 1);
-          // updateLikes(objPost.id, objPost.likes);
-        }
+          const result = objPost.likes.indexOf(userObject);
+          if (result === -1){
+            const testLike = objPost.likes.push(userObject);
+          } else {
+            objPost.likes.splice(result, 1);
+          }
+          // validar que no se encuentre el user().uid
+          // caso cuando no exita: 
+          // const testLike = objPost.likes.push(user().uid);
+          // existe: eliminar elemento
+          // console.log(testLike)
+          
+          updateLikes(objPost.id, objPost.likes);
+          // comparar que el usuario no se repita(buscar que user(),id no este dentro del array)
+          // eliminar elemento
+          //splice para dislike
+
     });
 
     /* ------------Mostrar y ocultar comentario ------------------*/

@@ -73,7 +73,7 @@ const addPost = (UserId, Privacy, Publication, URLimg) => {
     const db = firebase.firestore();
     return db.collection('Post').add({
         userId: UserId,
-        date: new Date().toLocaleString('es-ES'),
+        date: new Date().toLocaleString('en-ES'),
         privacy: Privacy,
         publication: Publication,
         urlimg: URLimg,

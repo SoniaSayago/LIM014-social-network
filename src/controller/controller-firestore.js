@@ -73,7 +73,7 @@ const addPost = (UserId, Privacy, Publication, URLimg) => {
     const db = firebase.firestore();
     return db.collection('Post').add({
         userId: UserId,
-        date: new Date().toLocaleString('es-ES'),
+        date: new Date().toLocaleString('en-ES'),
         privacy: Privacy,
         publication: Publication,
         urlimg: URLimg,
@@ -100,9 +100,9 @@ const getPosts = (callback) => {
 export const addComment = (UserId, idPost, Comment) => {
     const db = firebase.firestore();
     return db.collection('Post').doc(idPost).collection('comment').add({
-      userId: UserId,
-      date: new Date().toLocaleString('es-ES'),
-      comment: Comment,
+        userId: UserId,
+        date: new Date().toLocaleString('es-ES'),
+        comment: Comment,
     });
 };
 
@@ -110,13 +110,13 @@ export const addComment = (UserId, idPost, Comment) => {
 const getComment = (idPost, callback) => {
     const db = firebase.firestore();
     db.collection(`Post/${idPost}/comment`).orderBy('date', 'desc')
-      .onSnapshot((querySnapshot) => {
-        const comment = [];
-        querySnapshot.forEach((doc) => {
-          comment.push({ id: doc.id, ...doc.data() });
+        .onSnapshot((querySnapshot) => {
+            const comment = [];
+            querySnapshot.forEach((doc) => {
+                comment.push({ id: doc.id, ...doc.data() });
+            });
+            callback(comment);
         });
-        callback(comment);
-      });
 };
 
 // ------------- -- actualizar Post ---------
@@ -154,7 +154,7 @@ const updatePhotoCover = (userId, photoCover) => {
 const updateComment = (idPost, idComment, comment) => {
     const db = firebase.firestore();
     return db.collection(`Post/${idPost}/comment`).doc(idComment).update({ comment });
-  };
+};
 
 // --------------------- ELIMINAR POST -----------------
 const deletePost = (idPost) => {

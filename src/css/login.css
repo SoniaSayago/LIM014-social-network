@@ -25,6 +25,7 @@ input,
 select,
 textarea {
     text-indent: 10px;
+    border-radius: 10px;
 }
 
 .sectionLogin {

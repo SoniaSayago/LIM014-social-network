@@ -21,16 +21,16 @@ export const itemPost = (objPost) => {
     <div class= 'mainpost'>
       <div class='user-post'>
         <div class="${(userObject !== objPost.userId) ? 'hide' : 'show menu-post'}">
-          <i class="fas fa-ellipsis-v btn-menu-post"><i>
+          <i class="fas fa-ellipsis-v btn-menu-post"></i>
           <ul id="menu-post-content" class="menu-post-content">
             <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar><li>
             <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
           </ul>
         </div>
         <div class= "dataUserPost">
-        <div class=" dataImgUsername">          
-            <img class='avatar-post' src=''/>       
-            <span class = "username namePost"></span>
+        <div class=" dataImgUsername">
+          <img class='avatar-post' src=''/>
+          <span class = "username"></span>
         </div>
         <p class='username hide'>
           
@@ -105,11 +105,11 @@ export const itemPost = (objPost) => {
         postElement.querySelector('#menu-post-content').classList.toggle('show');
     });
     // close menu click
-    // window.addEventListener('click', (e) => {
-    //     if (e.target !== btnMenu) {
-    //         postElement.querySelector('#menu-post-content').classList.remove('show');
-    //     }
-    // });
+    window.addEventListener('click', (e) => {
+        if (e.target !== btnMenu) {
+            postElement.querySelector('#menu-post-content').classList.remove('show');
+        }
+    });
     //  editar y eliminar menu-------------
     const editPost = postElement.querySelector('#edit-post');
     const editPublication = postElement.querySelector('.edit-text');
@@ -122,9 +122,9 @@ export const itemPost = (objPost) => {
     });
     // cancelar editar post
     btnCancelEdit.addEventListener('click', () => {
-      btnSaveEdit.addEventListener('click', () => {
-        updatePost(objPost.id, editPublication.value);
-    });
+        btnSaveEdit.addEventListener('click', () => {
+            updatePost(objPost.id, editPublication.value);
+        });
         postElement.querySelector('.edit-text-post').classList.remove('hide');
         postElement.querySelector('.text-post').classList.add('hide');
         editPublication.value = objPost.publication;
@@ -151,22 +151,22 @@ export const itemPost = (objPost) => {
     const likes = postElement.querySelector('#btn-like');
     likes.addEventListener('click', () => {
 
-          const result = objPost.likes.indexOf(userObject);
-          if (result === -1){
+        const result = objPost.likes.indexOf(userObject);
+        if (result === -1) {
             const testLike = objPost.likes.push(userObject);
-          } else {
+        } else {
             objPost.likes.splice(result, 1);
-          }
-          // validar que no se encuentre el user().uid
-          // caso cuando no exita: 
-          // const testLike = objPost.likes.push(user().uid);
-          // existe: eliminar elemento
-          // console.log(testLike)
-          
-          updateLikes(objPost.id, objPost.likes);
-          // comparar que el usuario no se repita(buscar que user(),id no este dentro del array)
-          // eliminar elemento
-          //splice para dislike
+        }
+        // validar que no se encuentre el user().uid
+        // caso cuando no exita: 
+        // const testLike = objPost.likes.push(user().uid);
+        // existe: eliminar elemento
+        // console.log(testLike)
+
+        updateLikes(objPost.id, objPost.likes);
+        // comparar que el usuario no se repita(buscar que user(),id no este dentro del array)
+        // eliminar elemento
+        //splice para dislike
 
 
     });

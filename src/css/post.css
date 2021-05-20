@@ -31,9 +31,15 @@
     /* .container-like-comment .like-comment-container {
         justify-content: space-between;
     } */
-    .dataUserPost{
+    .dataImgUsername{
         justify-content: center;
         flex: wrap;
-        width:100%
+        width:100%;
+        align-items: center;
+    }
+    .username {
+        margin-bottom: 80px;
+        padding-top: 20px;
+        position: absolute;
     }
  

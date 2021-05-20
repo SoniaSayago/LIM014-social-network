@@ -28,9 +28,9 @@ export const itemPost = (objPost) => {
           </ul>
         </div>
         <div class= "dataUserPost">
-        <div class=" dataImgUsername">
-          <img class='avatar-post' src=''/>
-          <span class = "username"></span>
+        <div class=" dataImgUsername">          
+            <img class='avatar-post' src=''/>       
+            <span class = "username namePost"></span>
         </div>
         <p class='username hide'>
           
@@ -105,11 +105,11 @@ export const itemPost = (objPost) => {
         postElement.querySelector('#menu-post-content').classList.toggle('show');
     });
     // close menu click
-    window.addEventListener('click', (e) => {
-        if (e.target !== btnMenu) {
-            postElement.querySelector('#menu-post-content').classList.remove('show');
-        }
-    });
+    // window.addEventListener('click', (e) => {
+    //     if (e.target !== btnMenu) {
+    //         postElement.querySelector('#menu-post-content').classList.remove('show');
+    //     }
+    // });
     //  editar y eliminar menu-------------
     const editPost = postElement.querySelector('#edit-post');
     const editPublication = postElement.querySelector('.edit-text');

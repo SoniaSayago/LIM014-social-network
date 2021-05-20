@@ -20,6 +20,7 @@
         cursor: pointer;
         margin-right: 1rem;
     } */
+    
     .fa {
         width: 50px;
     }
@@ -27,19 +28,21 @@
         color: #FC5484;
     } */
     /* .fas fa-ellipsis-v btn-menu-post {} */
-
     /* .container-like-comment .like-comment-container {
         justify-content: space-between;
     } */
-    .dataImgUsername{
+    
+    .dataImgUsername {
         justify-content: center;
         flex: wrap;
-        width:100%;
+        width: 100%;
         align-items: center;
     }
+    
     .username {
         margin-bottom: 80px;
         padding-top: 20px;
         position: absolute;
+        font-size: 16px;
+        font-weight: bold;
     }
- 

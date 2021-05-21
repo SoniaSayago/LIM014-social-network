@@ -13,7 +13,6 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
-    margin: 5px 10px;
 }
 
 .container-home p {
@@ -235,7 +234,7 @@ select {
     color: #FC5484;
     font-size: 1rem;
     border: none;
-    /* cursor: pointer; */
+    margin-right: 20px;
 }
 
 
@@ -628,4 +627,44 @@ select {
 .fa-paper-plane:before,
 .fa-comment:before {
     color: #fafafa;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between
+}
+
+.headerNavList {
+    display: flex;
+    justify-content: space-around
+}
+
+.headerLogoArea {
+    width: min-content;
+}
+
+@media (max-width: 880px) {
+    .events,
+    .profile-section,
+    .aboutUs,
+    .profile,
+    .interest,
+    .right-section {
+        display: none;
+    }
+    .home-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        flex-direction: column;
+    }
+    .headerNavList {
+        padding-bottom: 10px;
+    }
+    .logoLogin {
+        width: 220px;
+    }
 }

@@ -13,6 +13,12 @@
     border-radius: 0 0 0.5rem 0.5rem;
 }
 
+@media (max-width: 880px) {
+    .profile-content {
+        width: 100%
+    }
+}
+
 .profile-content i {
     font-size: 20px;
     color: #222;

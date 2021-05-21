@@ -2,6 +2,7 @@
 import { signout, user } from '../controller/controller-auth.js';
 import { addPost, getPosts } from '../controller/controller-firestore.js';
 import { itemPost } from './post.js';
+import { sendImgToStorage } from '../controller/controller-storage.js';
 
 export default () => {
     const userId = user().uid;
@@ -113,6 +114,31 @@ export default () => {
     divElement.innerHTML = viewComunidad;
     document.getElementById('header').classList.remove('hide');
 
+    // División de carga de imagenes
+    const postImg = divElement.querySelector('#post-img');
+    const removeImg = divElement.querySelector('#remove-img');
+    const uploadImg = divElement.querySelector('#upload-img');
+    // ************* Cargar imagen posteada *********************
+    uploadImg.addEventListener('change', (e) => {
+      // Creamos el objeto de la clase FileReader
+      const reader = new FileReader();
+      // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+      reader.readAsDataURL(e.target.files[0]);
+      // Le decimos que cuando este listo ejecute el código interno
+      reader.onload = () => {
+        postImg.src = reader.result;
+      };
+      // mostramos el botón de remover imagen
+      removeImg.removeAttribute('style');
+    });
+
+    /* ------------- Remove image post --------------------------*/
+    removeImg.addEventListener('click', () => {
+      postImg.src = '';
+      uploadImg.value = '';
+      removeImg.style.display = 'none';
+    });
+
     // ************************** Log out **********************************
     const logout = document.querySelector('#logout');
     logout.addEventListener('click', (e) => {
@@ -130,21 +156,49 @@ export default () => {
     const formPost = divElement.querySelector('#form-post');
     formPost.addEventListener('submit', (e) => {
         e.preventDefault();
+        postImg.src = '';
+        removeImg.style.display = 'none';
+        const fileImg = e.target.closest('#form-post').querySelector('input').files[0];
+        const messageProgress = divElement.querySelector('#messageProgress');
+        const uploader = divElement.querySelector('#uploader');
         const textPost = divElement.querySelector('.text-newpost');
         const privacy = divElement.querySelector('#privacy-option').value;
         const modalProgress = divElement.querySelector('.modal-progress');
-        // ************************ Send Post BD **********************************
+        // ************************ Enviar Imagen de Post a BD **********************************
+        if (fileImg) {
+          const refPath = `imgPost/${userId}/${fileImg.name}`;
+          const uploadTask = sendImgToStorage(refPath, fileImg);
+          uploadTask.on('state_changed', (snapshot) => {
+            // Handle progress
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              modalProgress.classList.add('showModal');
+              messageProgress.textContent = 'Tu post esta cargando... 🚀';
+              uploader.value = progress;
+            }, () => {
+            // Handle unsuccessful uploads
+            }, () => {
+            // Handle successful uploads on complete
+              uploadTask.snapshot.ref.getDownloadURL()
+                .then((downloadURL) => {
+                  addPost(userId, privacy, textPost.value, downloadURL)
+                    .then(() => {
+                      modalProgress.classList.remove('showModal');
+                      formPost.reset();
+                    });
+                });
+          });
+        } else {
         addPost(userObject.uid, privacy, textPost.value, '').then(() => {
             modalProgress.classList.remove('showModal');
             formPost.reset();
         });
+        }
     });
     // ************************** View Post **********************************
     const containerAllPost = divElement.querySelector('#container-allPost');
     getPosts((post) => {
         containerAllPost.innerHTML = '';
         post.forEach((objPost) => {
-            console.log(objPost);
             if (objPost.privacy === 'public' || (objPost.privacy === 'private' && objPost.userId === userId)) {
                 containerAllPost.appendChild(itemPost(objPost));
             }

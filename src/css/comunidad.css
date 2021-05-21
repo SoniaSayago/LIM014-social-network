@@ -13,7 +13,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
-    margin: 5px 10px;
+    margin: 1px 1px;
 }
 
 .container-home p {
@@ -61,10 +61,12 @@ p.logo-aside img {
     color: #222222;
 }
 
-.profile,
+.header,
+.profile-section,
+.right-section,
 .aboutUs {
-    /* position: sticky; */
-    top: 90px;
+    position: sticky;
+    top: 5px;
 }
 
 .profile a {
@@ -398,7 +400,7 @@ select {
 
 .name-comment {
     font-size: 0.9rem;
-    color: #2CAB92;
+    color: rgba(209, 27, 154, 0.8);
 }
 
 .comment-text {
@@ -600,7 +602,7 @@ select {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #444 transparent transparent transparent;
+    border-color: rgb(192, 183, 183) transparent transparent transparent;
 }
 
 .fa-file-image:hover .tooltiptext,

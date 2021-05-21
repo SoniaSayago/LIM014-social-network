@@ -1,20 +1,14 @@
 /* eslint-disable indent */
 import { user } from '../controller/controller-auth.js';
+import { itemComment } from './comment.js';
 import {
-    deletePost,
-    updatePost,
-    updatePrivacy,
-    addComment,
-    getDataUser,
-    updateLikes
+ deletePost, updatePost, updatePrivacy, getComment, addComment, getDataUser, updateLikes,
 } from '../controller/controller-firestore.js';
 
 export const itemPost = (objPost) => {
     const userObject = user().uid;
-    console.log(userObject)
-    let reactionCounter = objPost.likes;
-    let reactionLength = objPost.likes.length;
-
+    const reactionCounter = objPost.likes;
+    const reactionLength = objPost.likes.length;
     const postElement = document.createElement('div');
     postElement.classList.add('allpost');
     postElement.innerHTML = `
@@ -150,7 +144,6 @@ export const itemPost = (objPost) => {
     // actualizar likes
     const likes = postElement.querySelector('#btn-like');
     likes.addEventListener('click', () => {
-
         const result = objPost.likes.indexOf(userObject);
         if (result === -1) {
             const testLike = objPost.likes.push(userObject);
@@ -158,7 +151,7 @@ export const itemPost = (objPost) => {
             objPost.likes.splice(result, 1);
         }
         // validar que no se encuentre el user().uid
-        // caso cuando no exita: 
+        // caso cuando no exita:
         // const testLike = objPost.likes.push(user().uid);
         // existe: eliminar elemento
         // console.log(testLike)
@@ -166,9 +159,7 @@ export const itemPost = (objPost) => {
         updateLikes(objPost.id, objPost.likes);
         // comparar que el usuario no se repita(buscar que user(),id no este dentro del array)
         // eliminar elemento
-        //splice para dislike
-
-
+        // splice para dislike
     });
 
     /* ------------Mostrar y ocultar comentario ------------------*/
@@ -187,15 +178,15 @@ export const itemPost = (objPost) => {
                 formComment.reset();
             });
     });
-    /* ----------------------  (CONTENEDOR DE COMENTARIOS)------------------*/
-    // const containerAllComment = postElement.querySelector('#container-AllComment');
-    // const counterComment = postElement.querySelector('#count-comment');
-    // getComment(objPost.id, (comment) => {
-    //   containerAllComment.innerHTML = '';
-    //   comment.forEach((objComment) => {
-    //     containerAllComment.appendChild(itemComment(objComment, objPost.id));
-    //   });
-    //   counterComment.textContent = `${(comment.length !== 0) ? `${comment.length} comments`: ''}`;
-    // });
+    // ----------------------  (CONTENEDOR DE COMENTARIOS)------------------*/
+      const containerAllComment = postElement.querySelector('#container-AllComment');
+      const counterComment = postElement.querySelector('#count-comment');
+      getComment(objPost.id, (comment) => {
+        containerAllComment.innerHTML = '';
+        comment.forEach((objComment) => {
+          containerAllComment.appendChild(itemComment(objComment, objPost.id));
+        });
+        counterComment.textContent = `${(comment.length !== 0) ? `${comment.length} comments` : ''}`;
+      });
     return postElement;
 };

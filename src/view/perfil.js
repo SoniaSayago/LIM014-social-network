@@ -50,8 +50,8 @@ export default () => {
       </div>
       <div class="containerInterest">
         <form class="formInterest" id="formInterest">
-          <input type= "interest" name="interest" placeholder="interest">
-          <button type="submit">Anadir Interes</button>
+          <input class="inputForm" type= "interest" name="interest" placeholder="Intereses">
+          <button class="buttonAddForm" type="submit">Añadir</button>
         </form>
         <ul id="interest-list">
         </ul>
@@ -120,10 +120,10 @@ export default () => {
 
         // deleting interest data
         cross.addEventListener('click', (e) => {
-            // e.stopPropagation();
+            e.stopPropagation();
             let id = e.target.parentElement.getAttribute('data-id');
             const db = firebase.firestore();
-            db.collection('interests').doc('id').delete();
+            db.collection('interests').doc(id).delete();
         })
     }
 

@@ -4,6 +4,7 @@ import { addPost, getPosts } from '../controller/controller-firestore.js';
 import { itemPost } from './post.js';
 
 export default () => {
+    const viewComunidad = document.createElement('div');
     const userId = user().uid;
     const userObject = user();
     const defaultValue = {
@@ -12,7 +13,8 @@ export default () => {
         country: 'Country',
         description: 'Description',
     };
-    const viewComunidad = `
+    viewComunidad.classList.add('another-container-home');
+    viewComunidad.innerHTML = `
   <!-- Left column -->
   <div class = 'container-home'>
   <aside class='profile-section'>
@@ -27,15 +29,15 @@ export default () => {
     </div>
     <!-- Interests -->
     <div class = 'interest'>
-    <p>Intereses</p>
-      <p>
-      <span>Friends</span>
-      <span>Derecho</span>
-      <span>Política</span>
-      <span>Ciencias Sociales</span>
-      <span>PUCP</span>
-      <span>Universidad de Lima</span>
-      </p>
+    <div class="containerInterest">
+        <form class="formInterest" id="formInterest">
+          <input class="inputForm" type= "interest" name="interest" placeholder="Intereses">
+          <button class="buttonAddForm" type="submit">Añadir</button>
+        </form>
+        <ul id="interest-list">
+        </ul>
+    </div>
+</div>
     </div>
   </aside>
   
@@ -127,12 +129,12 @@ export default () => {
             });
     });
     // ************************** Create Post **********************************
-    const formPost = divElement.querySelector('#form-post');
+    const formPost = viewComunidad.querySelector('#form-post');
     formPost.addEventListener('submit', (e) => {
         e.preventDefault();
-        const textPost = divElement.querySelector('.text-newpost');
-        const privacy = divElement.querySelector('#privacy-option').value;
-        const modalProgress = divElement.querySelector('.modal-progress');
+        const textPost = viewComunidad.querySelector('.text-newpost');
+        const privacy = viewComunidad.querySelector('#privacy-option').value;
+        const modalProgress = viewComunidad.querySelector('.modal-progress');
         // ************************ Send Post BD **********************************
         addPost(userObject.uid, privacy, textPost.value, '').then(() => {
             modalProgress.classList.remove('showModal');
@@ -140,7 +142,7 @@ export default () => {
         });
     });
     // ************************** View Post **********************************
-    const containerAllPost = divElement.querySelector('#container-allPost');
+    const containerAllPost = viewComunidad.querySelector('#container-allPost');
     getPosts((post) => {
         containerAllPost.innerHTML = '';
         post.forEach((objPost) => {
@@ -151,5 +153,59 @@ export default () => {
         });
     });
 
-    return divElement;
+    // intereses
+    const interestList = viewComunidad.querySelector('#interest-list');
+    console.log(interestList);
+    const form = viewComunidad.querySelector('#formInterest');
+    // renderInterests interestList
+    function renderInterestList(doc) {
+        let li = document.createElement('li');
+        let interest = document.createElement('span');
+        let cross = document.createElement('div');
+
+        li.setAttribute('data-id', doc.id);
+        interest.textContent = doc.data().interest;
+        cross.textContent = 'x';
+
+        li.appendChild(interest);
+        li.appendChild(cross);
+
+        interestList.appendChild(li);
+        console.log(interestList);
+
+        // deleting interest data
+        cross.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let id = e.target.parentElement.getAttribute('data-id');
+            const db = firebase.firestore();
+            db.collection('interests').doc(id).delete();
+        })
+    }
+
+    // snapshot realtime for interestList
+    const db = firebase.firestore();
+    db.collection('interests').onSnapshot(snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            if (change.type == 'added') {
+                renderInterestList(change.doc);
+            } else if (change.type == 'removed') {
+                let li = interestList.querySelector('[data-id=' + change.doc.id + ']');
+                interestList.removeChild(li);
+            }
+        })
+    })
+
+    // saving data
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const db = firebase.firestore();
+        db.collection('interests').add({
+            interest: form.interest.value
+        });
+        form.interest.value = '';
+
+    })
+
+    return viewComunidad;
 };

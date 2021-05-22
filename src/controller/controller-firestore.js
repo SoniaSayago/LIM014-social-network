@@ -168,6 +168,7 @@ const deleteComment = (idPost, idComment) => {
     return db.collection(`Post/${idPost}/comment`).doc(idComment).delete();
 };
 
+
 export {
     deleteComment,
     updatePhotoProfile,

@@ -179,6 +179,8 @@ select {
     outline: none;
     border: none;
     color: #444;
+    background-color: rgba(212, 220, 236, 0.7);
+    padding: 1px;
 }
 
 .btn-post i,
@@ -667,4 +669,9 @@ select {
     .logoLogin {
         width: 220px;
     }
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
 }

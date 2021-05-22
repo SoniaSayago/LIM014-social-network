@@ -1,20 +1,14 @@
 /* eslint-disable indent */
 import { user } from '../controller/controller-auth.js';
+import { itemComment } from './comment.js';
 import {
-    deletePost,
-    updatePost,
-    updatePrivacy,
-    addComment,
-    getDataUser,
-    updateLikes
+ deletePost, updatePost, updatePrivacy, getComment, addComment, getDataUser, updateLikes,
 } from '../controller/controller-firestore.js';
 
 export const itemPost = (objPost) => {
     const userObject = user().uid;
-    console.log(userObject)
-    let reactionCounter = objPost.likes;
-    let reactionLength = objPost.likes.length;
-
+    const reactionCounter = objPost.likes;
+    const reactionLength = objPost.likes.length;
     const postElement = document.createElement('div');
     postElement.classList.add('allpost');
     postElement.innerHTML = `
@@ -23,8 +17,8 @@ export const itemPost = (objPost) => {
         <div class="${(userObject !== objPost.userId) ? 'hide' : 'show menu-post'}">
           <i class="fas fa-ellipsis-v btn-menu-post"></i>
           <ul id="menu-post-content" class="menu-post-content">
-            <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar><li>
-            <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
+            <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar<li>
+            <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar<li>
           </ul>
         </div>
         <div class= "dataUserPost">
@@ -33,7 +27,6 @@ export const itemPost = (objPost) => {
           <span class = "username"></span>
         </div>
         <p class='username hide'>
-          
           <span class = "tooltiptext">
             <img class="tooltipimg" src=""/>
             <strong class="nametooltip"></strong> <br>
@@ -122,12 +115,13 @@ export const itemPost = (objPost) => {
     });
     // cancelar editar post
     btnCancelEdit.addEventListener('click', () => {
-        btnSaveEdit.addEventListener('click', () => {
-            updatePost(objPost.id, editPublication.value);
-        });
-        postElement.querySelector('.edit-text-post').classList.remove('hide');
-        postElement.querySelector('.text-post').classList.add('hide');
-        editPublication.value = objPost.publication;
+      postElement.querySelector('.edit-text-post').classList.add('hide');
+      postElement.querySelector('.text-post').classList.remove('hide');
+      editPublication.value = objPost.publication;
+    });
+
+    btnSaveEdit.addEventListener('click', () => {
+        updatePost(objPost.id, editPublication.value);
     });
 
     // update post element
@@ -150,7 +144,6 @@ export const itemPost = (objPost) => {
     // actualizar likes
     const likes = postElement.querySelector('#btn-like');
     likes.addEventListener('click', () => {
-
         const result = objPost.likes.indexOf(userObject);
         if (result === -1) {
             const testLike = objPost.likes.push(userObject);
@@ -158,7 +151,7 @@ export const itemPost = (objPost) => {
             objPost.likes.splice(result, 1);
         }
         // validar que no se encuentre el user().uid
-        // caso cuando no exita: 
+        // caso cuando no exita:
         // const testLike = objPost.likes.push(user().uid);
         // existe: eliminar elemento
         // console.log(testLike)
@@ -166,9 +159,7 @@ export const itemPost = (objPost) => {
         updateLikes(objPost.id, objPost.likes);
         // comparar que el usuario no se repita(buscar que user(),id no este dentro del array)
         // eliminar elemento
-        //splice para dislike
-
-
+        // splice para dislike
     });
 
     /* ------------Mostrar y ocultar comentario ------------------*/
@@ -187,15 +178,15 @@ export const itemPost = (objPost) => {
                 formComment.reset();
             });
     });
-    /* ----------------------  (CONTENEDOR DE COMENTARIOS)------------------*/
-    // const containerAllComment = postElement.querySelector('#container-AllComment');
-    // const counterComment = postElement.querySelector('#count-comment');
-    // getComment(objPost.id, (comment) => {
-    //   containerAllComment.innerHTML = '';
-    //   comment.forEach((objComment) => {
-    //     containerAllComment.appendChild(itemComment(objComment, objPost.id));
-    //   });
-    //   counterComment.textContent = `${(comment.length !== 0) ? `${comment.length} comments`: ''}`;
-    // });
+    // ----------------------  (CONTENEDOR DE COMENTARIOS)------------------*/
+      const containerAllComment = postElement.querySelector('#container-AllComment');
+      const counterComment = postElement.querySelector('#count-comment');
+      getComment(objPost.id, (comment) => {
+        containerAllComment.innerHTML = '';
+        comment.forEach((objComment) => {
+          containerAllComment.appendChild(itemComment(objComment, objPost.id));
+        });
+        counterComment.textContent = `${(comment.length !== 0) ? `${comment.length} comments` : ''}`;
+      });
     return postElement;
 };

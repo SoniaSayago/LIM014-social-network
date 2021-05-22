@@ -51,11 +51,10 @@ p {
 }
 
 .formBackground {
-    margin: 100px;
     background-color: rgba(212, 220, 236, 0.7);
     border-radius: 20px;
     width: 340px;
-    padding: 40px 0px;
+    padding: 20px 0px;
 }
 
 .bigButton {

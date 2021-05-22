@@ -1,10 +1,13 @@
 /* eslint-disable indent */
 import { user } from '../controller/controller-auth.js';
+import { updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile } from '../controller/controller-firestore.js';
+import { sendImgToStorage } from '../controller/controller-storage.js';
+import { itemPost } from './post.js';
 
 export default () => {
     // COD QUE PERMITE LAS VISTAS: VISTA DE REGISTRO
     const viewPerfil = document.createElement('div');
-    // const userId = user().uid;
+    const userId = user().uid;
     const userObject = user();
     const defaultValue = {
         carrera: 'Universidad',
@@ -90,10 +93,121 @@ export default () => {
         <button type="submit" class="btn-update">Actualizar</button>
       </form>
     </section>
+  </div>
+
+  <div class="modal-progress" id="modal-progress">
+    <div class="progress">
+      <progress value="0" max="100" id="uploader">0%</progress>
+      <p id="messageProgress">0%</p>
+    </div>
   </div>`;
-    // const divElement = document.createElement('div');
-    // divElement.innerHTML = viewPerfil;
     document.getElementById('header').classList.remove('hide');
 
-    return viewPerfil;
+    // Changing cover photo
+  const selectCoverPhoto = viewPerfil.querySelector('#select-cover-photo');
+  selectCoverPhoto.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const refPath = `imgCover/${userId}/${file.name}`;
+    const uploadTask = sendImgToStorage(refPath, file);
+    const messageProgress = viewPerfil.querySelector('#messageProgress');
+    const modalProgress = viewPerfil.querySelector('.modal-progress');
+    const uploader = viewPerfil.querySelector('#uploader');
+    uploadTask.on('state_changed', (snapshot) => {
+      // Handle progress
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      modalProgress.classList.add('showModal');
+      messageProgress.textContent = '¡Excelente opción 😊! Estamos cargando tu foto de portada... 😍';
+      uploader.value = progress;
+    }, () => {
+      // Handle unsuccessful uploads
+    }, () => {
+      // Handle successful uploads on complete
+      uploadTask.snapshot.ref.getDownloadURL()
+        .then((downloadURL) => {
+          updatePhotoCover(userId, downloadURL)
+            .then(() => window.location.reload());
+        });
+    });
+  });
+
+  // Changing photo profile
+  const selectPhotoProfile = viewPerfil.querySelector('#select-photo-profile');
+  selectPhotoProfile.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const refPath = `imgProfile/${userId}/${file.name}`;
+    const uploadTask = sendImgToStorage(refPath, file);
+    const messageProgress = viewPerfil.querySelector('#messageProgress');
+    const modalProgress = viewPerfil.querySelector('.modal-progress');
+    const uploader = viewPerfil.querySelector('#uploader');
+    uploadTask.on('state_changed', (snapshot) => {
+      // Handle progress
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      modalProgress.classList.add('showModal');
+      messageProgress.textContent = '¡Te ves muy bien 😊! Estamos cargando tu foto de perfil... 😍';
+      uploader.value = progress;
+    }, () => {
+      // Handle unsuccessful uploads
+    }, () => {
+      // Handle successful uploads on complete
+      uploadTask.snapshot.ref.getDownloadURL()
+        .then((downloadURL) => {
+          updatePhotoProfile(userId, downloadURL)
+            .then(() => { 
+            modalProgress.classList.remove('showModal');
+            selectPhotoProfile.reset();
+            });
+        });
+      });
+  });
+
+  // Open modal edit user profile
+  const formEditProfile = viewPerfil.querySelector('.editProfile');
+  const modalContainer = viewPerfil.querySelector('.modal-container');
+  const btnEditProfile = viewPerfil.querySelector('#btn-editProfile');
+  btnEditProfile.addEventListener('click' || 'touch', () => {
+    modalContainer.classList.add('showModal');
+  });
+
+  // Close modal edit user profile
+  const btnModalClose = viewPerfil.querySelector('.btn-modalClose');
+  btnModalClose.addEventListener('click' || 'touch', (e) => {
+    e.preventDefault();
+    modalContainer.classList.remove('showModal');
+    formEditProfile.reset();
+  });
+
+  // Close modal click outside
+  window.addEventListener('click', (e) => {
+    if (e.target === modalContainer) {
+      modalContainer.classList.remove('showModal');
+      formEditProfile.reset();
+    }
+  });
+
+  // Submit modal edit user profile
+  formEditProfile.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const usernameEdit = viewPerfil.querySelector('#usernameEdit').value;
+    const phoneEdit = viewPerfil.querySelector('#phoneEdit').value;
+    const birthday = viewPerfil.querySelector('#birthdayEdit').value;
+    const countryEdit = viewPerfil.querySelector('#countryEdit').value;
+    const descriptionEdit = viewPerfil.querySelector('#descriptionEdit').value;
+    updateCurrentUser(userId, usernameEdit, phoneEdit, birthday, countryEdit, descriptionEdit)
+      .then(() => {
+        window.location.reload();
+      });
+  });
+
+  // Add post to container post
+  const containerUserPost = viewPerfil.querySelector('.container-user-post');
+  getPosts((post) => {
+    containerUserPost.innerHTML = '';
+    post.forEach((objPost) => {
+      if (userId === objPost.userId) {
+        containerUserPost.appendChild(itemPost(objPost));
+      }
+    });
+  });
+
+  return viewPerfil;
 };

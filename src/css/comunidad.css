@@ -16,7 +16,6 @@
 }
 
 .container-home p {
-    margin: 0.5rem 0.5rem;
     font-weight: bold;
 }
 
@@ -36,7 +35,7 @@ div.aboutUs {
 }
 
 p.logo-aside img {
-    height: 80px;
+    height: 70px;
     width: 150px;
 }
 
@@ -54,11 +53,6 @@ p.logo-aside img {
     color: #444;
 }
 
-.profile-section h2 {
-    font-size: 16px;
-    text-align: center;
-    color: #222222;
-}
 
 .header,
 .profile-section,
@@ -293,6 +287,7 @@ select {
 .text-post {
     text-align: justify;
     font-size: 15px;
+    margin: 10px 10px;
 }
 
 .edit-text-btns,
@@ -360,21 +355,23 @@ select {
 
 .count-like {
     position: relative;
-    color: #2CAB92;
-    font-size: 0.9rem;
+    color: rgba(209, 27, 154, 0.8);
+    font-size: 1rem;
     display: inline-flex;
 }
 
 .count-comment {
-    color: #2CAB92;
-    font-size: 0.9rem;
+    color: rgba(209, 27, 154, 0.8);
+    font-size: 1 rem;
+    font-weight: bold;
     text-align: right;
 }
 
 .count-comment-right {
     float: right;
-    color: #2CAB92;
-    font-size: 0.9rem;
+    color: rgba(209, 27, 154, 0.8);
+    font-size: 1 rem;
+    font-weight: bold;
 }
 
 .like-comment-container i {
@@ -429,7 +426,7 @@ select {
 }
 
 .div-comment i:hover {
-    color: #2b7a75;
+    color: #8f3380;
 }
 
 .events button {
@@ -660,13 +657,39 @@ select {
 }
 
 @media (max-width: 700px) {
-    .header {
-        flex-direction: column;
+    .header a {
+     font-size: 12px;
     }
-    .headerNavList {
-        padding-bottom: 10px;
-    }
+
     .logoLogin {
-        width: 220px;
+        width: 150px;
     }
+}
+
+.scrollUp {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(to left, #701368, #FC5484);
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 99;
+    text-align: center;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    display: none;
+    border-radius: 50%;
+    transition: all .4s ease;
+}
+
+i.scrollUp.fas.fa-angle-up:hover {
+    background: linear-gradient(180deg, #FC5484 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+    transform: scale(1.05);
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
+}
+i.fas.fa-angle-up::before {
+    color: #ffff;
+    font-size: 25px;
+    align-content: center;
 }

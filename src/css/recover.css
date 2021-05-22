@@ -17,7 +17,7 @@
 }
 
 .btn-backLogin:hover,
-.btn-recoverPass {
+.btn-recoverPass:hover {
     transform: scale(1.05);
     box-shadow: 0px 25px 25px rgba(0, 0, 0, 0.1);
 }
@@ -82,8 +82,7 @@ i.fas {
     font-weight: 950;
 }
 
-.div-input input,
-i.fas {
+.div-input input {
     background: none;
     outline: none;
     border: none;

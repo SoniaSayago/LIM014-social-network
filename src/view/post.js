@@ -17,8 +17,8 @@ export const itemPost = (objPost) => {
         <div class="${(userObject !== objPost.userId) ? 'hide' : 'show menu-post'}">
           <i class="fas fa-ellipsis-v btn-menu-post"></i>
           <ul id="menu-post-content" class="menu-post-content">
-            <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar><li>
-            <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar><li>
+            <li id="edit-post" class="edit-post"><i class="fas fa-edit select"></i>Editar<li>
+            <li id="delete-post-${objPost.id}" class="delete-post"><i class="fas fa-trash-alt select"></i>Borrar<li>
           </ul>
         </div>
         <div class= "dataUserPost">
@@ -27,7 +27,6 @@ export const itemPost = (objPost) => {
           <span class = "username"></span>
         </div>
         <p class='username hide'>
-          
           <span class = "tooltiptext">
             <img class="tooltipimg" src=""/>
             <strong class="nametooltip"></strong> <br>
@@ -116,12 +115,13 @@ export const itemPost = (objPost) => {
     });
     // cancelar editar post
     btnCancelEdit.addEventListener('click', () => {
-        btnSaveEdit.addEventListener('click', () => {
-            updatePost(objPost.id, editPublication.value);
-        });
-        postElement.querySelector('.edit-text-post').classList.remove('hide');
-        postElement.querySelector('.text-post').classList.add('hide');
-        editPublication.value = objPost.publication;
+      postElement.querySelector('.edit-text-post').classList.add('hide');
+      postElement.querySelector('.text-post').classList.remove('hide');
+      editPublication.value = objPost.publication;
+    });
+
+    btnSaveEdit.addEventListener('click', () => {
+        updatePost(objPost.id, editPublication.value);
     });
 
     // update post element

@@ -109,6 +109,8 @@ export default () => {
     <p id='messageProgress'>0%</p>
   </div>
   </section>
+  
+  <i class="scrollUp fas fa-angle-up"></i>
   `;
     const divElement = document.createElement('div');
     divElement.innerHTML = viewComunidad;
@@ -204,6 +206,23 @@ export default () => {
             }
         });
     });
-
+    /* ----------------- Efecto Scroll up--------------------------------*/
+    window.onscroll = () => {
+      const currentScroll = document.documentElement.scrollTop;
+      // desplazamiento desde la parte superior de la pagina
+      if (currentScroll > 300) { // desplazamiento mayor a 300px mostrar botón
+        divElement.querySelector('.scrollUp').style.transform = 'scale(1)';
+      } else { // desaparecer boton en menos de 300px
+        divElement.querySelector('.scrollUp').style.transform = 'scale(0)';
+      }
+    };
+    // evento que me permite ir a top con click
+    divElement.querySelector('.scrollUp').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
+    });
     return divElement;
 };

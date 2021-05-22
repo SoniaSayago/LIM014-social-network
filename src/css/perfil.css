@@ -40,7 +40,7 @@
 .edit-cover {
     position: absolute;
     right: 4%;
-    bottom: 71%;
+    bottom: 67%;
     z-index: 2;
     outline: none;
     border: none;
@@ -73,7 +73,7 @@
 .profile-photo {
     width: 100%;
     height: 170px;
-    top: 19%;
+    top: 23%;
     z-index: 1;
     position: absolute;
     background-color: transparent;
@@ -97,8 +97,8 @@
     width: 100px;
     position: absolute;
     z-index: 1;
-    bottom: 64%;
-    left: 53%;
+    bottom: 57%;
+    left: 52%;
     background-color: transparent;
     text-align: center;
 }
@@ -298,8 +298,26 @@ textarea:hover {
 }
 
 @media (max-width: 900px) {
-    .container-grid {
-        grid-template-columns: 1fr;
+    .profile-photo {
+        top: 20%
+    }
+    .edit-photo {
+        top: 35%
+    }
+    .edit-cover {
+        top: 30%
+    }
+}
+
+@media (max-width: 650px) {
+    .profile-photo {
+        top: 17%
+    }
+    .edit-photo {
+        top: 30%
+    }
+    .edit-cover {
+        top: 22%
     }
 }
 

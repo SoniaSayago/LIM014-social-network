@@ -30,11 +30,7 @@ export default () => {
     <!-- Interests -->
     <div class = 'interest'>
     <div class="containerInterest">
-        <form class="formInterest" id="formInterest">
-          <input class="inputForm" type= "interest" name="interest" placeholder="Intereses">
-          <button class="buttonAddForm" type="submit">Añadir</button>
-        </form>
-        <ul id="interest-list">
+        <ul id="interest-list-comunidad">
         </ul>
     </div>
 </div>
@@ -154,7 +150,7 @@ export default () => {
     });
 
     // intereses
-    const interestList = viewComunidad.querySelector('#interest-list');
+    const interestList = viewComunidad.querySelector('#interest-list-comunidad');
     console.log(interestList);
     const form = viewComunidad.querySelector('#formInterest');
     // renderInterests interestList
@@ -197,15 +193,15 @@ export default () => {
     })
 
     // saving data
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const db = firebase.firestore();
-        db.collection('interests').add({
-            interest: form.interest.value
-        });
-        form.interest.value = '';
+    // form.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    //     const db = firebase.firestore();
+    //     db.collection('interests').add({
+    //         interest: form.interest.value
+    //     });
+    //     form.interest.value = '';
 
-    })
+    // })
 
     return viewComunidad;
 };

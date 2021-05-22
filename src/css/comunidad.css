@@ -1,8 +1,12 @@
 /* propierty */
 
+.another-container-home {
+    display: flex
+}
+
 .container-home {
     background-color: #eeeeee;
-    width: 100%;
+    width: 25%;
     /* padding: 2rem;
     display: grid;
     grid-gap: 2rem;
@@ -45,7 +49,7 @@ p.logo-aside img {
 
 .profile-section {
     /* grid-area: profile; */
-    width: 25%;
+    width: 100%;
     margin: 5px 10px;
 }
 
@@ -88,13 +92,6 @@ hr {
     border: 0;
     border-top: 1px solid rgba(202, 63, 202, 0.3);
     margin-bottom: 1rem;
-}
-
-.interest span {
-    color: #fff;
-    background-color: #FC5484;
-    font-size: 12px;
-    padding: 0px 8px;
 }
 
 #viewall {
@@ -651,7 +648,8 @@ select {
     .aboutUs,
     .profile,
     .interest,
-    .right-section {
+    .right-section,
+    .container-home {
         display: none;
     }
     .home-section {
@@ -674,4 +672,17 @@ select {
 body {
     font-family: Roboto, sans-serif;
     font-size: 20px;
+}
+
+#interest-list-comunidad {
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 1400px) {
+    #interest-list-comunidad {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

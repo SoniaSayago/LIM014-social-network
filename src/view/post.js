@@ -33,7 +33,7 @@ export const itemPost = (objPost) => {
             <i class="fas fa-birthday-cake"></i> &nbsp <span id="birthdayTooltip"></span><br>
             <i class="fas fa-map-marker-alt"></i> &nbsp <span id="countryTooltip"></span>
           </span>
-        </p> </br>
+        </p>
         <select id="privacy-option" class='${(userObject === objPost.userId) ? 'show fa' : 'hide'}'>
           <option class='fa' value='public' ${(objPost.privacy === 'public') ? 'selected' : ''} title = 'Public'>&#xf57d; </option>
           <option class='fa' value='private' ${(objPost.privacy === 'private') ? 'selected' : ''} title = 'Private'>&#xf023; </option>

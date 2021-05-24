@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover  } from '../controller/controller-auth.js';
+import { signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover } from '../controller/controller-auth.js';
 import { updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile } from '../controller/controller-firestore.js';
 import { sendImgToStorage } from '../controller/controller-storage.js';
 import { itemPost } from './post.js';
@@ -181,8 +181,9 @@ export default () => {
   });
 
   // Close modal edit user profile
+
   const btnModalClose = viewPerfil.querySelector('.btn-modalClose');
-  btnModalClose.addEventListener('click' || 'touch', (e) => {
+    btnModalClose.addEventListener('click' || 'touch', (e) => {
     e.preventDefault();
     modalContainer.classList.remove('showModal');
     formEditProfile.reset();

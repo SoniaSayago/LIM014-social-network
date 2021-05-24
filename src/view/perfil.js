@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { user } from '../controller/controller-auth.js';
+import { signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover  } from '../controller/controller-auth.js';
 import { updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile } from '../controller/controller-firestore.js';
 import { sendImgToStorage } from '../controller/controller-storage.js';
 import { itemPost } from './post.js';
@@ -102,6 +102,15 @@ export default () => {
     </div>
   </div>`;
     document.getElementById('header').classList.remove('hide');
+    const logout = document.querySelector('#logout');
+    logout.addEventListener('click', (e) => {
+        e.preventDefault();
+        signout()
+            .then(() => {
+                window.location.hash = '#/login';
+                document.getElementById('header').classList.add('hide');
+            });
+    });
 
     // Changing cover photo
   const selectCoverPhoto = viewPerfil.querySelector('#select-cover-photo');
@@ -126,6 +135,7 @@ export default () => {
         .then((downloadURL) => {
           updatePhotoCover(userId, downloadURL)
             .then(() => window.location.reload());
+            updateCurrentUserPhotoCover(downloadURL);
         });
     });
   });
@@ -152,9 +162,11 @@ export default () => {
       uploadTask.snapshot.ref.getDownloadURL()
         .then((downloadURL) => {
           updatePhotoProfile(userId, downloadURL)
-            .then(() => { 
+            .then(() => {
             modalProgress.classList.remove('showModal');
-            selectPhotoProfile.reset();
+            // selectPhotoProfile.reset();
+            window.location.reload();
+            updateCurrentUserPhoto(downloadURL);
             });
         });
       });

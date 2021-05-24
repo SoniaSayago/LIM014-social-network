@@ -672,7 +672,7 @@ select {
     height: 45px;
     background: linear-gradient(to left, #701368, #FC5484);
     position: fixed;
-    bottom: 40px;
+    bottom: 25px;
     right: 40px;
     z-index: 99;
     text-align: center;

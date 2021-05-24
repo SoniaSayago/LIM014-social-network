@@ -1,0 +1,48 @@
+    /* .user,
+    .user-post {
+        display: flex;
+    }
+    
+    .content-newpost textarea:focus,
+    .edit-text-post textarea:focus,
+    .edit-comment-text-btns textarea:focus {
+        border-color: #C4C4C4;
+        background: white;
+    }
+    
+    .buttons-bar {
+        position: relative;
+        padding: 1rem 0.5rem 0.5rem 0.5rem;
+    }
+    
+    .buttons-bar .fa-file-image {
+        font-size: 1.35rem;
+        cursor: pointer;
+        margin-right: 1rem;
+    } */
+    
+    .fa {
+        width: 50px;
+    }
+    /* .far:hover {
+        color: #FC5484;
+    } */
+    /* .fas fa-ellipsis-v btn-menu-post {} */
+    /* .container-like-comment .like-comment-container {
+        justify-content: space-between;
+    } */
+    
+    .dataImgUsername {
+        justify-content: center;
+        flex: wrap;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .username {
+        margin-bottom: 80px;
+        padding-top: 20px;
+        position: absolute;
+        font-size: 16px;
+        font-weight: bold;
+    }

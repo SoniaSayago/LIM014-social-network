@@ -1,0 +1,141 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    color: #333333
+}
+
+.backgroundRegisterHead {
+    background: linear-gradient(180deg, #A2468E 0%, rgba(255, 255, 255, 0) 100%), #4B35D1;
+    height: 60px;
+}
+
+.imagesContainer {
+    align-content: space-around;
+    height: 50px;
+    margin: 20px
+}
+
+.smallLogo {
+    width: 200px;
+    height: 50px;
+}
+
+body {
+    height: 100vh;
+}
+
+#container {
+    height: 100%;
+}
+
+.mainDiv {
+    height: 100%;
+    display: flex;
+    background-color: #fafafa;
+    flex-direction: column;
+}
+
+p {
+    font-size: 14px;
+    color: #333333
+}
+
+.whiteBackground {
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+}
+
+.formBackground {
+    background-color: rgba(212, 220, 236, 0.7);
+    border-radius: 20px;
+    width: 340px;
+    padding: 20px 0px;
+}
+
+.bigButton {
+    width: 150px;
+    height: 37px;
+    color: white;
+    background: #FC5484;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: 22px;
+    font-weight: 300px;
+    font-family: 'Roboto';
+}
+
+.bigButton:hover {
+    transform: scale(1.05);
+    color: #fafafa;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
+}
+
+.registerForm1Label {
+    font-size: 16px;
+    text-justify: left;
+    color: #333333;
+    font-weight: Medium;
+}
+
+.registerForm1Input {
+    font-size: 14;
+    color: #333333;
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+    border: 1px solid #333333;
+    border-width: 1px;
+    margin-top: 2px;
+}
+
+.registerForm1Input::placeholder {
+    color: #9492A4;
+    text-indent: 10px;
+    font-family: 'Roboto';
+    size: 14px;
+}
+
+.terms {
+    size: 14px;
+    margin-bottom: 4px;
+}
+
+
+/*****************************classlist for messenger alert*************************/
+
+.error-message {
+    color: #F8AFA6;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.successful-message {
+    color: #4B35D1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.goLogin {
+    padding: 20px;
+    color: #9492A4;
+    text-indent: 10px;
+    font-family: 'Roboto';
+    size: 14px;
+}
+
+.goLogin a {
+    color: #333333;
+    font-weight: bold;
+    text-decoration: none;
+    size: 16px;
+}

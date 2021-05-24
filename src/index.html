@@ -1,12 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>IzyChoice</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel='icon' type='image/png' sizes='50x50' href='../src/img/android-chrome-192x192.png'>
+    <title>izychoice: quién eres, quién quieres ser</title>
+    <link rel='preconnect' href='https://fonts.gstatic.com'>
+    <link rel='stylesheet' href='./css/main.css'>
+    <link rel='stylesheet' href='./css/register.css'>
+    <link rel='stylesheet' href='./css/login.css'>
+    <link rel='stylesheet' href='./css/404.css'>
+    <link rel='stylesheet' href='./css/comunidad.css'>
+    <link rel='stylesheet' href='./css/recover.css'>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel='stylesheet' href='./css/post.css'>
+    <script src='https://code.iconify.design/1/1.0.6/iconify.min.js'></script>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
+    <script src='https://kit.fontawesome.com/64d58efce2.js'></script>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap' rel='stylesheet'>
+
 </head>
+
 <body>
-  <script type="module" src="main.js"></script>
+    <header class='hide' id='header'>
+        <nav>
+            <div class='header'>
+
+                <a class="headerLogoArea" href='#/comunidad'>
+                    <img src='./img/iziChoice.png' alt='' class='logoLogin'>
+                </a>
+                <div class="headerNavList">
+                    <div class='nav_list_item'>
+
+                        <a href='#/comunidad'><span class="material-icons">home</span>Comunidad</a>
+
+                    </div>
+                    <div class='nav_list_item'>
+
+                        <a href='#/perfil'><span class="material-icons">account_circle</span>Perfil</a>
+
+                    </div>
+                    <div class='nav_list_item'>
+
+                        <a href='#/' id='logout'> <span class="material-icons">logout</span>Salir</a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <section id='container'></section>
+
+
+    <!--Firebase scripts-->
+    <!--Firebase JS SDK-->
+    <script src='https://www.gstatic.com/firebasejs/8.4.0/firebase-app.js'></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use-->
+    <script src='https://www.gstatic.com/firebasejs/8.4.0/firebase-analytics.js'></script>
+    <script src='https://www.gstatic.com/firebasejs/8.4.0/firebase-auth.js'></script>
+    <script src='https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js'></script>
+    <script src='https://www.gstatic.com/firebasejs/8.4.0/firebase-storage.js'></script>
+
+
+    <script type='module' src='./main.js'></script>
+
 </body>
+
 </html>

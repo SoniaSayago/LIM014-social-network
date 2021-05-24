@@ -80,7 +80,7 @@
 .profile-photo {
     width: 100%;
     height: 170px;
-    top: 23%;
+    top: 28%;
     z-index: 1;
     position: absolute;
     background-color: transparent;
@@ -304,7 +304,8 @@ textarea:hover {
     width: 100%;
 }
 
-@media (max-width: 900px) {
+
+/* @media (max-width: 900px) {
     .profile-photo {
         top: 20%
     }
@@ -326,7 +327,7 @@ textarea:hover {
     .edit-cover {
         top: 22%
     }
-}
+} */
 
 .item6 {
     grid-column-start: 1;

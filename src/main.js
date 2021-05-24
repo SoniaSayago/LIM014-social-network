@@ -3,15 +3,21 @@ import { changeTmp } from './view-controler/router.js';
 
 // función que permite mostrar las vistas del usario
 const init = () => {
-  window.location.hash = '#/login';
-  changeTmp(window.location.hash);
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      changeTmp(window.location.hash);
+    } else {
+      window.location.hash = '#/login';
+    }
+  });
   window.addEventListener('hashchange', () => changeTmp(window.location.hash));
 };
 
 // función que muestra la vista al momento de recargar
 window.addEventListener('load', init);
 
-// export const checkSesionActive = changeTmp => firebase.auth().onAuthStateChanged((user) => {
+// export const checkSesionActive = (changeTmp) =>
+
 //     let route = '';
 //     if (window.location.hash === '#/Login') route = '#/Login';
 //     if (user) {

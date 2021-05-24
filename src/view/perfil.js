@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { user } from '../controller/controller-auth.js';
+import { signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover  } from '../controller/controller-auth.js';
 import { updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile } from '../controller/controller-firestore.js';
 import { sendImgToStorage } from '../controller/controller-storage.js';
 import { itemPost } from './post.js';
@@ -110,6 +110,15 @@ export default () => {
     // const divElement = document.createElement('div');
     // divElement.innerHTML = viewPerfil;
     document.getElementById('header').classList.remove('hide');
+    const logout = document.querySelector('#logout');
+    logout.addEventListener('click', (e) => {
+        e.preventDefault();
+        signout()
+            .then(() => {
+                window.location.hash = '#/login';
+                document.getElementById('header').classList.add('hide');
+            });
+    });
 
 
     const interestList = viewPerfil.querySelector('#interest-list');
@@ -166,61 +175,61 @@ export default () => {
     })
 
     // Changing cover photo
-    const selectCoverPhoto = viewPerfil.querySelector('#select-cover-photo');
-    selectCoverPhoto.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        const refPath = `imgCover/${userId}/${file.name}`;
-        const uploadTask = sendImgToStorage(refPath, file);
-        const messageProgress = viewPerfil.querySelector('#messageProgress');
-        const modalProgress = viewPerfil.querySelector('.modal-progress');
-        const uploader = viewPerfil.querySelector('#uploader');
-        uploadTask.on('state_changed', (snapshot) => {
-            // Handle progress
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            modalProgress.classList.add('showModal');
-            messageProgress.textContent = '¡Excelente opción 😊! Estamos cargando tu foto de portada... 😍';
-            uploader.value = progress;
-        }, () => {
-            // Handle unsuccessful uploads
-        }, () => {
-            // Handle successful uploads on complete
-            uploadTask.snapshot.ref.getDownloadURL()
-                .then((downloadURL) => {
-                    updatePhotoCover(userId, downloadURL)
-                        .then(() => window.location.reload());
-                });
+  const selectCoverPhoto = viewPerfil.querySelector('#select-cover-photo');
+  selectCoverPhoto.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const refPath = `imgCover/${userId}/${file.name}`;
+    const uploadTask = sendImgToStorage(refPath, file);
+    const messageProgress = viewPerfil.querySelector('#messageProgress');
+    const modalProgress = viewPerfil.querySelector('.modal-progress');
+    const uploader = viewPerfil.querySelector('#uploader');
+    uploadTask.on('state_changed', (snapshot) => {
+      // Handle progress
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      modalProgress.classList.add('showModal');
+      messageProgress.textContent = '¡Excelente opción 😊! Estamos cargando tu foto de portada... 😍';
+      uploader.value = progress;
+    }, () => {
+      // Handle unsuccessful uploads
+    }, () => {
+      // Handle successful uploads on complete
+      uploadTask.snapshot.ref.getDownloadURL()
+        .then((downloadURL) => {
+          updatePhotoCover(userId, downloadURL)
+            .then(() => window.location.reload());
+            updateCurrentUserPhotoCover(downloadURL);
         });
     });
+  });
 
-    // Changing photo profile
-    const selectPhotoProfile = viewPerfil.querySelector('#select-photo-profile');
-    selectPhotoProfile.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        const refPath = `imgProfile/${userId}/${file.name}`;
-        const uploadTask = sendImgToStorage(refPath, file);
-        const messageProgress = viewPerfil.querySelector('#messageProgress');
-        const modalProgress = viewPerfil.querySelector('.modal-progress');
-        const uploader = viewPerfil.querySelector('#uploader');
-        uploadTask.on('state_changed', (snapshot) => {
-            // Handle progress
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            modalProgress.classList.add('showModal');
-            messageProgress.textContent = '¡Te ves muy bien 😊! Estamos cargando tu foto de perfil... 😍';
-            uploader.value = progress;
-        }, () => {
-            // Handle unsuccessful uploads
-        }, () => {
-            // Handle successful uploads on complete
-            uploadTask.snapshot.ref.getDownloadURL()
-                .then((downloadURL) => {
-                    updatePhotoProfile(userId, downloadURL)
-                        .then(() => {
-                            modalProgress.classList.remove('showModal');
-                            selectPhotoProfile.reset();
-                        });
-                });
-        });
-    });
+  // Changing photo profile
+  const selectPhotoProfile = viewPerfil.querySelector('#select-photo-profile');
+  selectPhotoProfile.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const refPath = `imgProfile/${userId}/${file.name}`;
+    const uploadTask = sendImgToStorage(refPath, file);
+    const messageProgress = viewPerfil.querySelector('#messageProgress');
+    const modalProgress = viewPerfil.querySelector('.modal-progress');
+    const uploader = viewPerfil.querySelector('#uploader');
+    uploadTask.on('state_changed', (snapshot) => {
+      // Handle progress
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      modalProgress.classList.add('showModal');
+      messageProgress.textContent = '¡Te ves muy bien 😊! Estamos cargando tu foto de perfil... 😍';
+      uploader.value = progress;
+    }, () => {
+      // Handle unsuccessful uploads
+    }, () => {
+      // Handle successful uploads on complete
+      uploadTask.snapshot.ref.getDownloadURL()
+        .then((downloadURL) => {
+          updatePhotoProfile(userId, downloadURL)
+            .then(() => {
+            modalProgress.classList.remove('showModal');
+            // selectPhotoProfile.reset();
+            window.location.reload();
+            updateCurrentUserPhoto(downloadURL);
+
 
     // Open modal edit user profile
     const formEditProfile = viewPerfil.querySelector('.editProfile');

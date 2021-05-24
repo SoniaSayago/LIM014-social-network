@@ -1,5 +1,7 @@
+import { sendRecoverPass } from '../controller/controller-auth.js';
+
 export default () => {
-    const viewRecover = `
+  const viewRecover = `
   <div class= 'backgroundRegisterHead'>
   <figure class='figureLogin'>
   <a href='#/login' target='_blank'><img src='./img/iziChoice.png' alt='' class='smallLogo'></a>
@@ -22,11 +24,29 @@ export default () => {
 </form>
 
 </div>
-
-   
-   
     `;
-    const divElement = document.createElement('div');
-    divElement.innerHTML = viewRecover;
-    return divElement;
+  const divElement = document.createElement('div');
+  divElement.innerHTML = viewRecover;
+
+  /* ------------regarding DOM manipulation to recover password------------- */
+  const recoverPassForm = divElement.querySelector('#recoverPass-form');
+  recoverPassForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = divElement.querySelector('#email').value;
+    const error = divElement.querySelector('#error-message');
+    sendRecoverPass(email)
+      .then(() => {
+        error.classList.add('successful-message');
+        error.textContent = '¡Listo!✨ Te enviamos un link para recuperar su contraseña a su email. 📨';
+      })
+      .catch(() => {
+        error.classList.remove('successful-message');
+        error.classList.add('error-message');
+        error.textContent = '¡Oh!😮 No tenemos registrado este correo electrónico en nuestra base de datos. ❌ Intenta con otro email. ';
+        setTimeout(() => {
+          error.textContent = '';
+        }, 4000);
+      });
+  });
+  return divElement;
 };

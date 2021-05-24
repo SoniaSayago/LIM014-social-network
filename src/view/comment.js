@@ -21,8 +21,8 @@ export const itemComment = (objComment, idPost) => {
       <div class = "hide edit-comment-text-btns">
         <textarea class = "edit-comment-text">${objComment.comment}</textarea>
         <div class = "edit-comment-btns">
-          <button type="button" class="btn-save-comment-${objComment.id}">Save</button>
-          <button type="button" class="btn-cancel-comment">Cancel</button>
+          <button type="button" class="btn-save-comment-${objComment.id}">Guardar</button>
+          <button type="button" class="btn-cancel-comment">Cancelar</button>
         </div>
       </div>
       <time class="time-comment">${objComment.date}</time>

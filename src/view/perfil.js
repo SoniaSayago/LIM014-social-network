@@ -164,7 +164,6 @@ export default () => {
           updatePhotoProfile(userId, downloadURL)
             .then(() => {
             modalProgress.classList.remove('showModal');
-            // selectPhotoProfile.reset();
             window.location.reload();
             updateCurrentUserPhoto(downloadURL);
             });

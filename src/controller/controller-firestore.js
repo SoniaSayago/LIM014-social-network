@@ -179,6 +179,7 @@ const deleteComment = (idPost, idComment) => {
     return db.collection(`posts/${idPost}/comment`).doc(idComment).delete();
 };
 
+
 export {
     deleteComment,
     addComment,

@@ -647,12 +647,18 @@
                 }
             }
             
+            .logoLoginHeader {
+                width: 250px;
+            }
+            
             @media (max-width: 700px) {
                 .header a {
-                    font-size: 12px;
+                    font-size: 14px;
+                    flex-direction: column;
                 }
-                .logoLogin {
+                .logoLoginHeader {
                     width: 150px;
+                    margin-bottom: 5px;
                 }
             }
             

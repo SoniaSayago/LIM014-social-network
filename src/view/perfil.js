@@ -52,17 +52,17 @@ export default () => {
          
       </div>
       <div class="containerInterest">
-        <form class="formInterest" id="formInterest">
-          <input class="inputForm" type= "interest" name="interest" placeholder="Intereses">
-          <button class="buttonAddForm" type="submit">Añadir</button>
-        </form>
-        <ul id="interest-list">
-        </ul>
-    </div>
+      <form class="formInterest" id="formInterest">
+        <input class="inputForm" type= "interest" name="interest" placeholder="Intereses">
+        <button class="buttonAddForm" type="submit">Añadir</button>
+      </form>
+      <ul id="interest-list">
+      </ul>
+  </div>
+     </div>
+     
        <section class ="container-user-post">
-  </section>
-
-  <div class="modal-container">
+       <div class="modal-container">
     <section class="modal-settings">
       <header class="modalHeader">
         <button type="button" class="btn-modalClose"><i class="fa fa-close"></i></button>
@@ -105,6 +105,7 @@ export default () => {
           <p id="messageProgress">0%</p>
         </div>
       </div>;
+  </section>
 </div>`;
     // const divElement = document.createElement('div');
     // divElement.innerHTML = viewPerfil;

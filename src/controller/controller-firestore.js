@@ -10,14 +10,14 @@ const sendDataCurrentUser = (user) => {
         Photo = user.photoURL;
         Name = user.displayName;
     } else {
-        Photo = 'img/default-avatar.png';
+        Photo = '../img/default-avatar.png';
         Name = 'User';
     }
     return db.collection('users').doc(user.uid).set({
         username: Name,
         email: user.email,
         photo: Photo,
-        photoCover: 'img/default-cover.jpg',
+        photoCover: '../img/default-cover.jpg',
         universidad: 'Universidad',
         phone: 'Phone',
         birthday: 'yyyy-MM-dd',
@@ -29,9 +29,6 @@ const sendDataCurrentUser = (user) => {
 // ------------------------GET USER INFORMATION TO CLUD FIRESTORE --------------------------
 const getDataUser = (userId) => {
     const db = firebase.firestore();
-    // .then(res => {
-    //   console.log(res);
-    // });
     return db.collection('users').doc(userId).get();
 };
 

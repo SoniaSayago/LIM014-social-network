@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover } from '../controller/controller-auth.js';
+import { signout, user, updateCurrentUserPhoto } from '../controller/controller-auth.js';
 import { updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile } from '../controller/controller-firestore.js';
 import { sendImgToStorage } from '../controller/controller-storage.js';
 import { itemPost } from './post.js';
@@ -132,11 +132,8 @@ export default () => {
     }, () => {
       // Handle successful uploads on complete
       uploadTask.snapshot.ref.getDownloadURL()
-        .then((downloadURL) => {
-          updatePhotoCover(userId, downloadURL)
-            .then(() => window.location.reload());
-            updateCurrentUserPhotoCover(downloadURL);
-        });
+        .then((downloadURL) => updatePhotoCover(userId, downloadURL))
+        .then(() => window.location.reload());
     });
   });
 
@@ -164,8 +161,9 @@ export default () => {
           updatePhotoProfile(userId, downloadURL)
             .then(() => {
             modalProgress.classList.remove('showModal');
-            window.location.reload();
-            updateCurrentUserPhoto(downloadURL);
+            return updateCurrentUserPhoto(downloadURL);
+            }).then(() => {
+                window.location.reload();
             });
         });
       });

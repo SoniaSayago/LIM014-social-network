@@ -51,7 +51,3 @@ export const updateCurrentUserPhoto = (photoURL) => firebase.auth().currentUser.
   photoURL,
 });
 
-// eslint-disable-next-line max-len
-export const updateCurrentUserPhotoCover = (photoCover) => firebase.auth().currentUser.updateProfile({
-    photoCover,
-  });

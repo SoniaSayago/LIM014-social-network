@@ -23,7 +23,7 @@ export const itemPost = (objPost) => {
         </div>
         <div class= "dataUserPost">
         <div class=" dataImgUsername">
-          <img class='avatar-post' src=''/>
+          <img id='avatar-post' class='avatar-post' src=''/>
           <span class = "username"></span>
         </div>
         <p class='username hide'>
@@ -75,22 +75,22 @@ export const itemPost = (objPost) => {
   </div>
 </div>
   `;
-    document.getElementById('header').classList.remove('hide');
-
-    getDataUser(objPost.userId).then((doc) => {
-        const avatarPost = postElement.querySelector('.avatar-post');
-        const username = postElement.querySelector('.username');
-        const nametooltip = postElement.querySelector('.nametooltip');
-        const tooltipimg = postElement.querySelector('.tooltipimg');
-        const birthdayTooltip = postElement.querySelector('#birthdayTooltip');
-        const countryTooltip = postElement.querySelector('#countryTooltip');
-        avatarPost.src = doc.data().photo;
-        username.textContent = doc.data().username;
-        nametooltip.textContent = doc.data().username.toUpperCase();
-        tooltipimg.src = doc.data().photo;
-        birthdayTooltip.textContent = doc.data().birthday;
-        countryTooltip.textContent = doc.data().country;
+  getDataUser(objPost.userId)
+    .then((doc) => {
+      const avatarPost = postElement.querySelector('#avatar-post');
+      const username = postElement.querySelector('.username');
+      const nametooltip = postElement.querySelector('.nametooltip');
+      const tooltipimg = postElement.querySelector('.tooltipimg');
+      const birthdayTooltip = postElement.querySelector('#birthdayTooltip');
+      const countryTooltip = postElement.querySelector('#countryTooltip');
+      avatarPost.src = doc.data().photo;
+      username.textContent = doc.data().username;
+      nametooltip.textContent = doc.data().username.toUpperCase();
+      tooltipimg.src = doc.data().photo;
+      birthdayTooltip.textContent = doc.data().birthday;
+      countryTooltip.textContent = doc.data().country;
     });
+  document.getElementById('header').classList.remove('hide');
 
     /* ---------------- Menu despegable --------------------------*/
     const btnMenu = postElement.querySelector('.btn-menu-post');
@@ -146,7 +146,7 @@ export const itemPost = (objPost) => {
     likes.addEventListener('click', () => {
         const result = objPost.likes.indexOf(userObject);
         if (result === -1) {
-            const testLike = objPost.likes.push(userObject);
+          const testLike = objPost.likes.push(userObject);
         } else {
             objPost.likes.splice(result, 1);
         }

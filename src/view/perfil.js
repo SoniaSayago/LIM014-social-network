@@ -103,7 +103,7 @@ export default () => {
       </section>
       </div>
     
-      <div class="modal-progress" id="modal-progress">
+      <div class="modal-progress showModal" id="modal-progress">
         <div class="progress">
           <progress value="0" max="100" id="uploader">0%</progress>
           <p id="messageProgress">0%</p>
@@ -177,8 +177,8 @@ export default () => {
     const file = e.target.files[0];
     const refPath = `imgCover/${userId}/${file.name}`;
     const uploadTask = sendImgToStorage(refPath, file);
-    const messageProgress = viewPerfil.querySelector('#messageProgress');
-    const modalProgress = viewPerfil.querySelector('.modal-progress');
+    const messageProgress = document.querySelector('#messageProgress');
+    const modalProgress = document.querySelector('.modal-progress');
     const uploader = viewPerfil.querySelector('#uploader');
     uploadTask.on('state_changed', (snapshot) => {
       // Handle progress
@@ -203,13 +203,13 @@ export default () => {
     const file = e.target.files[0];
     const refPath = `imgProfile/${userId}/${file.name}`;
     const uploadTask = sendImgToStorage(refPath, file);
-    const messageProgress = viewPerfil.querySelector('#messageProgress');
-    const modalProgress = viewPerfil.querySelector('.modal-progress');
-    const uploader = viewPerfil.querySelector('#uploader');
+    const messageProgress = document.querySelector('#messageProgress');
+    const modalProgress = document.querySelector('.modal-progress');
+    const uploader = document.querySelector('#uploader');
     uploadTask.on('state_changed', (snapshot) => {
       // Handle progress
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      modalProgress.classList.add('showModal');
+      // modalProgress.classList.add('showModal');
       messageProgress.textContent = '¡Te ves muy bien 😊! Estamos cargando tu foto de perfil... 😍';
       uploader.value = progress;
     }, () => {

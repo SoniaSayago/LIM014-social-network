@@ -271,11 +271,14 @@
                 padding: 5px 10px;
                 display: block;
                 cursor: pointer;
+                background: none;
+                border-bottom: none;
+                height: min-content;
             }
             
             .menu-post li:hover,
             .menu-comment li:hover {
-                background-color: #FC5484;
+                background-color: #fafafa;
             }
             
             .show {

@@ -130,53 +130,6 @@ export default () => {
             });
     });
 
-    const interestList = viewPerfil.querySelector('#interest-list');
-    const form = viewPerfil.querySelector('#formInterest');
-    // renderInterests interestList
-    function renderInterestList(doc) {
-        const li = document.createElement('li');
-        const interest = document.createElement('span');
-        const cross = document.createElement('div');
-
-        li.setAttribute('data-id', doc.id);
-        interest.textContent = doc.data().interest;
-        cross.textContent = 'x';
-        li.appendChild(interest);
-        li.appendChild(cross);
-        interestList.appendChild(li);
-        // deleting interest data
-        cross.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const id = e.target.parentElement.getAttribute('data-id');
-            const db = firebase.firestore();
-            db.collection('interests').doc(id).delete();
-        });
-    }
-
-    // snapshot realtime for interestList
-    const db = firebase.firestore();
-    db.collection('interests').onSnapshot((snapshot) => {
-        const changes = snapshot.docChanges();
-        changes.forEach((change) => {
-            if (change.type === 'added') {
-                renderInterestList(change.doc);
-            } else if (change.type === 'removed') {
-                const li = interestList.querySelector(`[data-id=${change.doc.id}]`);
-                interestList.removeChild(li);
-            }
-        });
-    });
-
-    // saving data
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // const db = firebase.firestore();
-        db.collection('interests').add({
-            interest: form.interest.value,
-        });
-        form.interest.value = '';
-    });
-
     // Changing cover photo
     const selectCoverPhoto = viewPerfil.querySelector('#select-cover-photo');
     selectCoverPhoto.addEventListener('change', (e) => {

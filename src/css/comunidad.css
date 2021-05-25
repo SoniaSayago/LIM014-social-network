@@ -67,7 +67,9 @@
             
             .profile a {
                 text-decoration: none;
-                font-weight: 600;
+                font-weight: bold;
+                font-size: 14px;
+                margin-top: 12px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -257,6 +259,8 @@
             
             .aboutUs li {
                 list-style: none;
+                border-bottom: none;
+                background: none;
                 display: inline-block;
                 padding: 3px;
             }
@@ -267,11 +271,14 @@
                 padding: 5px 10px;
                 display: block;
                 cursor: pointer;
+                background: none;
+                border-bottom: none;
+                height: min-content;
             }
             
             .menu-post li:hover,
             .menu-comment li:hover {
-                background-color: #FC5484;
+                background-color: #fafafa;
             }
             
             .show {
@@ -323,7 +330,6 @@
                 resize: none;
                 outline: none;
                 border: none;
-                height: 2rem;
                 color: #333;
                 padding: 0.28rem 1rem;
             }
@@ -350,7 +356,8 @@
             .count-like {
                 position: relative;
                 color: rgba(209, 27, 154, 0.8);
-                font-size: 1rem;
+                font-size: 12px;
+                font-weight: bold;
                 display: inline-flex;
             }
             
@@ -364,7 +371,7 @@
             .count-comment-right {
                 float: right;
                 color: rgba(209, 27, 154, 0.8);
-                font-size: 1 rem;
+                font-size: 12px;
                 font-weight: bold;
             }
             
@@ -669,9 +676,7 @@
             
             #interest-list-comunidad {
                 display: grid;
-                margin-top: 10px;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
             }
             
             @media (max-width: 1400px) {

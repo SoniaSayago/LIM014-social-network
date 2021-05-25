@@ -13,6 +13,12 @@
     border-radius: 0 0 0.5rem 0.5rem;
 }
 
+@media (max-width: 880px) {
+    .profile-content {
+        width: 100%
+    }
+}
+
 .profile-content i {
     font-size: 20px;
     color: #222;
@@ -34,12 +40,19 @@
 .edit-cover {
     position: absolute;
     right: 4%;
-    bottom: 57%;
+    /* bottom: 69%; */
     z-index: 2;
     outline: none;
     border: none;
     text-align: center;
     cursor: pointer;
+}
+
+.profile-section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #222222;
 }
 
 .edit-photo-btn {
@@ -67,7 +80,7 @@
 .profile-photo {
     width: 100%;
     height: 170px;
-    top: 28%;
+    top: 8%;
     z-index: 1;
     position: absolute;
     background-color: transparent;
@@ -91,8 +104,8 @@
     width: 100px;
     position: absolute;
     z-index: 1;
-    bottom: 47%;
-    left: 53%;
+    /* bottom: 62%; */
+    left: 52%;
     background-color: transparent;
     text-align: center;
 }
@@ -116,7 +129,9 @@
 
 .user-information h2 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2 rem;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .user-information p {
@@ -281,13 +296,40 @@ textarea:hover {
 .container-grid {
     height: 30%;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 50% 50%; */
     grid-gap: 1px;
 }
 
-.container-grid>div {
+.container-grid-item {
     font-size: 16px;
+    width: 100%;
 }
+
+
+/* @media (max-width: 900px) {
+    .profile-photo {
+        top: 20%
+    }
+    .edit-photo {
+        top: 35%
+    }
+    .edit-cover {
+        top: 30%
+    }
+}
+
+@media (max-width: 650px) {
+    .profile-photo {
+        top: 17%
+    }
+    .edit-photo {
+        top: 30%
+    }
+    .edit-cover {
+        top: 22%
+    }
+} */
 
 .item6 {
     grid-column-start: 1;
@@ -341,4 +383,118 @@ textarea:hover {
     padding: 5px;
     margin-top: 20px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.356);
+}
+
+.interestProfile {
+    margin-top: 30px;
+    display: flex;
+}
+
+.custom-select {
+    margin-right: 65px;
+}
+
+.user-name {
+    margin-top: 65px;
+}
+
+.formInterest {
+    margin-top: 35px;
+    display: flex;
+}
+
+.inputForm {
+    background-color: rgba(212, 220, 236, 0.7);
+    border-width: 0px;
+    margin-right: 10px;
+    font-size: 16px;
+    width: 200px;
+}
+
+.inputForm::placeholder {
+    color: #33333333;
+    font-weight: bold;
+}
+
+.buttonAddForm {
+    width: 100px;
+    height: 37px;
+    color: white;
+    background: #FC5484;
+    box-shadow: 0px 4px 4px rgba(185, 131, 131, 0.25);
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: 16px;
+    font-family: 'Roboto';
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#interest-list {
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 15px;
+    background: rgba(212, 220, 236, 0.7);
+    font-size: 14px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    height: 10px;
+    padding-right: 40px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+li span {
+    display: block;
+    margin: -5px;
+}
+
+/* li span:nth-child(2) {
+    font-size: 16px;
+    margin-top: 6px;
+    color: #999;
+} */
+
+li div {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.6);
+    width: 40px;
+    text-align: center;
+    padding: 4px 0;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+@media (max-width: 650px) {
+    #interest-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .container-user-post {
+        width: 100%;
+    }
+    .container-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.user-information h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
 }

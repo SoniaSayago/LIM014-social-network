@@ -71,9 +71,9 @@ const updateCurrentUser = (
 // ----------------------------------- CREATE BD POST --------------------------------------
 const addPost = (UserId, Privacy, Publication, URLimg) => {
     const db = firebase.firestore();
-    return db.collection('Post').add({
+    return db.collection('posts').add({
         userId: UserId,
-        date: new Date().toLocaleString('es-ES'),
+        date: new Date().toLocaleString('en-ES'),
         privacy: Privacy,
         publication: Publication,
         urlimg: URLimg,
@@ -85,43 +85,108 @@ const addPost = (UserId, Privacy, Publication, URLimg) => {
 
 const getPosts = (callback) => {
     const db = firebase.firestore();
-    db.collection('Post')
-        .orderBy('date', 'desc')
+    db.collection('posts').orderBy('date', 'desc')
         .onSnapshot((querySnapshot) => {
-            const post = [];
+            const posts = [];
             querySnapshot.forEach((doc) => {
-                post.push({ id: doc.id, ...doc.data() });
+                posts.push({ id: doc.id, ...doc.data() });
             });
-            callback(post);
+            callback(posts);
         });
 };
 
-//  editar Post ---
+// ------ BASE DE DATOS CLOUD DE COMENTARIO---------
+
+const addComment = (UserId, idPost, Comment) => {
+    const db = firebase.firestore();
+    return db.collection('posts').doc(idPost).collection('comment').add({
+        userId: UserId,
+        date: new Date().toLocaleString('en-ES'),
+        comment: Comment,
+    });
+};
+
+// -------------------------- GET ALL BD COMMENT ------------------
+const getComment = (idPost, callback) => {
+    const db = firebase.firestore();
+    db.collection(`posts/${idPost}/comment`).orderBy('date', 'desc')
+        .onSnapshot((querySnapshot) => {
+            const comment = [];
+            querySnapshot.forEach((doc) => {
+                comment.push({ id: doc.id, ...doc.data() });
+            });
+            callback(comment);
+        });
+};
+
+// ------------- -- actualizar posts ---------
 const updatePost = (idPost, updatePublication) => {
     const db = firebase.firestore();
-    return db.collection('Post').doc(idPost).update({
+    return db.collection('posts').doc(idPost).update({
         publication: updatePublication,
     });
 };
 
-// eliminar Post
-const deletePost = (idPost) => {
+// ---------------actualizar  privacidad----------------------
+const updatePrivacy = (id, privacy) => {
     const db = firebase.firestore();
-    return db.collection('Post').doc(idPost).delete();
+    return db.collection('posts').doc(id).update({ privacy });
 };
-// update privacidad
-const updatePrivacy = (idPost, privacy) => {
+// ---------------- actualizar likes -------------------------
+const updateLikes = (id, likes) => {
     const db = firebase.firestore();
-    return db.collection('Post').doc(idPost).update({ privacy });
-};
-// actualizar likes
-const updateLikes = (idPost, likes) => {
-    console.log(idPost);
-    const db = firebase.firestore();
-    return db.collection('Post').doc(idPost).update({ likes });
+    return db.collection('posts').doc(id).update({ likes });
 };
 
+// --------------- actualizar foto de perfil -------------------------
+const updatePhotoProfile = (userId, photo) => {
+    const db = firebase.firestore();
+    return db.collection('users').doc(userId).update({ photo });
+};
+
+// ------------------- actualizar foto de portada -----------------
+const updatePhotoCover = (userId, photoCover) => {
+    const db = firebase.firestore();
+    return db.collection('users').doc(userId).update({ photoCover });
+};
+
+// ----------------- actualizar comentarios ----------------------
+const updateComment = (idPost, idComment, comment) => {
+    const db = firebase.firestore();
+    return db.collection(`posts/${idPost}/comment`).doc(idComment).update({ comment });
+};
+
+// ---------------------------------UPDATE PHOTO PROFILE------------------------------------
+export const updatephotoProfile = (userId, photo) => {
+    const db = firebase.firestore();
+    return db.collection('users').doc(userId).update({ photo });
+  };
+  // ----------------------------------UPDATE PHOTO COVER ------------------------------------
+  export const updatephotoCover = (userId, photoCover) => {
+    const db = firebase.firestore();
+    return db.collection('users').doc(userId).update({ photoCover });
+  };
+
+// --------------------- ELIMINAR POST -----------------
+const deletePost = (idPost) => {
+    const db = firebase.firestore();
+    return db.collection('posts').doc(idPost).delete();
+};
+
+// --------------------- ELIMINAR COMMENT ----------------
+const deleteComment = (idPost, idComment) => {
+    const db = firebase.firestore();
+    return db.collection(`posts/${idPost}/comment`).doc(idComment).delete();
+};
+
+
 export {
+    deleteComment,
+    addComment,
+    updatePhotoProfile,
+    updatePhotoCover,
+    updateComment,
+    getComment,
     deletePost,
     updatePost,
     getDataUser,

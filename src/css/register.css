@@ -30,21 +30,31 @@ body {
 
 .mainDiv {
     height: 100%;
+    display: flex;
+    background-color: #fafafa;
+    flex-direction: column;
 }
 
 p {
-    font-size: 16px;
+    font-size: 14px;
     color: #333333
 }
 
 .whiteBackground {
     background-color: #fafafa;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     height: 100%;
     text-align: center;
+}
+
+.formBackground {
+    background-color: rgba(212, 220, 236, 0.7);
+    border-radius: 20px;
+    width: 340px;
+    padding: 20px 0px;
 }
 
 .bigButton {
@@ -96,15 +106,18 @@ p {
     margin-bottom: 4px;
 }
 
+
 /*****************************classlist for messenger alert*************************/
-.error-message{
+
+.error-message {
     color: #F8AFA6;
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: center;
     font-weight: lighter;
 }
-.successful-message{
+
+.successful-message {
     color: #4B35D1;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -126,4 +139,3 @@ p {
     text-decoration: none;
     size: 16px;
 }
-

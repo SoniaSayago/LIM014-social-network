@@ -224,55 +224,41 @@ export default () => {
     });
     // intereses
     const interestList = viewComunidad.querySelector('#interest-list-comunidad');
-    console.log(interestList);
-    const form = viewComunidad.querySelector('#formInterest');
     // renderInterests interestList
     function renderInterestList(doc) {
-        let li = document.createElement('li');
-        let interest = document.createElement('span');
-        let cross = document.createElement('div');
+        const li = document.createElement('li');
+        const interest = document.createElement('span');
+        const cross = document.createElement('div');
 
         li.setAttribute('data-id', doc.id);
         interest.textContent = doc.data().interest;
         cross.textContent = 'x';
-
         li.appendChild(interest);
         li.appendChild(cross);
-
         interestList.appendChild(li);
-        console.log(interestList);
 
         // deleting interest data
         cross.addEventListener('click', (e) => {
             e.stopPropagation();
-            let id = e.target.parentElement.getAttribute('data-id');
+            const id = e.target.parentElement.getAttribute('data-id');
             const db = firebase.firestore();
             db.collection('interests').doc(id).delete();
-        })
+        });
     }
 
     // snapshot realtime for interestList
     const db = firebase.firestore();
-    db.collection('interests').onSnapshot(snapshot => {
-        let changes = snapshot.docChanges();
-        changes.forEach(change => {
-            if (change.type == 'added') {
+    db.collection('interests').onSnapshot((snapshot) => {
+        const changes = snapshot.docChanges();
+        changes.forEach((change) => {
+            if (change.type === 'added') {
                 renderInterestList(change.doc);
-            } else if (change.type == 'removed') {
-                let li = interestList.querySelector('[data-id=' + change.doc.id + ']');
+            } else if (change.type === 'removed') {
+                const li = interestList.querySelector(`[data-id=${change.doc.id}]`);
                 interestList.removeChild(li);
             }
-        })
-    })
+        });
+    });
 
-    // saving data
-    // form.addEventListener('submit', (e) => {
-    //     e.preventDefault();
-    //     const db = firebase.firestore();
-    //     db.collection('interests').add({
-    //         interest: form.interest.value
-    //     });
-    //     form.interest.value = '';
-    // })
     return viewComunidad;
 };

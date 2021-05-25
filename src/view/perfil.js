@@ -210,6 +210,7 @@ export default () => {
             }
         });
 
+
         // Submit modal edit user profile
         formEditProfile.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -222,6 +223,7 @@ export default () => {
                 .then(() => {
                     window.location.reload();
                 });
+
         });
 
         // Add post to container post

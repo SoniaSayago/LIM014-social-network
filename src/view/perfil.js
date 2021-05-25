@@ -1,6 +1,10 @@
 /* eslint-disable indent */
-import { signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover } from '../controller/controller-auth.js';
-import { updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile } from '../controller/controller-firestore.js';
+import {
+ signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover,
+} from '../controller/controller-auth.js';
+import {
+ updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile,
+} from '../controller/controller-firestore.js';
 import { sendImgToStorage } from '../controller/controller-storage.js';
 import { itemPost } from './post.js';
 
@@ -19,7 +23,7 @@ export default () => {
     };
     viewPerfil.classList.add('profile-container');
     viewPerfil.innerHTML = `
-    <section class="profile-content">
+   <section class="profile-content">
     <div class="profile-information">
       <div class="cover-page">
         <img class="cover-photo" src="${userObject.photoCover || defaultValue.photoCover}">
@@ -50,15 +54,19 @@ export default () => {
           <div class="container-grid-item"><i class="fas fa-map-marker-alt"></i><span>${userObject.country || defaultValue.country}</span></div>
           <div class="container-grid-item"><i class="far fa-id-badge"></i><span>${defaultValue.description}</span></div>
          
-        </div>
       </div>
-    </div>
-  </section>
-
-  <section class ="container-user-post">
-  </section>
-
-  <div class="modal-container">
+      <div class="containerInterest">
+      <form class="formInterest" id="formInterest">
+        <input class="inputForm" type= "interest" name="interest" placeholder="Intereses">
+        <button class="buttonAddForm" type="submit">Añadir</button>
+      </form>
+      <ul id="interest-list">
+      </ul>
+  </div>
+     </div>
+     
+       <section class ="container-user-post">
+       <div class="modal-container">
     <section class="modal-settings">
       <header class="modalHeader">
         <button type="button" class="btn-modalClose"><i class="fa fa-close"></i></button>
@@ -92,15 +100,19 @@ export default () => {
         </div>
         <button type="submit" class="btn-update">Actualizar</button>
       </form>
-    </section>
-  </div>
-
-  <div class="modal-progress" id="modal-progress">
-    <div class="progress">
-      <progress value="0" max="100" id="uploader">0%</progress>
-      <p id="messageProgress">0%</p>
-    </div>
-  </div>`;
+      </section>
+      </div>
+    
+      <div class="modal-progress" id="modal-progress">
+        <div class="progress">
+          <progress value="0" max="100" id="uploader">0%</progress>
+          <p id="messageProgress">0%</p>
+        </div>
+      </div>;
+  </section>
+</div>`;
+    // const divElement = document.createElement('div');
+    // divElement.innerHTML = viewPerfil;
     document.getElementById('header').classList.remove('hide');
     const logout = document.querySelector('#logout');
     logout.addEventListener('click', (e) => {
@@ -110,6 +122,53 @@ export default () => {
                 window.location.hash = '#/login';
                 document.getElementById('header').classList.add('hide');
             });
+    });
+
+    const interestList = viewPerfil.querySelector('#interest-list');
+    const form = viewPerfil.querySelector('#formInterest');
+    // renderInterests interestList
+    function renderInterestList(doc) {
+        const li = document.createElement('li');
+        const interest = document.createElement('span');
+        const cross = document.createElement('div');
+
+        li.setAttribute('data-id', doc.id);
+        interest.textContent = doc.data().interest;
+        cross.textContent = 'x';
+        li.appendChild(interest);
+        li.appendChild(cross);
+        interestList.appendChild(li);
+        // deleting interest data
+        cross.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = e.target.parentElement.getAttribute('data-id');
+            const db = firebase.firestore();
+            db.collection('interests').doc(id).delete();
+        });
+    }
+
+    // snapshot realtime for interestList
+    const db = firebase.firestore();
+    db.collection('interests').onSnapshot((snapshot) => {
+        const changes = snapshot.docChanges();
+        changes.forEach((change) => {
+            if (change.type === 'added') {
+                renderInterestList(change.doc);
+            } else if (change.type === 'removed') {
+                const li = interestList.querySelector(`[data-id=${change.doc.id}]`);
+                interestList.removeChild(li);
+            }
+        });
+    });
+
+    // saving data
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // const db = firebase.firestore();
+        db.collection('interests').add({
+            interest: form.interest.value,
+        });
+        form.interest.value = '';
     });
 
     // Changing cover photo
@@ -127,8 +186,6 @@ export default () => {
       modalProgress.classList.add('showModal');
       messageProgress.textContent = '¡Excelente opción 😊! Estamos cargando tu foto de portada... 😍';
       uploader.value = progress;
-    }, () => {
-      // Handle unsuccessful uploads
     }, () => {
       // Handle successful uploads on complete
       uploadTask.snapshot.ref.getDownloadURL()
@@ -156,8 +213,6 @@ export default () => {
       messageProgress.textContent = '¡Te ves muy bien 😊! Estamos cargando tu foto de perfil... 😍';
       uploader.value = progress;
     }, () => {
-      // Handle unsuccessful uploads
-    }, () => {
       // Handle successful uploads on complete
       uploadTask.snapshot.ref.getDownloadURL()
         .then((downloadURL) => {
@@ -167,60 +222,59 @@ export default () => {
             // selectPhotoProfile.reset();
             window.location.reload();
             updateCurrentUserPhoto(downloadURL);
-            });
+          });
         });
       });
   });
 
-  // Open modal edit user profile
-  const formEditProfile = viewPerfil.querySelector('.editProfile');
-  const modalContainer = viewPerfil.querySelector('.modal-container');
-  const btnEditProfile = viewPerfil.querySelector('#btn-editProfile');
-  btnEditProfile.addEventListener('click' || 'touch', () => {
-    modalContainer.classList.add('showModal');
-  });
-
-  // Close modal edit user profile
-
-  const btnModalClose = viewPerfil.querySelector('.btn-modalClose');
-    btnModalClose.addEventListener('click' || 'touch', (e) => {
-    e.preventDefault();
-    modalContainer.classList.remove('showModal');
-    formEditProfile.reset();
-  });
-
-  // Close modal click outside
-  window.addEventListener('click', (e) => {
-    if (e.target === modalContainer) {
-      modalContainer.classList.remove('showModal');
-      formEditProfile.reset();
-    }
-  });
-
-  // Submit modal edit user profile
-  formEditProfile.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const usernameEdit = viewPerfil.querySelector('#usernameEdit').value;
-    const phoneEdit = viewPerfil.querySelector('#phoneEdit').value;
-    const birthday = viewPerfil.querySelector('#birthdayEdit').value;
-    const countryEdit = viewPerfil.querySelector('#countryEdit').value;
-    const descriptionEdit = viewPerfil.querySelector('#descriptionEdit').value;
-    updateCurrentUser(userId, usernameEdit, phoneEdit, birthday, countryEdit, descriptionEdit)
-      .then(() => {
-        window.location.reload();
-      });
-  });
-
-  // Add post to container post
-  const containerUserPost = viewPerfil.querySelector('.container-user-post');
-  getPosts((post) => {
-    containerUserPost.innerHTML = '';
-    post.forEach((objPost) => {
-      if (userId === objPost.userId) {
-        containerUserPost.appendChild(itemPost(objPost));
-      }
+    // Open modal edit user profile
+    const formEditProfile = viewPerfil.querySelector('.editProfile');
+    const modalContainer = viewPerfil.querySelector('.modal-container');
+    const btnEditProfile = viewPerfil.querySelector('#btn-editProfile');
+    btnEditProfile.addEventListener('click' || 'touch', () => {
+        modalContainer.classList.add('showModal');
     });
-  });
 
-  return viewPerfil;
+    // Close modal edit user profile
+    const btnModalClose = viewPerfil.querySelector('.btn-modalClose');
+    btnModalClose.addEventListener('click' || 'touch', (e) => {
+        e.preventDefault();
+        modalContainer.classList.remove('showModal');
+        formEditProfile.reset();
+    });
+
+    // Close modal click outside
+    window.addEventListener('click', (e) => {
+        if (e.target === modalContainer) {
+            modalContainer.classList.remove('showModal');
+            formEditProfile.reset();
+        }
+    });
+
+    // Submit modal edit user profile
+    formEditProfile.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const usernameEdit = viewPerfil.querySelector('#usernameEdit').value;
+        const phoneEdit = viewPerfil.querySelector('#phoneEdit').value;
+        const birthday = viewPerfil.querySelector('#birthdayEdit').value;
+        const countryEdit = viewPerfil.querySelector('#countryEdit').value;
+        const descriptionEdit = viewPerfil.querySelector('#descriptionEdit').value;
+        updateCurrentUser(userId, usernameEdit, phoneEdit, birthday, countryEdit, descriptionEdit)
+            .then(() => {
+                window.location.reload();
+            });
+    });
+
+    // Add post to container post
+    const containerUserPost = viewPerfil.querySelector('.container-user-post');
+    getPosts((post) => {
+        containerUserPost.innerHTML = '';
+        post.forEach((objPost) => {
+            if (userId === objPost.userId) {
+                containerUserPost.appendChild(itemPost(objPost));
+            }
+        });
+    });
+
+    return viewPerfil;
 };

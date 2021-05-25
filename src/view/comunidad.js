@@ -109,7 +109,6 @@ export default () => {
     <p id='messageProgress'>0%</p>
   </div>
   </section>
-  
   <i class="scrollUp fas fa-angle-up"></i>
   `;
     const divElement = document.createElement('div');
@@ -177,9 +176,9 @@ export default () => {
               messageProgress.textContent = 'Tu post esta cargando... 🚀';
               uploader.value = progress;
             }, () => {
-            // Handle unsuccessful uploads
+            // Cuando la carga no está completada
             }, () => {
-            // Handle successful uploads on complete
+            // Cuando la carga es completada 
               uploadTask.snapshot.ref.getDownloadURL()
                 .then((downloadURL) => {
                   addPost(userId, privacy, textPost.value, downloadURL)

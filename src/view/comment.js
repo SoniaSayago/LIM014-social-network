@@ -9,8 +9,8 @@ export const itemComment = (objComment, idPost) => {
   <div class="${(userId !== objComment.userId) ? 'hide' : 'show menu-comment'}">
     <i class="fas fa-ellipsis-v btn-menu-comment"></i>
     <div id="menu-comment-content" class="menu-comment-content">
-      <li id="edit-comment"><i class="fas fa-edit select"></i> Edit</li>
-      <li id="delete-comment-${objComment.id}"><i class="fas fa-trash-alt select"></i> Delete</li>
+      <li id="edit-comment"><i class="fas fa-edit select"></i> Editar</li>
+      <li id="delete-comment-${objComment.id}"><i class="fas fa-trash-alt select"></i> Borrar</li>
     </div>
   </div> 
   <div class = "photo-comment-container">

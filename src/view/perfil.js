@@ -1,6 +1,10 @@
 /* eslint-disable indent */
-import { signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover  } from '../controller/controller-auth.js';
-import { updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile } from '../controller/controller-firestore.js';
+import {
+ signout, user, updateCurrentUserPhoto, updateCurrentUserPhotoCover,
+} from '../controller/controller-auth.js';
+import {
+ updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile,
+} from '../controller/controller-firestore.js';
 import { sendImgToStorage } from '../controller/controller-storage.js';
 import { itemPost } from './post.js';
 
@@ -99,7 +103,7 @@ export default () => {
       </section>
       </div>
     
-      <div class="modal-progress" id="modal-progress">
+      <div class="modal-progress showModal" id="modal-progress">
         <div class="progress">
           <progress value="0" max="100" id="uploader">0%</progress>
           <p id="messageProgress">0%</p>
@@ -120,59 +124,52 @@ export default () => {
             });
     });
 
-
     const interestList = viewPerfil.querySelector('#interest-list');
-    console.log(interestList);
     const form = viewPerfil.querySelector('#formInterest');
     // renderInterests interestList
     function renderInterestList(doc) {
-        let li = document.createElement('li');
-        let interest = document.createElement('span');
-        let cross = document.createElement('div');
+        const li = document.createElement('li');
+        const interest = document.createElement('span');
+        const cross = document.createElement('div');
 
         li.setAttribute('data-id', doc.id);
         interest.textContent = doc.data().interest;
         cross.textContent = 'x';
-
         li.appendChild(interest);
         li.appendChild(cross);
-
         interestList.appendChild(li);
-        console.log(interestList);
-
         // deleting interest data
         cross.addEventListener('click', (e) => {
             e.stopPropagation();
-            let id = e.target.parentElement.getAttribute('data-id');
+            const id = e.target.parentElement.getAttribute('data-id');
             const db = firebase.firestore();
             db.collection('interests').doc(id).delete();
-        })
+        });
     }
 
     // snapshot realtime for interestList
     const db = firebase.firestore();
-    db.collection('interests').onSnapshot(snapshot => {
-        let changes = snapshot.docChanges();
-        changes.forEach(change => {
-            if (change.type == 'added') {
+    db.collection('interests').onSnapshot((snapshot) => {
+        const changes = snapshot.docChanges();
+        changes.forEach((change) => {
+            if (change.type === 'added') {
                 renderInterestList(change.doc);
-            } else if (change.type == 'removed') {
-                let li = interestList.querySelector('[data-id=' + change.doc.id + ']');
+            } else if (change.type === 'removed') {
+                const li = interestList.querySelector(`[data-id=${change.doc.id}]`);
                 interestList.removeChild(li);
             }
-        })
-    })
+        });
+    });
 
     // saving data
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const db = firebase.firestore();
+        // const db = firebase.firestore();
         db.collection('interests').add({
-            interest: form.interest.value
+            interest: form.interest.value,
         });
         form.interest.value = '';
-
-    })
+    });
 
     // Changing cover photo
   const selectCoverPhoto = viewPerfil.querySelector('#select-cover-photo');
@@ -180,8 +177,8 @@ export default () => {
     const file = e.target.files[0];
     const refPath = `imgCover/${userId}/${file.name}`;
     const uploadTask = sendImgToStorage(refPath, file);
-    const messageProgress = viewPerfil.querySelector('#messageProgress');
-    const modalProgress = viewPerfil.querySelector('.modal-progress');
+    const messageProgress = document.querySelector('#messageProgress');
+    const modalProgress = document.querySelector('.modal-progress');
     const uploader = viewPerfil.querySelector('#uploader');
     uploadTask.on('state_changed', (snapshot) => {
       // Handle progress
@@ -189,8 +186,6 @@ export default () => {
       modalProgress.classList.add('showModal');
       messageProgress.textContent = '¡Excelente opción 😊! Estamos cargando tu foto de portada... 😍';
       uploader.value = progress;
-    }, () => {
-      // Handle unsuccessful uploads
     }, () => {
       // Handle successful uploads on complete
       uploadTask.snapshot.ref.getDownloadURL()
@@ -208,17 +203,15 @@ export default () => {
     const file = e.target.files[0];
     const refPath = `imgProfile/${userId}/${file.name}`;
     const uploadTask = sendImgToStorage(refPath, file);
-    const messageProgress = viewPerfil.querySelector('#messageProgress');
-    const modalProgress = viewPerfil.querySelector('.modal-progress');
-    const uploader = viewPerfil.querySelector('#uploader');
+    const messageProgress = document.querySelector('#messageProgress');
+    const modalProgress = document.querySelector('.modal-progress');
+    const uploader = document.querySelector('#uploader');
     uploadTask.on('state_changed', (snapshot) => {
       // Handle progress
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      modalProgress.classList.add('showModal');
+      // modalProgress.classList.add('showModal');
       messageProgress.textContent = '¡Te ves muy bien 😊! Estamos cargando tu foto de perfil... 😍';
       uploader.value = progress;
-    }, () => {
-      // Handle unsuccessful uploads
     }, () => {
       // Handle successful uploads on complete
       uploadTask.snapshot.ref.getDownloadURL()
@@ -229,7 +222,10 @@ export default () => {
             // selectPhotoProfile.reset();
             window.location.reload();
             updateCurrentUserPhoto(downloadURL);
-
+          });
+        });
+      });
+  });
 
     // Open modal edit user profile
     const formEditProfile = viewPerfil.querySelector('.editProfile');

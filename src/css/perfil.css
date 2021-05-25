@@ -80,7 +80,7 @@
 .profile-photo {
     width: 100%;
     height: 170px;
-    top: 13%;
+    top: 8%;
     z-index: 1;
     position: absolute;
     background-color: transparent;
@@ -129,8 +129,9 @@
 
 .user-information h2 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2 rem;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .user-information p {
@@ -394,7 +395,7 @@ textarea:hover {
 }
 
 .user-name {
-    margin-top: 80px;
+    margin-top: 65px;
 }
 
 .formInterest {
@@ -445,14 +446,14 @@ ul {
 }
 
 li {
-    padding: 20px;
+    padding: 15px;
     background: rgba(212, 220, 236, 0.7);
-    font-size: 16px;
+    font-size: 14px;
     color: #555;
     position: relative;
     border-bottom: 1px solid #e6e6e6;
-    height: 45px;
-    padding-right: 60px;
+    height: 10px;
+    padding-right: 40px;
     border-radius: 10px;
     margin: 5px;
 }
@@ -462,11 +463,11 @@ li span {
     margin: -5px;
 }
 
-li span:nth-child(2) {
+/* li span:nth-child(2) {
     font-size: 16px;
     margin-top: 6px;
     color: #999;
-}
+} */
 
 li div {
     position: absolute;
@@ -475,7 +476,7 @@ li div {
     background: rgba(255, 255, 255, 0.6);
     width: 40px;
     text-align: center;
-    padding: 8px 0;
+    padding: 4px 0;
     font-weight: bold;
     cursor: pointer;
     border-radius: 10px;

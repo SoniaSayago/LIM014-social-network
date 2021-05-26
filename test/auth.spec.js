@@ -1,6 +1,6 @@
 import {
-  signIn, signInForGoogle, createUser, sendRecoverPass, sendEmail, signOut,
-  user,
+  signInWithEmail, signInWithGoogle, createUser, sendRecoverPass, sendEmail, signout,
+  currentUser,
 } from '../src/controller/controller-auth.js';
 // setting up firebase mock
 const firebasemock = require('firebase-mock');
@@ -8,7 +8,6 @@ const firebasemock = require('firebase-mock');
 const mockauth = new firebasemock.MockAuthentication();
 const mockstorage = new firebasemock.MockStorage();
 const mockfirestore = new firebasemock.MockFirestore();
-// const mockdatabase = new firebasemock.MockFirebase();
 mockauth.autoFlush();
 mockfirestore.autoFlush();
 
@@ -23,14 +22,14 @@ global.firebase = firebasemock.MockFirebaseSdk(
 /* --------------------------funciones de test ----------------------------*/
 // Sign In for credentials
 describe('Sign In with credentials', () => {
-  it('Deberia poder iniciar sesión', () => signIn('travelin@rs.com', 'abc123')
+  it('Deberia poder iniciar sesión', () => signInWithEmail('sonian@rs.com', 'abc123')
     .then((user) => {
-      expect(user.email).toBe('travelin@rs.com');
+      expect(user.email).toBe('sonian@rs.com');
     }));
 });
 // Sign In for google
 describe('Sing in with google', () => {
-  it('Deberia iniciar sesión con google', () => signInForGoogle()
+  it('Deberia iniciar sesión con google', () => signInWithGoogle()
     .then((user) => {
       expect(user.isAnonymous).toBe(false);
       expect(user.providerData[0].providerId).toBe('google.com');
@@ -48,7 +47,7 @@ describe('create new user', () => {
 describe('send email verified', () => {
   it('Debería enviar un email de verificación', () => {
     const mockSendEmail = jest.fn();
-    firebase.auth().user.sendEmailVerification = mockSendEmail;
+    firebase.auth().currentUser.sendEmailVerification = mockSendEmail;
     sendEmail();
     expect(mockSendEmail).toHaveBeenCalled();
     expect(mockSendEmail.mock.calls).toHaveLength(1);
@@ -69,7 +68,7 @@ describe('Send recover password', () => {
 });
 // Log out
 describe('Log out', () => {
-  it('Deberia salir de sesión', () => signOut()
+  it('Deberia salir de sesión', () => signout()
     .then((user) => {
       expect(user).toBe(undefined);
     }));
@@ -79,9 +78,9 @@ describe('Log out', () => {
 describe('Verify current user ', () => {
   it('Deberia extraer a usuario logeado', () => {
     const mockUser = {
-      user: { uid: '001' },
+      currentUser: { uid: '001' },
     };
-    firebase.auth().user = mockUser.user;
-    expect(user().uid).toEqual('001');
+    firebase.auth().currentUser = mockUser.currentUser;
+    expect(currentUser().uid).toEqual('001');
   });
 });

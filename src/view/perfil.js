@@ -232,23 +232,18 @@ export default () => {
     });
     // intereses
     const interestList = viewPerfil.querySelector('#interest-list');
-    console.log(interestList);
     const form = viewPerfil.querySelector('#formInterest');
     // renderInterests interestList
     function renderInterestList(doc) {
         let li = document.createElement('li');
         let interest = document.createElement('span');
         let cross = document.createElement('div');
-
         li.setAttribute('data-id', doc.id);
         interest.textContent = doc.data().interest;
         cross.textContent = 'x';
-
         li.appendChild(interest);
         li.appendChild(cross);
-
         interestList.appendChild(li);
-        console.log(interestList);
 
         // deleting interest data
         cross.addEventListener('click', (e) => {

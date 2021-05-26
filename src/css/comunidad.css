@@ -18,6 +18,7 @@
 .container-home p {
     font-weight: bold;
     font-size: 12px;
+    margin: 5px;
 }
 
 aside>div,
@@ -464,7 +465,7 @@ select {
     outline: none;
     transition: all ease 0.5s;
     background-color: #dfe5e8;
-    color: #fafafa;
+    color: #8f3380;
 }
 
 .btn-like-plane:hover,
@@ -638,9 +639,13 @@ select {
     color: #fafafa;
 }
 
-.fa-paper-plane:before,
 .fa-comment:before {
     color: #fafafa;
+}
+
+.fa-paper-plane:before {
+    color: #701368;
+    font-size: 16px;
 }
 
 .header {

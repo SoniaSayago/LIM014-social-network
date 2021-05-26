@@ -40,7 +40,7 @@
 .edit-cover {
     position: absolute;
     right: 4%;
-    bottom: 57%;
+    bottom: 70%;
     z-index: 2;
     outline: none;
     border: none;
@@ -104,7 +104,6 @@
     width: 100px;
     position: absolute;
     z-index: 1;
-    bottom: 47%;
     left: 53%;
     background-color: transparent;
     text-align: center;
@@ -121,7 +120,7 @@
 }
 
 .edit-info {
-    margin-top: 3rem;
+    margin-top: 10rem;
     cursor: pointer;
     position: absolute;
     right: 2rem;
@@ -528,3 +527,33 @@ li div {
     font-size: 16px;
     margin-bottom: 10px;
 }
+
+/* @media (max-width: 900px) {
+    .container-user-post {
+        width: 100%;
+    }
+    #interest-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .container-user-post {
+        width: 100%;
+    }
+    .edit-photo {
+        bottom: none;
+    }
+    .profile-photo {
+        top: 23%;
+    }
+    .edit-cover {
+        bottom: 65%;
+    }
+    .user-information h2 {
+        margin-top: 40px;
+    }
+    .edit-info {
+        margin-top: 9rem;
+    }
+    .container-grid {
+        grid-template-columns: 1fr;
+    }
+} */

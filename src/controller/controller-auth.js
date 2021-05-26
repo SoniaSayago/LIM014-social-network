@@ -47,6 +47,8 @@ export const sendRecoverPass = (emailAddress) => {
 // --------------------------------------GET CURRENT USER------------------------------------
 export const user = () => firebase.auth().currentUser;
 
+export const currentUser = () => firebase.auth().currentUser;
+
 export const updateCurrentUserPhoto = (photoURL) => firebase.auth().currentUser.updateProfile({
   photoURL,
 });

@@ -70,7 +70,7 @@ export const itemPost = (objPost) => {
 
     </div>
     <div class="container-like-comment">
-    <button type="button" id="btn-like" class="btn-like-plane }"><i class="far fa-heart"></i>Me gusta</button>
+    <button type="button" id="btn-like" class="btn-like-plane }"><i class="far fa-heart"></i> Me gusta</button>
     <button type="button" id="btn-comment" class="btn-comment"><i class="fa fa-comment"></i>Comentar</button>
     </div>
 

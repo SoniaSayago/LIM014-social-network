@@ -34,7 +34,6 @@ export const itemComment = (objComment, idPost) => {
     .then((doc) => {
       const avatarComment = commentElement.querySelector('.avatar-comment');
       const nameComment = commentElement.querySelector('.name-comment');
-
       avatarComment.src = doc.data().photo;
       nameComment.textContent = doc.data().username;
     });

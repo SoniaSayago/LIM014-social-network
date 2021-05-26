@@ -225,9 +225,9 @@ export default () => {
         const currentScroll = document.documentElement.scrollTop;
         // desplazamiento desde la parte superior de la pagina
         if (currentScroll > 300) { // desplazamiento mayor a 300px mostrar botón
-            divElement.querySelector('.scrollUp').style.transform = 'scale(1)';
+            divElement.querySelector('.scrollUp');
         } else { // desaparecer boton en menos de 300px
-            divElement.querySelector('.scrollUp').style.transform = 'scale(0)';
+            divElement.querySelector('.scrollUp');
         }
     };
     // evento que me permite ir a top con click

@@ -5,6 +5,7 @@ import { itemPost } from './post.js';
 import { sendImgToStorage } from '../controller/controller-storage.js';
 
 export default () => {
+    const viewComunidad = document.createElement('div');
     const userId = user().uid;
     const userObject = user();
     const defaultValue = {
@@ -13,7 +14,8 @@ export default () => {
         country: 'Country',
         description: 'Description',
     };
-    const viewComunidad = `
+    viewComunidad.classList.add('another-container-home');
+    viewComunidad.innerHTML = `
   <!-- Left column -->
   <div class = 'container-home'>
   <aside class='profile-section'>
@@ -28,16 +30,11 @@ export default () => {
     </div>
     <!-- Interests -->
     <div class = 'interest'>
-    <p>Intereses</p>
-      <p>
-      <span>Friends</span>
-      <span>Derecho</span>
-      <span>Política</span>
-      <span>Ciencias Sociales</span>
-      <span>PUCP</span>
-      <span>Universidad de Lima</span>
-      </p>
+    <div class="containerInterest">
+        <ul id="interest-list-comunidad">
+        </ul>
     </div>
+</div>
   </aside>
   
   <!-- Middle column -->
@@ -131,9 +128,9 @@ export default () => {
     });
 
     // División de carga de imagenes
-    const postImg = divElement.querySelector('#post-img');
-    const removeImg = divElement.querySelector('#remove-img');
-    const uploadImg = divElement.querySelector('#upload-img');
+    const postImg = viewComunidad.querySelector('#post-img');
+    const removeImg = viewComunidad.querySelector('#remove-img');
+    const uploadImg = viewComunidad.querySelector('#upload-img');
     // ************* Cargar imagen posteada *********************
     uploadImg.addEventListener('change', (e) => {
         // Creamos el objeto de la clase FileReader
@@ -169,17 +166,17 @@ export default () => {
             });
     });
     // ************************** Create Post **********************************
-    const formPost = divElement.querySelector('#form-post');
+    const formPost = viewComunidad.querySelector('#form-post');
     formPost.addEventListener('submit', (e) => {
         e.preventDefault();
         postImg.src = '';
         removeImg.style.display = 'none';
         const fileImg = e.target.closest('#form-post').querySelector('input').files[0];
-        const messageProgress = divElement.querySelector('#messageProgress');
-        const uploader = divElement.querySelector('#uploader');
-        const textPost = divElement.querySelector('.text-newpost');
-        const privacy = divElement.querySelector('#privacy-option').value;
-        const modalProgress = divElement.querySelector('.modal-progress');
+        const messageProgress = viewComunidad.querySelector('#messageProgress');
+        const uploader = viewComunidad.querySelector('#uploader');
+        const textPost = viewComunidad.querySelector('.text-newpost');
+        const privacy = viewComunidad.querySelector('#privacy-option').value;
+        const modalProgress = viewComunidad.querySelector('.modal-progress');
         // ************************ Enviar Imagen de Post a BD **********************************
         if (fileImg) {
             const refPath = `imgPost/${userId}/${fileImg.name}`;
@@ -211,7 +208,7 @@ export default () => {
         }
     });
     // ************************** View Post **********************************
-    const containerAllPost = divElement.querySelector('#container-allPost');
+    const containerAllPost = viewComunidad.querySelector('#container-allPost');
     getPosts((post) => {
         containerAllPost.innerHTML = '';
         post.forEach((objPost) => {
@@ -231,12 +228,49 @@ export default () => {
         }
     };
     // evento que me permite ir a top con click
-    divElement.querySelector('.scrollUp').addEventListener('click', () => {
+    viewComunidad.querySelector('.scrollUp').addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             left: 0,
             behavior: 'smooth',
         });
     });
-    return divElement;
+    // intereses
+    const interestList = viewComunidad.querySelector('#interest-list-comunidad');
+    // renderInterests interestList
+    function renderInterestList(doc) {
+        const li = document.createElement('li');
+        const interest = document.createElement('span');
+        const cross = document.createElement('div');
+
+        li.setAttribute('data-id', doc.id);
+        interest.textContent = doc.data().interest;
+        cross.textContent = 'x';
+        li.appendChild(interest);
+        li.appendChild(cross);
+        interestList.appendChild(li);
+
+        // deleting interest data
+        cross.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = e.target.parentElement.getAttribute('data-id');
+            const db = firebase.firestore();
+            db.collection('interests').doc(id).delete();
+        });
+    }
+
+    // snapshot realtime for interestList
+    const db = firebase.firestore();
+    db.collection('interests').onSnapshot((snapshot) => {
+        const changes = snapshot.docChanges();
+        changes.forEach((change) => {
+            if (change.type === 'added') {
+                renderInterestList(change.doc);
+            } else if (change.type === 'removed') {
+                const li = interestList.querySelector(`[data-id=${change.doc.id}]`);
+                interestList.removeChild(li);
+            }
+        });
+    });
+    return viewComunidad;
 };

@@ -51,7 +51,19 @@ export default () => {
           <div class="container-grid-item"><i class="far fa-id-badge"></i><span>${defaultValue.description}</span></div>
          
         </div>
+        <div class="containerInterest">
+      <form class="formInterest" id="formInterest">
+        <input class="inputForm" type= "interest" name="interest" placeholder="Intereses">
+        <button class="buttonAddForm" type="submit">Añadir</button>
+      </form>
+      <ul id="interest-list">
+      </ul>
+  </div>
       </div>
+
+      
+
+
     </div>
   </section>
 
@@ -218,6 +230,59 @@ export default () => {
             }
         });
     });
+    // intereses
+    const interestList = viewPerfil.querySelector('#interest-list');
+    console.log(interestList);
+    const form = viewPerfil.querySelector('#formInterest');
+    // renderInterests interestList
+    function renderInterestList(doc) {
+        let li = document.createElement('li');
+        let interest = document.createElement('span');
+        let cross = document.createElement('div');
+
+        li.setAttribute('data-id', doc.id);
+        interest.textContent = doc.data().interest;
+        cross.textContent = 'x';
+
+        li.appendChild(interest);
+        li.appendChild(cross);
+
+        interestList.appendChild(li);
+        console.log(interestList);
+
+        // deleting interest data
+        cross.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let id = e.target.parentElement.getAttribute('data-id');
+            const db = firebase.firestore();
+            db.collection('interests').doc(id).delete();
+        })
+    }
+
+    // snapshot realtime for interestList
+    const db = firebase.firestore();
+    db.collection('interests').onSnapshot(snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            if (change.type == 'added') {
+                renderInterestList(change.doc);
+            } else if (change.type == 'removed') {
+                let li = interestList.querySelector('[data-id=' + change.doc.id + ']');
+                interestList.removeChild(li);
+            }
+        })
+    })
+
+    // saving data
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const db = firebase.firestore();
+        db.collection('interests').add({
+            interest: form.interest.value
+        });
+        form.interest.value = '';
+
+    })
 
     return viewPerfil;
 };

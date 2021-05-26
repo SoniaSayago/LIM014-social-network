@@ -53,7 +53,6 @@ p.logo-aside img {
     color: #444;
 }
 
-
 .header,
 .profile-section,
 .right-section,
@@ -506,6 +505,9 @@ select {
     margin: 0 auto;
     justify-items: center;
     position: relative;
+    margin-top: 10px;
+    margin-top: 25px;
+    margin-bottom: 15px;
 }
 
 .github i:hover {
@@ -658,10 +660,11 @@ select {
 
 @media (max-width: 700px) {
     .header a {
-     font-size: 12px;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
     }
-
-    .logoLogin {
+    .logoHeader {
         width: 150px;
     }
 }
@@ -688,6 +691,7 @@ i.scrollUp.fas.fa-angle-up:hover {
     transform: scale(1.05);
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
 }
+
 i.fas.fa-angle-up::before {
     color: #ffff;
     font-size: 25px;

@@ -419,3 +419,9 @@ textarea:hover {
     margin-top: 20px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.356);
 }
+
+@media (max-width: 700px) {
+    .container-user-post {
+        width: 100%;
+    }
+}

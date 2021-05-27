@@ -1,10 +1,17 @@
 import {
-    createUser,
-    sendEmail,
+  createUser,
+  sendEmail,
+  signInWithGoogle,
+  signInWithFacebook,
 } from '../controller/controller-auth.js';
 
+import {
+  sendDataCurrentUser,
+  getDataUser,
+} from '../controller/controller-firestore.js';
+
 export default () => {
-    const viewRegister = `
+  const viewRegister = `
   <div class= 'backgroundRegisterHead'>
     <figure class='figureLogin'>
     <a href='#/login' target='_blank'><img src='./img/iziChoice.png' alt='' class='smallLogo'></a>
@@ -43,45 +50,79 @@ export default () => {
     </div>
     </div>`;
     // COD QUE PERMITE LAS VISTAS: VISTA DE REGISTRO
-    const divElement = document.createElement('div');
-    divElement.classList.add('mainDiv');
-    divElement.innerHTML = viewRegister;
+  const divElement = document.createElement('div');
+  divElement.classList.add('mainDiv');
+  divElement.innerHTML = viewRegister;
 
-    // COD PERMITE HACER EL REGISTRO DE USUARIO NUEVO
-    const signupForm = divElement.querySelector('#registerForm');
-    signupForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // cancela el evento de reinicio del formulario
-        const email = divElement.querySelector('#email').value; // .value porque son inputs
-        const password = divElement.querySelector('#password').value;
-        const error = divElement.querySelector('#error-message');
-        // FUNCIÓN QUE PERMITE AUTENTIFICAR USUARIO NUEVO CON EMAIL
-        createUser(email, password) // es una función q creamos en base a Firebase
-            .then(() => {
-                sendEmail() // PERMITE QUE SE ENVIE EL CORREO DE AUT AL USUARIO
-                    .then(() => {
-                        error.classList.add('successful-message');
-                        error.textContent = 'Por favor revise su bandeja de entrada para verificar su cuenta';
-                    })
-                    .catch((err) => {
-                        error.classList.add('error-message');
-                        error.textContent = err.message;
-                    });
-                signupForm.reset();
-            })
-            .catch((err) => {
-                error.classList.remove('successful-message');
-                error.classList.add('error-message');
-                switch (err.message) {
-                    case 'The email address is already in use by another account.':
-                        error.textContent = 'La dirección de correo electrónico ya está siendo utilizada por otra cuenta.';
-                        break;
-                    default:
-                        error.textContent = 'Los datos son incorrectos, verifica nuevamente';
-                }
-                setTimeout(() => {
-                    error.textContent = ' ';
-                }, 4000);
-            });
+  // COD PERMITE HACER EL REGISTRO DE USUARIO NUEVO
+  const signupForm = divElement.querySelector('#registerForm');
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // cancela el evento de reinicio del formulario
+    const email = divElement.querySelector('#email').value; // .value porque son inputs
+    const password = divElement.querySelector('#password').value;
+    const error = divElement.querySelector('#error-message');
+    // FUNCIÓN QUE PERMITE AUTENTIFICAR USUARIO NUEVO CON EMAIL
+    createUser(email, password) // es una función q creamos en base a Firebase
+      .then(() => {
+        sendEmail() // PERMITE QUE SE ENVIE EL CORREO DE AUT AL USUARIO
+          .then(() => {
+            error.classList.add('successful-message');
+            error.textContent = 'Por favor revise su bandeja de entrada para verificar su cuenta';
+          })
+          .catch((err) => {
+            error.classList.add('error-message');
+            error.textContent = err.message;
+          });
+        signupForm.reset();
+      })
+      .catch((err) => {
+        error.classList.remove('successful-message');
+        error.classList.add('error-message');
+        switch (err.message) {
+          case 'The email address is already in use by another account.':
+            error.textContent = 'La dirección de correo electrónico ya está siendo utilizada por otra cuenta.';
+            break;
+          default:
+            error.textContent = 'Los datos son incorrectos, verifica nuevamente';
+        }
+        setTimeout(() => {
+          error.textContent = ' ';
+        }, 4000);
+      });
+  });
+
+  /* ---------------------------regarding DOM manipulation for login with google---------------- */
+  const btnGoogle = divElement.querySelector('#btn-google');
+  btnGoogle.addEventListener('click', () => {
+    signInWithGoogle().then((response) => {
+      getDataUser(response.user.uid).then((doc) => {
+        if (doc.exists) {
+          window.location.hash = '#/comunidad';
+        } else {
+          sendDataCurrentUser(response.user).then(() => {
+            // if (doc.exists) {
+            window.location.hash = '#/comunidad';
+            // }
+          });
+        }
+      });
     });
-    return divElement;
+  });
+  const btnFacebook = divElement.querySelector('#btn-facebook');
+  btnFacebook.addEventListener('click', () => {
+    signInWithFacebook().then((response) => {
+      getDataUser(response.user.uid).then((doc) => {
+        if (doc.exists) {
+          window.location.hash = '#/comunidad';
+        } else {
+          sendDataCurrentUser(response.user).then(() => {
+            window.location.hash = '#/comunidad';
+            // }
+          });
+        }
+      });
+    });
+  });
+
+  return divElement;
 };

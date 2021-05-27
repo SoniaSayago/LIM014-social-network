@@ -221,7 +221,7 @@ export default () => {
     window.onscroll = () => {
         const currentScroll = document.documentElement.scrollTop;
         // desplazamiento desde la parte superior de la pagina
-        if (currentScroll > 300) { // desplazamiento mayor a 300px mostrar botón
+        if (currentScroll > 302) { // desplazamiento mayor a 300px mostrar botón
             divElement.querySelector('.scrollUp');
         } else { // desaparecer boton en menos de 300px
             divElement.querySelector('.scrollUp');

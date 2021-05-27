@@ -1,4 +1,4 @@
-import { sendRecoverPass } from '../controller/controller-auth.js';
+import { sendRecoverPass } from './services/aut.services.js';
 
 export default () => {
   const viewRecover = `

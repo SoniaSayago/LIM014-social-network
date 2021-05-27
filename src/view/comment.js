@@ -2,8 +2,8 @@ import {
   updateComment,
   deleteComment,
   getDataUser,
-} from '../controller/controller-firestore.js';
-import { user } from '../controller/controller-auth.js';
+} from './services/firestore.services.js';
+import { user } from './services/aut.services.js';
 
 export const itemComment = (objComment, idPost) => {
   const userId = user().uid;

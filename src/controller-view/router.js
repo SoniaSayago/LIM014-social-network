@@ -1,13 +1,10 @@
 import { components } from '../view/index.js';
-// console.log('components: ', components.login());
 
 export const changeTmp = (hash) => {
   const sectionMain = document.getElementById('container');
   sectionMain.innerHTML = '';
 
   switch (hash) {
-    case '#/':
-    { return sectionMain.appendChild(components.home()); }
     case '#/login':
       return sectionMain.appendChild(components.login());
     case '#/recover':

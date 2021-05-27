@@ -3,12 +3,12 @@ import {
   sendEmail,
   signInWithGoogle,
   signInWithFacebook,
-} from '../controller/controller-auth.js';
+} from './services/aut.services.js';
 
 import {
   sendDataCurrentUser,
   getDataUser,
-} from '../controller/controller-firestore.js';
+} from './services/firestore.services.js';
 
 export default () => {
   const viewRegister = `

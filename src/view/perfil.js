@@ -1,9 +1,9 @@
 /* eslint-disable indent */
-import { signout, user, updateCurrentUserPhoto } from '../controller/controller-auth.js';
+import { signout, user, updateCurrentUserPhoto } from './services/aut.services.js';
 import {
   updateCurrentUser, updatePhotoCover, getPosts, updatePhotoProfile,
-} from '../controller/controller-firestore.js';
-import { sendImgToStorage } from '../controller/controller-storage.js';
+} from './services/firestore.services.js';
+import { sendImgToStorage } from './services/storage.services.js';
 import { itemPost } from './post.js';
 
 export default () => {

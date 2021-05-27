@@ -1,8 +1,8 @@
 /* eslint-disable indent */
-import { signout, user } from '../controller/controller-auth.js';
-import { addPost, getPosts } from '../controller/controller-firestore.js';
+import { signout, user } from './services/aut.services.js';
+import { addPost, getPosts } from './services/firestore.services.js';
 import { itemPost } from './post.js';
-import { sendImgToStorage } from '../controller/controller-storage.js';
+import { sendImgToStorage } from './services/storage.services.js';
 
 export default () => {
     const viewComunidad = document.createElement('div');

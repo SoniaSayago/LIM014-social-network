@@ -1,7 +1,7 @@
 import {
   signInWithEmail, signInWithGoogle, createUser, sendRecoverPass, sendEmail, signout,
   currentUser,
-} from '../src/controller/controller-auth.js';
+} from '../src/view/services/aut.services.js';
 // setting up firebase mock
 const firebasemock = require('firebase-mock');
 

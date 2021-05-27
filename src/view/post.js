@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { user } from '../controller/controller-auth.js';
+import { user } from './services/aut.services.js';
 import { itemComment } from './comment.js';
 import {
     deletePost,
@@ -9,12 +9,11 @@ import {
     addComment,
     getDataUser,
     updateLikes,
-} from '../controller/controller-firestore.js';
+} from './services/firestore.services.js';
 
 export const itemPost = (objPost) => {
         const userObject = user().uid;
         let selectedPostId = null;
-        const reactionCounter = objPost.likes;
         const reactionLength = objPost.likes.length;
         const postElement = document.createElement('div');
         postElement.classList.add('allpost');
@@ -141,13 +140,11 @@ export const itemPost = (objPost) => {
         // eliminar post element
         postElement.querySelector(`#delete-post-${objPost.id}`)
             .addEventListener('click', () => {
-                const modal = document.getElementById('myModal')
-                console.log('moooodall', modal);
-                //modal.classList.remove('hide');
+                const modal = document.getElementById('myModal');
+                // modal.classList.remove('hide');
                 selectedPostId = objPost.id;
-                postElement.querySelector('button-up')
-                modal.style.display = "flex";
-                // deletePost(objPost.id);
+                postElement.querySelector('button-up');
+                modal.style.display = 'flex';
             });
         document.querySelector('#btnBorrarPost')
             .addEventListener('click', () => {
@@ -165,7 +162,7 @@ export const itemPost = (objPost) => {
         likes.addEventListener('click', () => {
             const result = objPost.likes.indexOf(userObject);
             if (result === -1) {
-                const testLike = objPost.likes.push(userObject);
+                objPost.likes.push(userObject);
             } else {
                 objPost.likes.splice(result, 1);
             }
@@ -174,7 +171,6 @@ export const itemPost = (objPost) => {
             // const testLike = objPost.likes.push(user().uid);
             // existe: eliminar elemento
             // console.log(testLike)
-
             updateLikes(objPost.id, objPost.likes);
             // comparar que el usuario no se repita(buscar que user(),id no este dentro del array)
             // eliminar elemento

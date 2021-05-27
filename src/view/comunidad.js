@@ -119,12 +119,12 @@ export default () => {
     // la X para cancelar en vorrar post
     closeModalButton.addEventListener('click', () => {
         const modal = document.getElementById('myModal');
-        modal.style.display = "none"
+        modal.style.display = 'none';
     });
     // cancelar post a borrar
     btnCancelarBorrarPost.addEventListener('click', () => {
         const modal = document.getElementById('myModal');
-        modal.style.display = "none"
+        modal.style.display = 'none';
     });
 
     // División de carga de imagenes
@@ -190,7 +190,7 @@ export default () => {
             }, () => {
                 // Handle unsuccessful uploads
             }, () => {
-                // Cuando la carga es completada 
+                // Cuando la carga es completada
                 uploadTask.snapshot.ref.getDownloadURL()
                     .then((downloadURL) => {
                         addPost(userId, privacy, textPost.value, downloadURL)

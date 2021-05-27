@@ -52,4 +52,3 @@ export const currentUser = () => firebase.auth().currentUser;
 export const updateCurrentUserPhoto = (photoURL) => firebase.auth().currentUser.updateProfile({
   photoURL,
 });
-

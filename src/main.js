@@ -1,5 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
-import { changeTmp } from './view-controler/router.js';
+import { changeTmp } from '.controller-view/router.js';
 
 // función que permite mostrar las vistas del usario
 const init = () => {
@@ -15,4 +15,3 @@ const init = () => {
 
 // función que muestra la vista al momento de recargar
 window.addEventListener('load', init);
-

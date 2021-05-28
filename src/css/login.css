@@ -25,6 +25,7 @@ input,
 select,
 textarea {
     text-indent: 10px;
+    border-radius: 10px;
 }
 
 .sectionLogin {
@@ -94,7 +95,7 @@ textarea {
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
 }
 
-.btn-ingresar:hover {
+.btn-backLogin:hover {
     transform: scale(1.05);
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
 }
@@ -377,30 +378,38 @@ textarea {
     }
     .imageHome {
         position: relative;
-        bottom: 70px;
+        bottom: 10px;
         left: 100px;
         width: 380px;
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1920px) {
     .imageHome {
         position: relative;
-        margin-top: 50px;
-        bottom: 70px;
-        left: 100px;
-        width: 400px;
+        margin-top: 100px;
+        margin-left: 100px;
+        width: 600px;
     }
     .textHomeH3 {
         font-family: 'Montserrat', sans-serif;
         font-weight: lighter;
         font-size: 20px;
         margin: 10px;
+        margin-top: 80px;
+        margin-left: 80px;
+        width: 600px;
     }
     .textHomeH1 {
         font-family: 'Montserrat', sans-serif;
         font-weight: bold;
         font-size: 40px;
+        margin-top: 50px;
+        margin-left: 80px;
+        width: 600px;
         /* margin: 0px 50px; */
+    }
+    .squareLogin {
+        width: 380px;
     }
 }

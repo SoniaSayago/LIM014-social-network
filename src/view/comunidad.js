@@ -2,8 +2,10 @@
 import { signout, user } from '../controller/controller-auth.js';
 import { addPost, getPosts } from '../controller/controller-firestore.js';
 import { itemPost } from './post.js';
+import { sendImgToStorage } from '../controller/controller-storage.js';
 
 export default () => {
+    const viewComunidad = document.createElement('div');
     const userId = user().uid;
     const userObject = user();
     const defaultValue = {
@@ -12,7 +14,8 @@ export default () => {
         country: 'Country',
         description: 'Description',
     };
-    const viewComunidad = `
+    viewComunidad.classList.add('another-container-home');
+    viewComunidad.innerHTML = `
   <!-- Left column -->
   <div class = 'container-home'>
   <aside class='profile-section'>
@@ -27,15 +30,11 @@ export default () => {
     </div>
     <!-- Interests -->
     <div class = 'interest'>
-    <p>Intereses</p>
-      <p>
-      <span>Friends</span>
-      <span>Derecho</span>
-      <span>Política</span>
-      <span>Ciencias Sociales</span>
-      <span>PUCP</span>
-      <span>Universidad de Lima</span>
-      </p>
+    <div class="containerInterest">
+        <ul id="interest-list-comunidad">
+        </ul>
+    </div>
+</div>
     </div>
   </aside>
   
@@ -55,7 +54,7 @@ export default () => {
       <div class='buttons-bar'>
         <label for='upload-img'>
         <input type='file' accept='image/jpeg, image/png, image/gif' id='upload-img' class='upload-img'>
-        <i class='far fa-file-image'><span class='tooltiptext'>Upload an image</span></i>
+        <i class='far fa-file-image'><span class='tooltiptext'>Carga una imagen</span></i>
         </label>
         <select class='fa' id='privacy-option'>
         <option class='fa' value='public' title = 'Public'>&#xf57d; </option>
@@ -108,10 +107,36 @@ export default () => {
     <p id='messageProgress'>0%</p>
   </div>
   </section>
+  <i class="scrollUp fas fa-angle-up"></i>
   `;
     const divElement = document.createElement('div');
     divElement.innerHTML = viewComunidad;
     document.getElementById('header').classList.remove('hide');
+
+    // División de carga de imagenes
+    const postImg = viewComunidad.querySelector('#post-img');
+    const removeImg = viewComunidad.querySelector('#remove-img');
+    const uploadImg = viewComunidad.querySelector('#upload-img');
+    // ************* Cargar imagen posteada *********************
+    uploadImg.addEventListener('change', (e) => {
+        // Creamos el objeto de la clase FileReader
+        const reader = new FileReader();
+        // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+        reader.readAsDataURL(e.target.files[0]);
+        // Le decimos que cuando este listo ejecute el código interno
+        reader.onload = () => {
+            postImg.src = reader.result;
+        };
+        // mostramos el botón de remover imagen
+        removeImg.removeAttribute('style');
+    });
+
+    /* ------------- Remove image post --------------------------*/
+    removeImg.addEventListener('click', () => {
+        postImg.src = '';
+        uploadImg.value = '';
+        removeImg.style.display = 'none';
+    });
 
     // ************************** Log out **********************************
     const logout = document.querySelector('#logout');
@@ -127,20 +152,49 @@ export default () => {
             });
     });
     // ************************** Create Post **********************************
-    const formPost = divElement.querySelector('#form-post');
+    const formPost = viewComunidad.querySelector('#form-post');
     formPost.addEventListener('submit', (e) => {
         e.preventDefault();
-        const textPost = divElement.querySelector('.text-newpost');
-        const privacy = divElement.querySelector('#privacy-option').value;
-        const modalProgress = divElement.querySelector('.modal-progress');
-        // ************************ Send Post BD **********************************
-        addPost(userObject.uid, privacy, textPost.value, '').then(() => {
-            modalProgress.classList.remove('showModal');
-            formPost.reset();
-        });
+        postImg.src = '';
+        removeImg.style.display = 'none';
+        const fileImg = e.target.closest('#form-post').querySelector('input').files[0];
+        const messageProgress = viewComunidad.querySelector('#messageProgress');
+        const uploader = viewComunidad.querySelector('#uploader');
+        const textPost = viewComunidad.querySelector('.text-newpost');
+        const privacy = viewComunidad.querySelector('#privacy-option').value;
+        const modalProgress = viewComunidad.querySelector('.modal-progress');
+        // ************************ Enviar Imagen de Post a BD **********************************
+        if (fileImg) {
+            const refPath = `imgPost/${userId}/${fileImg.name}`;
+            const uploadTask = sendImgToStorage(refPath, fileImg);
+            uploadTask.on('state_changed', (snapshot) => {
+                // Handle progress
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                modalProgress.classList.add('showModal');
+                messageProgress.textContent = 'Tu post esta cargando... 🚀';
+                uploader.value = progress;
+            }, () => {
+            // Cuando la carga no está completada
+            }, () => {
+            // Cuando la carga es completada 
+              uploadTask.snapshot.ref.getDownloadURL()
+                .then((downloadURL) => {
+                  addPost(userId, privacy, textPost.value, downloadURL)
+                    .then(() => {
+                      modalProgress.classList.remove('showModal');
+                      formPost.reset();
+
+                    });
+            });
+        } else {
+            addPost(userObject.uid, privacy, textPost.value, '').then(() => {
+                modalProgress.classList.remove('showModal');
+                formPost.reset();
+            });
+        }
     });
     // ************************** View Post **********************************
-    const containerAllPost = divElement.querySelector('#container-allPost');
+    const containerAllPost = viewComunidad.querySelector('#container-allPost');
     getPosts((post) => {
         containerAllPost.innerHTML = '';
         post.forEach((objPost) => {
@@ -149,6 +203,61 @@ export default () => {
             }
         });
     });
+    /* ----------------- Efecto Scroll up--------------------------------*/
+    window.onscroll = () => {
+        const currentScroll = document.documentElement.scrollTop;
+        // desplazamiento desde la parte superior de la pagina
+        if (currentScroll > 300) { // desplazamiento mayor a 300px mostrar botón
+            divElement.querySelector('.scrollUp');
+        } else { // desaparecer boton en menos de 300px
+            divElement.querySelector('.scrollUp');
+        }
+    };
+    // evento que me permite ir a top con click
+    viewComunidad.querySelector('.scrollUp').addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
+    });
+    // intereses
+    const interestList = viewComunidad.querySelector('#interest-list-comunidad');
+    // renderInterests interestList
+    function renderInterestList(doc) {
+        const li = document.createElement('li');
+        const interest = document.createElement('span');
+        const cross = document.createElement('div');
 
-    return divElement;
+        li.setAttribute('data-id', doc.id);
+        interest.textContent = doc.data().interest;
+        cross.textContent = 'x';
+        li.appendChild(interest);
+        li.appendChild(cross);
+        interestList.appendChild(li);
+
+        // deleting interest data
+        cross.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = e.target.parentElement.getAttribute('data-id');
+            const db = firebase.firestore();
+            db.collection('interests').doc(id).delete();
+        });
+    }
+
+    // snapshot realtime for interestList
+    const db = firebase.firestore();
+    db.collection('interests').onSnapshot((snapshot) => {
+        const changes = snapshot.docChanges();
+        changes.forEach((change) => {
+            if (change.type === 'added') {
+                renderInterestList(change.doc);
+            } else if (change.type === 'removed') {
+                const li = interestList.querySelector(`[data-id=${change.doc.id}]`);
+                interestList.removeChild(li);
+            }
+        });
+    });
+
+    return viewComunidad;
 };

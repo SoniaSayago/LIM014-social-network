@@ -3,7 +3,7 @@
 
 
   <a title="izychoice" target="_blank" href= "./src/">
-    <img  src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mockup.png" alt="IzyChoice">
+    <img  src="https://github.com/SoniaSayago/LIM014-social-network/blob/main/src/img/readme/mockup.png" alt="IzyChoice">
   </a>
 
 # izychoice 
@@ -27,13 +27,13 @@ Este aplicativo web busca solucionar 3 insigth importantes:
     * 3. A los jóvenes les cuesta contactar con instituciones educativas, organizaciones de orientación vocacional, organizaciones que ofrecenbecas e instituciones de financiamiento estudiantil. Les cuesta conseguir información sobre oportunidades post colegio.
    
 <p align="center">
-  <image width="800" height="450" src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/desktop.png" alt="izychoice-desktop">
+  <image width="800" height="450" src="https://github.com/SoniaSayago/LIM014-social-network/blob/main/src/img/readme/desktop.png" alt="izychoice-desktop">
   </p>
 
 ## 2. 👩‍💻Definición del producto
 
 <p >
-  <img align="right" height="500px" src="https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mobile.png" alt="izychoice-celular">
+  <img align="right" height="500px" src="https://github.com/SoniaSayago/LIM014-social-network/blob/main/src/img/readme/mobile.png" alt="izychoice-celular">
 </p>
 
 IzyChoice nace inspirada en las redes sociales actuales, tales como Instagram, Facebook, Twitch, Linkedin, etc. Estas redes

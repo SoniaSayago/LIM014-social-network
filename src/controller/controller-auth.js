@@ -46,3 +46,12 @@ export const sendRecoverPass = (emailAddress) => {
 
 // --------------------------------------GET CURRENT USER------------------------------------
 export const user = () => firebase.auth().currentUser;
+
+export const updateCurrentUserPhoto = (photoURL) => firebase.auth().currentUser.updateProfile({
+  photoURL,
+});
+
+// eslint-disable-next-line max-len
+export const updateCurrentUserPhotoCover = (photoCover) => firebase.auth().currentUser.updateProfile({
+    photoCover,
+  });

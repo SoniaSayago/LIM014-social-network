@@ -1,5 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
-import { changeTmp } from './controller-view/router.js';
+import { changeTmp } from './router.js';
 
 // función que permite mostrar las vistas del usario
 const init = () => {

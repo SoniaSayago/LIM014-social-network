@@ -1,10 +1,10 @@
+import MockFirebase from 'mock-cloud-firestore';
+
 import {
   addPost, getPosts, sendDataCurrentUser, updateCurrentUser, getDataUser, addComment,
   getComment, updatephotoProfile, updatephotoCover, updatePost, deletePost, updateComment,
   updatePrivacy, updateLikes, deleteComment,
 } from '../src/view/services/firestore.services.js';
-
-const MockFirebase = require('mock-cloud-firestore');
 
 const fixtureData = {
   __collection__: {
@@ -40,12 +40,11 @@ const fixtureData = {
                   userId: '001',
                   pid: 'id_001',
                   date: '',
-                  comment: 'new on Travelin',
+                  comment: 'Felicidades quedo hermoso',
                 },
               },
             },
           },
-
         },
       },
     },
@@ -60,22 +59,22 @@ describe('set new user', () => {
   it('Deberia crear un nuevo usuario', () => {
     const currentUser = {
       uid: 'uid_005',
-      displayName: 'Fulana',
+      displayName: 'Sonia Sayago ',
       photoURL: 'prueba.jpg',
-      email: 'fulanita@gmail.com',
+      email: 'ssayagos@gmail.com',
     };
     const current = {
       uid: 'uid_006',
       displayName: null,
       photoURL: null,
-      email: 'fulanita@gmail.com',
+      email: 'sonia.sayago.dev@gmail.com',
     };
     sendDataCurrentUser(currentUser)
       .then(() => {
         getDataUser('uid_005')
           .then((doc) => {
-            expect(doc.data().email).toEqual('fulanita@gmail.com');
-            expect(doc.data().username).toEqual('Fulana');
+            expect(doc.data().email).toEqual('ssayagos@gmail.com');
+            expect(doc.data().username).toEqual('Sonia Sayago');
             expect(doc.data().photo).toEqual('prueba.jpg');
           });
       });
@@ -91,11 +90,11 @@ describe('set new user', () => {
 });
 // Update user profile
 describe('update user profile', () => {
-  it('Deberia actualizar los datos del usuario', (done) => updateCurrentUser('uid_002', 'Travelin', '999999999', 'yyyy-MM-dd', '', '')
+  it('Deberia actualizar los datos del usuario', (done) => updateCurrentUser('uid_002', 'Izychoice', '999999999', 'yyyy-MM-dd', '', '')
     .then(() => {
       getDataUser('uid_002')
         .then((doc) => {
-          expect(doc.data().username).toBe('Travelin');
+          expect(doc.data().username).toBe('Izychoice');
           done();
         });
     }));
@@ -103,11 +102,11 @@ describe('update user profile', () => {
 // --------------------------SN-POST COLLECTION-----------------------------------
 // Add new post
 describe('add new post', () => {
-  it('Deberia agregar una nueva publicación', (done) => addPost('uid_003', 'Public', 'Added post to SN-post', '', '', '')
+  it('Deberia agregar una nueva publicación', (done) => addPost('uid_003', 'Public', 'Added post to post', '', '', '')
     .then(() => getPosts(
       (data) => {
-        const result = data.find((post) => post.publication === 'Added post to SN-post');
-        expect(result.publication).toBe('Added post to SN-post');
+        const result = data.find((posts) => posts.publication === 'Added post to posts');
+        expect(result.publication).toBe('Added post to posts');
         done();
       },
     )));
@@ -151,7 +150,7 @@ describe('update Post', () => {
   it('Deberia actualizar información del post', (done) => updatePost('id_001', 'post editado')
     .then(() => getPosts(
       (data) => {
-        const result = data.find((post) => post.publication === 'post editado');
+        const result = data.find((posts) => posts.publication === 'post editado');
         expect(result.publication).toBe('post editado');
         done();
       },
@@ -162,7 +161,7 @@ describe('update Privacy', () => {
   it('Deberia actualizar información de la privacidad', (done) => updatePrivacy('id_001', 'Private')
     .then(() => getPosts(
       (data) => {
-        const result = data.find((post) => post.privacy === 'Private');
+        const result = data.find((posts) => posts.privacy === 'Private');
         expect(result.privacy).toBe('Private');
         done();
       },
@@ -183,7 +182,7 @@ describe('update Like', () => {
   it('Deberia  reaccionar Like a Post', (done) => updateLikes('id_001', 'like')
     .then(() => getPosts(
       (data) => {
-        const result = data.find((post) => post.likes === 'like');
+        const result = data.find((posts) => posts.likes === 'like');
         expect(result.likes).toBe('like');
         done();
       },

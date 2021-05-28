@@ -1,4 +1,4 @@
-import { components } from '../view/index.js';
+import { components } from './view/index.js';
 
 export const changeTmp = (hash) => {
   const sectionMain = document.getElementById('container');

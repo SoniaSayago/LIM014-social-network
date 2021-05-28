@@ -17,7 +17,6 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockauth,
   () => mockstorage,
   () => mockfirestore,
-  // () => mockdatabase,
 );
 /* --------------------------funciones de test ----------------------------*/
 // Sign In for credentials

@@ -17,7 +17,7 @@
 
 .container-home p {
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     margin: 5px;
 }
 
@@ -188,17 +188,18 @@ select {
 
 .btn-post,
 .btn-comment {
-    height: fit-content;
-    width: fit-content;
+    height: 2.5rem;
+    width: 13rem;
     padding: 0.3rem 0.6rem;
     color: #fff;
     background-color: #FC5484;
     border-style: none;
-    border-radius: 0.3rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     outline: none;
     float: right;
     transition: all ease 0.5s;
+    font-weight: bold;
 }
 
 .btn-post:hover,
@@ -456,13 +457,14 @@ select {
 
 .btn-like-plane {
     position: relative;
-    height: 2rem;
-    width: 90px;
+    height: 2.5rem;
+    width: 13rem;
     border-style: none;
-    border-radius: 0.3rem;
+    border-radius: 0.5rem;
     margin: 0 0.5rem 0 0;
     cursor: pointer;
     outline: none;
+    font-weight: bold;
     transition: all ease 0.5s;
     background-color: #dfe5e8;
     color: #8f3380;
@@ -508,8 +510,8 @@ select {
     color: #fafafa;
 }
 
-.copyright {
-    font-size: 13px;
+p.copyright {
+    font-size: 11px;
     color: #fafafa;
 }
 
@@ -519,9 +521,7 @@ select {
     margin: 0 auto;
     justify-items: center;
     position: relative;
-    margin-top: 10px;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .github i:hover {
